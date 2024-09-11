@@ -3,6 +3,7 @@
 
 bool match_pattern(const std::string& input_line, const std::string& pattern) {
     if (pattern.length() == 1) {
+        std::cout << "da" << std::endl;
         return input_line.find(pattern) != std::string::npos;
     }
     else {
@@ -40,7 +41,7 @@ int main(int argc, char* argv[]) {
          if (match_pattern(input_line, pattern)) {
              return 0;
          } else {
-             return 10;
+             return 1;
          }
      } catch (const std::runtime_error& e) {
          std::cerr << e.what() << std::endl;
