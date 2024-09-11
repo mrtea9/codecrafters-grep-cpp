@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
          if (match_pattern(input_line, pattern)) {
              return 0;
          } else {
-             return 1;
+             return 10;
          }
      } catch (const std::runtime_error& e) {
          std::cerr << e.what() << std::endl;
