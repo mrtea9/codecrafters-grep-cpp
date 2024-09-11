@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
+#include <stdio.h>
 
 bool match_pattern(const std::string& input_line, const std::string& pattern) {
     std::cout << "test2" << std::endl;
+    printf("String: %s", input_line);
     if (pattern.length() == 1) {
         std::cout << "da" << std::endl;
         return input_line.find(pattern) != std::string::npos;
