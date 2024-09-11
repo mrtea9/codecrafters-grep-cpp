@@ -9,7 +9,7 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
         return input_line.find(pattern) != std::string::npos;
     }
     else if (pattern.compare("\d") == 0) {
-        std::cout << "este" << std::endl;
+        return true;
     }
     else {
         throw std::runtime_error("Unhandled pattern " + pattern);
