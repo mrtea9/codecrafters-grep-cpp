@@ -36,6 +36,8 @@ int main(int argc, char* argv[]) {
     
      std::string input_line;
      std::getline(std::cin, input_line);
+
+     std::cout << "test" << std::endl;
     
      try {
          if (match_pattern(input_line, pattern)) {
