@@ -8,7 +8,7 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
     if (pattern.length() == 1) {
         return input_line.find(pattern) != std::string::npos;
     }
-    else if (strcmp(pattern, "\d") == 0) {
+    else if (pattern.compare("\d") == 0) {
         std::cout << "este" << std::endl;
     }
     else {
