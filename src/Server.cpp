@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stdio.h>
+#include <cstring>
 
 bool match_pattern(const std::string& input_line, const std::string& pattern) {
     std::cout << "pattern: " << pattern << std::endl;
