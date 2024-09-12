@@ -71,6 +71,7 @@ int matchGroup(char* regexp, char* text) {
     if (length) {
         regexp[length - 1] = '\0';
     }
+
     std::stringstream ss(regexp);
     std::string token;
     std::vector<std::string> tokens;
@@ -81,8 +82,8 @@ int matchGroup(char* regexp, char* text) {
         tokens.push_back(token);
     }
 
-    for (const string part : tokens) {
-        std::cout << part << std::endl;
+    for (const auto& part : tokens) {
+        std::cout << typeid(part).name() << std::endl;
     }
 
     do {
