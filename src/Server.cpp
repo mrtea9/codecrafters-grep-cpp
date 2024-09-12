@@ -4,6 +4,7 @@
 #include <cstring>
 #include <cctype>
 
+int matchDigit(char* regexp, char* text);
 
 int matchhere(char* regexp, char* text) {
     int digits = 0;
@@ -13,7 +14,7 @@ int matchhere(char* regexp, char* text) {
 
     if (regexp[0] == '\0') return 1;
 
-    if (*regexp == '\\' && regexp[1 == 'd']) return matchdigit(regexp, text);
+    if (*regexp == '\\' && regexp[1 == 'd']) return matchDigit(regexp, text);
 
     if (*regexp == ' ') return matchhere(regexp + 1, text);
 
@@ -24,7 +25,7 @@ int matchhere(char* regexp, char* text) {
     return 0;
 }
 
-int matchdigit(char* regexp, char* text) {
+int matchDigit(char* regexp, char* text) {
     do {
         if (matchhere(regexp, text)) return 1;
     } while (*text != '\0' && isdigit(*text));
