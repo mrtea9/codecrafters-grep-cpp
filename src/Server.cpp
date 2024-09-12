@@ -13,7 +13,7 @@ int matchhere(char* regexp, char* text) {
     std::cout << "Text: " << text << std::endl;
     std::cout << "RegExp: " << regexp << std::endl;
 
-    if (!(regexp[0] == '^' && regexp[1] == *text)) return matchhere(regexp + 1, text);
+    if (regexp[0] == '^' && regexp[1] == *text) return matchhere(regexp + 1, text);
     if (regexp[0] == '\0') return 1;
     if (*regexp == ' ') return matchhere(regexp + 1, text);
     if (*regexp == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
