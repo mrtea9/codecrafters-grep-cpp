@@ -78,16 +78,19 @@ int matchGroup(char* regexp, char* text) {
     char delimeter = '|';
 
     while (getline(ss, token, delimeter)) {
-        std::cout << "Group Text: " << text << std::endl;
-        std::cout << "Group RegExp: " << token << std::endl;
+        tokens.push_back(token);
+    }
 
+    for (std::string token : tokens) {
         int length = token.length();
         char* token_array = new char[length + 1];
         strcpy(token_array, token.c_str());
 
         std::cout << token_array << std::endl;
 
-        return matchhere(token_array, text);
+        if (matchhere(token_array, text) != 1) {
+            continue
+        }
     }
 
     return 0;
