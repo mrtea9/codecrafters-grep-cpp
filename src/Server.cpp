@@ -8,6 +8,7 @@ int matchDigit(char* regexp, char* text);
 int matchLetter(char* regexp, char* text);
 int matchPlus(char c, char* regexp, char* text);
 int matchOptional(char c, char* regexp, char* text);
+int matchGroup(char* regexp, char* text);
 
 static int matchhere(char* regexp, char* text) {
   
@@ -23,6 +24,7 @@ static int matchhere(char* regexp, char* text) {
     if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
     if (regexp[1] == '+') return matchPlus(regexp[0], regexp + 2, text);
+    if (regexp[0] == '(') return matchGroup(regexp, text);
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
 
     if (*text != '\0') return matchhere(regexp, text + 1);
@@ -60,6 +62,13 @@ int matchOptional(char c, char* regexp, char* text) {
     std::cout << "Optional RegExp: " << regexp << std::endl;
 
     return c == *text ? matchhere(regexp, text + 1) : matchhere(regexp, text);
+}
+
+int matchGroup(char* regexp, char* text) {
+    std::cout << "Group Text: " << text << std::endl;
+    std::cout << "Group RegExp: " << regexp << std::endl;
+
+    return 1;
 }
 
 static int match(char* regexp, char* text) {
