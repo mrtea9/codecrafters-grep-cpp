@@ -4,6 +4,7 @@
 #include <cstring>
 #include <cctype>
 
+int matchhere(char* regexp, char* text);
 
 int matchstar(int c, char* regexp, char* text) {
     do {
