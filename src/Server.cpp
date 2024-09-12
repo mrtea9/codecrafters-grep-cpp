@@ -44,7 +44,6 @@ int matchLetter(char* regexp, char* text) {
 }
 
 int match(char* regexp, char* text) {
-    if (regexp[0] == '^') return matchhere(regexp + 1, text);
     if (matchhere(regexp, text)) return 1;
     return 0;
 }
