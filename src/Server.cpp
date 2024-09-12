@@ -26,7 +26,7 @@ int match(char* regexp, char* text) {
 bool match_pattern(const std::string& input_line, const std::string& pattern) {
     std::cout << "pattern : " << pattern << std::endl;
 
-    const int length = pattern.length();
+    int length = pattern.length();
     char* regexp = new char[length + 1];
 
     strcpy(regexp, pattern.c_str());
