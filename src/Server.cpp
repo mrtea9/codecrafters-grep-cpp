@@ -4,10 +4,15 @@
 #include <cstring>
 #include <cctype>
 
-int match(char* regexp,const std::string& text) {
+int match(char* regexp,char* text) {
     std::cout << regexp << std::endl;
     std::cout << text << std::endl;
+    mactchhere(regexp + 1, text);
     return 1;
+}
+
+int mactchhere(char* regexp, char* text) {
+    std::cout << regexp << std::endl;
 }
 
 
@@ -19,7 +24,12 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
 
     strcpy(char_array, pattern.c_str());
 
-    match(char_array, input_line);
+    const int length2 = input_line.length();
+    char* char_array2 = new char[length2 + 1];
+
+    strcpy(char_array2, input_line.c_str());
+
+    match(char_array, char_array2);
     if (pattern.length() == 1) {
         return input_line.find(pattern) != std::string::npos;
     }
