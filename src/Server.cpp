@@ -4,18 +4,18 @@
 #include <cstring>
 #include <cctype>
 
-int matchDigit(char* text);
+int matchDigit(char* regexp, char* text);
 
 int matchhere(char* regexp, char* text) {
     int digits = 0;
     int letters = 0;
   
-    std::cout << text << std::endl;
-    std::cout << regexp << std::endl;
+    //std::cout << text << std::endl;
+    //std::cout << regexp << std::endl;
 
     if (regexp[0] == '\0') return 1;
 
-    if (*regexp == '\\' && regexp[1 == 'd']) return matchDigit(text);
+    if (*regexp == '\\' && regexp[1 == 'd']) return matchDigit(regexp + 2, text);
 
     if (*regexp == ' ') return matchhere(regexp + 1, text);
 
@@ -26,10 +26,10 @@ int matchhere(char* regexp, char* text) {
     return 0;
 }
 
-int matchDigit(char* text) {
+int matchDigit(char* regexp, char* text) {
     do {
         std::cout << text << std::endl;
-        if (isdigit(*text)) return *text;
+        if (isdigit(*text)) return matchhere(regexp, *text);
     } while (*text++ != '\0');
     return 0;
 }
