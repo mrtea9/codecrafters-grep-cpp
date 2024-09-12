@@ -17,7 +17,7 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
         return input_line.find_first_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_") != std::string::npos;
     }
     else if (pattern[0] == '[' && pattern.back() == ']') {
-        std::string mathcing_characters;
+        std::string matching_characters;
         matching_characters = pattern.substr(1, pattern.size() = 2);
         std::cout << matching_characters << std::endl;
         return input_line.find_first_of(matching_characters) != std::string::npos;
