@@ -11,7 +11,7 @@ int match(char* regexp, std::string& text) {
 }
 
 
-bool match_pattern(const std::string& input_line, const std::string& pattern) {
+bool match_pattern(const std::string& input_line, const char* pattern) {
     std::cout << "pattern : " << pattern << std::endl;
     match(pattern, input_line);
     if (pattern.length() == 1) {
