@@ -38,9 +38,7 @@ int matchDigit(char* regexp, char* text) {
 
 int match(char* regexp, char* text) {
     if (regexp[0] == '^') return matchhere(regexp + 1, text);
-    do {
-        if (matchhere(regexp, text)) return 1;
-    } while (*text++ != '\0');
+    if (matchhere(regexp, text)) return 1;
     return 0;
 }
 
