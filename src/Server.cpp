@@ -11,9 +11,15 @@ int match(char* regexp, std::string& text) {
 }
 
 
-bool match_pattern(const std::string& input_line, const char* pattern) {
+bool match_pattern(const std::string& input_line, const std::string& pattern) {
     std::cout << "pattern : " << pattern << std::endl;
-    match(pattern, input_line);
+
+    const int length = pattern.length();
+    char* char_array = new char[length + 1];
+
+    strcpy(char_array, pattern.c_str())
+
+    match(char_array, input_line);
     if (pattern.length() == 1) {
         return input_line.find(pattern) != std::string::npos;
     }
