@@ -70,6 +70,13 @@ int matchGroup(char* regexp, char* text) {
     std::string delimeter = "|";
     std::string s = regexp;
 
+    while ((pos = s.find(delimeter) != std::string::npos)) {
+        token = s.substr(0, pos);
+        std::cout << "Token: " << token << std::endl;
+        s.erase(0, pos + delimeter.length() - 1);
+    }
+
+    std::cout << "Token: " << token << std::endl;
 
     do {
         std::cout << "Group Text: " << text << std::endl;
