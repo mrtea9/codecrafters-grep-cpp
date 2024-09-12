@@ -14,11 +14,9 @@ int matchhere(char* regexp, char* text) {
     std::cout << "RegExp: " << regexp << std::endl;
 
     if (regexp[0] == '\0') return 1;
-
     if (*regexp == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
-
+    if (*regexp == '\\' && regexp[1] == 's') return matchLetter(regexp + 2, text);
     if (*regexp == ' ') return matchhere(regexp + 1, text);
-
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) {
         //std::cout << "avem" << std::endl;
         return matchhere(regexp + 1, text + 1);
@@ -30,8 +28,16 @@ int matchhere(char* regexp, char* text) {
 
 int matchDigit(char* regexp, char* text) {
     do {
-        std::cout << text << std::endl;
+        std::cout << "Digit Text: " << text << std::endl;
         if (isdigit(*text)) return matchhere(regexp, text);
+    } while (*text++ != '\0');
+    return 0;
+}
+
+int matchLetter(char* regexp, char* text) {
+    do {
+        std::cout << "Letter Text: " << text << std::endl;
+        if (isalpha(*text)) return matchhere(regexp, text);
     } while (*text++ != '\0');
     return 0;
 }
