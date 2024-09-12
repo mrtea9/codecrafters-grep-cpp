@@ -7,6 +7,7 @@
 int matchDigit(char* regexp, char* text);
 int matchLetter(char* regexp, char* text);
 int matchPlus(char c, char* regexp, char* text);
+int matchOptional(char c, char* regexp, char* text);
 
 int matchhere(char* regexp, char* text) {
   
@@ -15,8 +16,9 @@ int matchhere(char* regexp, char* text) {
 
     if (regexp[0] == '\0') return 1;
 
-    if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
     if (regexp[0] == ' ') return matchhere(regexp + 1, text);
+    if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
+    if (regexp[0] == '?') return matchOptional(regexp[0], regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
     if (regexp[1] == '+') return matchPlus(regexp[0], regexp + 2, text);
@@ -50,6 +52,12 @@ int matchPlus(char c, char* regexp, char* text) {
         if (c == *text) return matchhere(regexp, text + 1);
     } while (*text++ != '\0');
     return 0;
+}
+
+int matchOptional(char c, char* regexp, char* text) {
+    std::cout << "Optional Text: " << text << std::endl;
+    std::cout << "Optional RegExp: " << regexp << std::endl;
+    return c == *text ? matchhere(regexp, text + 2) : matchhere(regexp, text + 1)
 }
 
 int match(char* regexp, char* text) {
