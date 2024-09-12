@@ -4,6 +4,7 @@
 #include <cstring>
 #include <cctype>
 #include <sstream>
+#include <vector>
 
 int matchDigit(char* regexp, char* text);
 int matchLetter(char* regexp, char* text);
@@ -68,8 +69,18 @@ int matchOptional(char c, char* regexp, char* text) {
 int matchGroup(char* regexp, char* text) {
     size_t pos = 0;
     std::stringstream ss(regexp);
+    std::string token;
+    vector<string> tokens;
     char delimeter = '|';
     std::string s = regexp;
+
+    while (getline(ss, token, delimeter)) {
+        tokens.push_back(token);
+    }
+
+    for (const auto& part : tokens) {
+        std::cout << part << std::endl;
+    }
 
     do {
         std::cout << "Group Text: " << text << std::endl;
