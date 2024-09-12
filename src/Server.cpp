@@ -55,7 +55,7 @@ int main(int argc, char* argv[]) {
     }
 
     std::string flag = argv[1];
-    std::string pattern = argv[2];
+    char* pattern = argv[2];
 
     if (flag != "-E") {
         std::cerr << "Expected first argument to be '-E'" << std::endl;
@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
 
     // Uncomment this block to pass the first stage
     
-     std::string input_line;
+     char* input_line;
      std::getline(std::cin, input_line);
 
 
