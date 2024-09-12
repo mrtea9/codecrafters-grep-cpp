@@ -29,7 +29,7 @@ int matchhere(char* regexp, char* text) {
 
 int matchDigit(char* regexp, char* text) {
     do {
-        std::cout << "Digit Text: " << text << std::endl;
+        std::cout << "Digit Text : " << text << std::endl;
         if (isdigit(*text)) return matchhere(regexp, text + 1);
     } while (*text++ != '\0');
     return 0;
@@ -100,7 +100,7 @@ int main(int argc, char* argv[]) {
     }
 
     std::string flag = argv[1];
-    char* pattern = argv[2];
+    std::string pattern = argv[2];
 
     if (flag != "-E") {
         std::cerr << "Expected first argument to be '-E'" << std::endl;
