@@ -10,6 +10,8 @@ int matchhere(char* regexp, char* text) {
     int digits = 0;
     int letters = 0;
   
+    std::cout << text << std::endl;
+    std::cout << regexp << std::endl;
 
     if (regexp[0] == '\0') return 1;
 
