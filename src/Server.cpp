@@ -29,7 +29,7 @@ int matchhere(char* regexp, char* text) {
 int matchDigit(char* regexp, char* text) {
     do {
         std::cout << text << std::endl;
-        if (isdigit(*text)) return matchhere(regexp, &text);
+        if (isdigit(*text)) return matchhere(regexp, text);
     } while (*text++ != '\0');
     return 0;
 }
