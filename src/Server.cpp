@@ -4,15 +4,15 @@
 #include <cstring>
 #include <cctype>
 
+int mactchhere(char* regexp, char* text) {
+    std::cout << regexp << std::endl;
+}
+
 int match(char* regexp,char* text) {
     std::cout << regexp << std::endl;
     std::cout << text << std::endl;
     mactchhere(regexp + 1, text);
     return 1;
-}
-
-int mactchhere(char* regexp, char* text) {
-    std::cout << regexp << std::endl;
 }
 
 
