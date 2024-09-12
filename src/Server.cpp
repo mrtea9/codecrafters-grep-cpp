@@ -82,8 +82,8 @@ int matchGroup(char* regexp, char* text) {
         tokens.push_back(token);
     }
 
-    for (const auto& part : tokens) {
-        std::cout << typeid(part).name() << std::endl;
+    for (std::string part : tokens) {
+        std::cout << part << std::endl;
     }
 
     do {
