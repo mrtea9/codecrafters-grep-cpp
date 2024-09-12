@@ -10,7 +10,7 @@ int matchhere(char* regexp, char* text) {
     if (regexp[0] == '\0') return 1;
     if (*regexp == '\\' && regexp[1 == 'd']) {
         digits++;
-        return matchhere(regexp + 2, text)
+        return matchhere(regexp + 2, text);
     }
     std::cout << text << std::endl;
     std::cout << *regexp << regexp[1] << std::endl;
