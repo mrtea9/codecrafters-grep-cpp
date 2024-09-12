@@ -18,10 +18,11 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
     }
     else if (pattern[0] == '[' && pattern.back() == ']') {
         std::string matching_characters;
+        bool isMatch;
         matching_characters = pattern.substr(1, pattern.size() - 2);
         std::cout << matching_characters << std::endl;
-        result = input_line.find_first_of(matching_characters) != std::string::npos;
-        return matching_characters[0] == '^' ? !result : result;
+        isMatch = input_line.find_first_of(matching_characters) != std::string::npos;
+        return matching_characters[0] == '^' ? !isMatch : isMatch;
     }
     else {
         throw std::runtime_error("Unhandled pattern " + pattern);
