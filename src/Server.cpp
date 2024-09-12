@@ -67,11 +67,6 @@ int matchOptional(char c, char* regexp, char* text) {
 }
 
 int matchGroup(char* regexp, char* text) {
-    std::stringstream ss(regexp);
-    std::string token;
-    std::vector<std::string> tokens;
-    char delimeter = '|';
-
     std::size_t length = strlen(regexp);
     if (length) {
         regexp[length - 1] = '\0';
@@ -79,6 +74,11 @@ int matchGroup(char* regexp, char* text) {
 
     std::cout << "Group Text: " << text << std::endl;
     std::cout << "Group RegExp: " << regexp << std::endl;
+
+    std::stringstream ss(regexp);
+    std::string token;
+    std::vector<std::string> tokens;
+    char delimeter = '|';
 
     while (getline(ss, token, delimeter)) {
         tokens.push_back(token);
