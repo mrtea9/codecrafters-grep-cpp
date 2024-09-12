@@ -9,8 +9,7 @@ int matchDigit(char* regexp, char* text);
 int matchhere(char* regexp, char* text) {
     int digits = 0;
     int letters = 0;
-    std::cout << regexp << std::endl;
-    std::cout << text << std::endl;
+  
 
     if (regexp[0] == '\0') return 1;
 
@@ -27,7 +26,9 @@ int matchhere(char* regexp, char* text) {
 
 int matchDigit(char* regexp, char* text) {
     do {
-        if (matchhere(regexp, &text)) return 1;
+        std::cout << regexp << std::endl;
+        std::cout << text << std::endl;
+        if (matchhere(regexp, text)) return 1;
     } while (*text++ != '\0' || isdigit(*text));
     return 0;
 }
