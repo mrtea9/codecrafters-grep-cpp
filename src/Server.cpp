@@ -20,7 +20,7 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
         std::string matching_characters;
         matching_characters = pattern.substr(1, pattern.size() - 2);
         std::cout << matching_characters << std::endl;
-        result = input_line.find_first_of(matching_characters) != std::string::npos
+        result = input_line.find_first_of(matching_characters) != std::string::npos;
         return matching_characters[0] == '^' ? !result : result;
     }
     else {
