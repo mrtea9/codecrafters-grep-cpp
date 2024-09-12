@@ -24,12 +24,12 @@ int matchhere(char* regexp, char* text) {
     return 0;
 }
 
-int matchDigit(char* regexp, char* text) {
+int matchDigit(char* text) {
     do {
         std::cout << regexp << std::endl;
         std::cout << text << std::endl;
-        if (matchhere(regexp, text)) return 1;
-    } while (*text++ != '\0' || isdigit(*text));
+        if (isdigit(*text)) return 1;
+    } while (*text++ != '\0');
     return 0;
 }
 
