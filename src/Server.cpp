@@ -89,7 +89,9 @@ int matchGroup(char* regexp, char* text) {
 
         std::cout << token_array << std::endl;
 
-        return matchhere(token_array, copy_text);
+        if (matchhere(token_array, copy_text) == 1) {
+            return 1;
+        }
     }
 
     return 0;
