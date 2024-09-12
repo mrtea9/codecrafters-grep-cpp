@@ -67,8 +67,10 @@ int matchOptional(char c, char* regexp, char* text) {
 }
 
 int matchGroup(char* regexp, char* text) {
-    std::byte lastChar = strlen(regexp) - 1;
-    regexp[lastChar] = '\0';
+    std::size_t length = strlen(regexp);
+    if (length) {
+        regexp[length - 1] = '\0';
+    }
     std::stringstream ss(regexp);
     std::string token;
     std::vector<std::string> tokens;
