@@ -27,7 +27,7 @@ int matchhere(char* regexp, char* text) {
 
 int matchDigit(char* regexp, char* text) {
     do {
-        if (matchhere(regexp, text)) return 1;
+        if (matchhere(regexp, &text)) return 1;
     } while (*text++ != '\0' || isdigit(*text));
     return 0;
 }
