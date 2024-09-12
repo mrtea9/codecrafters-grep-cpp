@@ -15,7 +15,7 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
     }
     else if (pattern.compare("\\w") == 0) {
         std::cout << "este";
-        return 1
+        return 1;
     }
     else {
         throw std::runtime_error("Unhandled pattern " + pattern);
