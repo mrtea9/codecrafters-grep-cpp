@@ -19,7 +19,7 @@ int matchhere(char* regexp, char* text) {
     }
     std::cout << regexp << std::endl;
     std::cout << text << std::endl;
-    if (*text != '\0' && digits != 0 && (regexp[0] == '.' || regexp[0] == *text)) {
+    if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) {
         std::cout << "avem" << std::endl;
         return matchhere(regexp + 1, text + 1);
     }
