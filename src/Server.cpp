@@ -66,13 +66,6 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
     if (pattern.length() == 1) {
         return input_line.find(pattern) != std::string::npos;
     }
-    else if (pattern.compare("\\d") == 0) {
-        std::cout << pattern << std::endl;
-        return input_line.find_first_of("1234567890") != std::string::npos;
-    }
-    else if (pattern.compare("\\w") == 0) {
-        return input_line.find_first_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_") != std::string::npos;
-    }
     else if (pattern[0] == '[' && pattern.back() == ']') {
         std::string chars_to_match;
         bool negate;
