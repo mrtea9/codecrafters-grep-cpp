@@ -67,7 +67,7 @@ int matchOptional(char c, char* regexp, char* text) {
 int matchGroup(char* regexp, char* text) {
     size_t pos = 0;
     std::string token;
-    std::string delimeter = "|";
+    char delimeter = '' | ;
     std::string s = regexp;
 
     while ((pos = s.find(delimeter) != std::string::npos)) {
@@ -76,7 +76,7 @@ int matchGroup(char* regexp, char* text) {
         s.erase(0, pos + delimeter.length() - 1);
     }
 
-    std::cout << "Token: " << token << std::endl;
+    std::cout << "Token2: " << token << std::endl;
 
     do {
         std::cout << "Group Text: " << text << std::endl;
