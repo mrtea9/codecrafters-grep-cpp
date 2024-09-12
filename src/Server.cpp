@@ -31,6 +31,8 @@ static int matchhere(char* regexp, char* text) {
                 return matchOr(regexp + 1, text);
             }
             else {
+                std::cout << "Text: " << text << std::endl;
+                std::cout << "RegExp: " << regexp << std::endl;
                 return 0;
             }
         }
