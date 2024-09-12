@@ -7,7 +7,7 @@
 
 int matchhere(char* regexp, char* text) {
     if (regexp[0] == '\0') return 1;
-    std::cout << *text << std::endl;
+    std::cout << *text << *text << std::endl;
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
     return 0;
 }
