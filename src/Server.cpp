@@ -23,6 +23,8 @@ int matchhere(char* regexp, char* text) {
         //std::cout << "avem" << std::endl;
         return matchhere(regexp + 1, text + 1);
     }
+
+    if (*text != '\0') return matchhere(regexp, text + 1);
     return 0;
 }
 
@@ -37,7 +39,7 @@ int matchDigit(char* regexp, char* text) {
 int match(char* regexp, char* text) {
     if (regexp[0] == '^') return matchhere(regexp + 1, text);
     do {
-        if (matchhere(regexp, &text)) return 1;
+        if (matchhere(regexp, text)) return 1;
     } while (*text++ != '\0');
     return 0;
 }
