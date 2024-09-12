@@ -4,7 +4,7 @@
 #include <cstring>
 #include <cctype>
 
-int match(char* regexp, char* text) {
+int match(char* regexp, std::string& text) {
     std::cout << regexp << std::endl;
     std::cout << text << std::endl;
     return 1;
@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
 
     // Uncomment this block to pass the first stage
     
-     char* input_line;
+     std::string input_line;
      std::getline(std::cin, input_line);
 
 
