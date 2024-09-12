@@ -11,12 +11,12 @@ int matchLetter(char* regexp, char* text);
 int matchPlus(char c, char* regexp, char* text);
 int matchOptional(char c, char* regexp, char* text);
 int matchOr(char* regexp, char* text);
+int matchAnd(char* regexp, char* text);
 
 static int matchhere(char* regexp, char* text) {
   
     std::cout << "Text: " << text << std::endl;
     std::cout << "RegExp: " << regexp << std::endl;
-    std::cout << "test: " << std::string(regexp).find('|') << std::endl;
 
     if (regexp[0] == '\0') return 1;
 
@@ -32,9 +32,7 @@ static int matchhere(char* regexp, char* text) {
                 return matchOr(regexp + 1, text);
             }
             else {
-                std::cout << "test text: " << text << std::endl;
-                std::cout << "test RegExp: " << regexp << std::endl;
-                return 0;
+                return matchAnd(regexp, text);
             }
         }
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
@@ -82,8 +80,8 @@ int matchOr(char* regexp, char* text) {
         regexp[length - 1] = '\0';
     }
 
-    std::cout << "Group Text: " << text << std::endl;
-    std::cout << "Group RegExp: " << regexp << std::endl;
+    std::cout << "Or Text: " << text << std::endl;
+    std::cout << "Or RegExp: " << regexp << std::endl;
 
     std::stringstream ss(regexp);
     std::string token;
@@ -100,12 +98,19 @@ int matchOr(char* regexp, char* text) {
         char* token_array = new char[length + 1];
         strcpy(token_array, token.c_str());
 
-        std::cout << "Group Variant RegExp: " << token_array << std::endl;
+        std::cout << "Or Variant RegExp: " << token_array << std::endl;
 
         if (matchhere(token_array, copy_text) == 1) {
             return 1;
         }
     }
+
+    return 0;
+}
+
+int matchAnd(char* regexp, char* text) {
+    std::cout << "And Text: " << text << std::endl;
+    std::cout << "And RegExp: " << regexp << std::endl;
 
     return 0;
 }
