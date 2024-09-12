@@ -4,6 +4,7 @@
 #include <cstring>
 #include <cctype>
 
+
 int matchhere(char* regexp, char* text);
 
 int matchstar(int c, char* regexp, char* text) {
@@ -21,10 +22,11 @@ int matchhere(char* regexp, char* text) {
     return 0;
 }
 
-int match(char* regexp,char* text) {
+int match(char* regexp, char* text) {
     if (regexp[0] == '^') return matchhere(regexp + 1, text);
     do {
         if (matchhere(regexp, text)) return 1;
+        std::cout << regexp << std::endl;
         std::cout << text << std::endl;
     } while (*text++ != '\0');
     return 0;
