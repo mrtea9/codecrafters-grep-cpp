@@ -30,7 +30,7 @@ int matchhere(char* regexp, char* text) {
 int matchDigit(char* regexp, char* text) {
     do {
         std::cout << "Digit Text: " << text << std::endl;
-        if (isdigit(*text)) return matchhere(regexp, text);
+        if (isdigit(*text)) return matchhere(regexp, text + 1);
     } while (*text++ != '\0');
     return 0;
 }
@@ -38,7 +38,7 @@ int matchDigit(char* regexp, char* text) {
 int matchLetter(char* regexp, char* text) {
     do {
         std::cout << "Letter Text: " << text << std::endl;
-        if (isalpha(*text)) return matchhere(regexp, text);
+        if (isalpha(*text)) return matchhere(regexp, text + 1);
     } while (*text++ != '\0');
     return 0;
 }
