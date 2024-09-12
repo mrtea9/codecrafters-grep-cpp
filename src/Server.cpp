@@ -16,6 +16,7 @@ static int matchhere(char* regexp, char* text) {
   
     std::cout << "Text: " << text << std::endl;
     std::cout << "RegExp: " << regexp << std::endl;
+    std::cout << "test: " << std::string(regexp).find('|') << std::endl;
 
     if (regexp[0] == '\0') return 1;
 
@@ -31,8 +32,8 @@ static int matchhere(char* regexp, char* text) {
                 return matchOr(regexp + 1, text);
             }
             else {
-                std::cout << "Text: " << text << std::endl;
-                std::cout << "RegExp: " << regexp << std::endl;
+                std::cout << "test text: " << text << std::endl;
+                std::cout << "test RegExp: " << regexp << std::endl;
                 return 0;
             }
         }
