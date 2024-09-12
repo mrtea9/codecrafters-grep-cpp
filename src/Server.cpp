@@ -15,9 +15,9 @@ int matchhere(char* regexp, char* text) {
     std::cout << "RegExp: " << regexp << std::endl;
 
     if (regexp[0] == '\0') return 1;
+    if (*regexp == ' ') return matchhere(regexp + 1, text);
     if (*regexp == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
     if (*regexp == '\\' && regexp[1] == 's') return matchLetter(regexp + 2, text);
-    if (*regexp == ' ') return matchhere(regexp + 1, text);
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) {
         //std::cout << "avem" << std::endl;
         return matchhere(regexp + 1, text + 1);
