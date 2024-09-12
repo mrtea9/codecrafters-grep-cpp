@@ -26,7 +26,15 @@ static int matchhere(char* regexp, char* text) {
     if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
     if (regexp[1] == '+') return matchPlus(regexp[0], regexp + 2, text);
-    if (regexp[0] == '(') return matchGroup(regexp + 1, text);
+    if (regexp[0] == '(') {
+        char* end = regexp + 
+            if (std::string(regexp).find('|') != std::string::npos) {
+                return matchOr(regexp + 1, text);
+            }
+            else {
+                return 0;
+            }
+        }
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
 
     if (*text != '\0') return matchhere(regexp, text + 1);
@@ -66,7 +74,7 @@ int matchOptional(char c, char* regexp, char* text) {
     return c == *text ? matchhere(regexp, text + 1) : matchhere(regexp, text);
 }
 
-int matchGroup(char* regexp, char* text) {
+int matchOr(char* regexp, char* text) {
     std::size_t length = strlen(regexp);
     if (length) {
         regexp[length - 1] = '\0';
