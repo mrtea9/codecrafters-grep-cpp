@@ -54,8 +54,6 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
 
     strcpy(text, input_line.c_str());
 
-    std::cout << match(regexp, text) << std::endl;
-
     if (pattern.length() == 1) {
         return input_line.find(pattern) != std::string::npos;
     }
