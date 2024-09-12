@@ -67,7 +67,7 @@ int matchOptional(char c, char* regexp, char* text) {
 int matchGroup(char* regexp, char* text) {
     std::string test = regexp;
     std::string str;
-    stringstream ss(test);
+    std::stringstream ss(test);
     while (getline(ss, str, '|')) {
         std::cout << str << std::endl;
     }
