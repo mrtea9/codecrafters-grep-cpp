@@ -18,7 +18,7 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
     }
     else if (pattern[0] == '[' && pattern.back() == ']') {
         std::string matching_characters;
-        matching_characters = pattern.substr(1, pattern.size() = 2);
+        matching_characters = pattern.substr(1, pattern.size() - 2);
         std::cout << matching_characters << std::endl;
         return input_line.find_first_of(matching_characters) != std::string::npos;
     }
