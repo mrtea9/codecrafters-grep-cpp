@@ -112,6 +112,10 @@ int matchAnd(char* regexp, char* text) {
     std::cout << "And Text: " << text << std::endl;
     std::cout << "And RegExp: " << regexp << std::endl;
 
+    if (std::string(regexp).find("and") != std::string::npos) {
+        std::cout << "este" << std::string::npos;
+    }
+
     return 0;
 }
 
