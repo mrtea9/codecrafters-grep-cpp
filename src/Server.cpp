@@ -4,14 +4,6 @@
 #include <cstring>
 #include <cctype>
 
-bool contains_digit(const std::string& input_line) {
-    for (char c : input_line) {
-        if (std::isdigit(c)) {
-            return true;
-        }
-    }
-    return false;
-}
 
 bool match_pattern(const std::string& input_line, const std::string& pattern) {
     std::cout << "pattern: " << pattern << std::endl;
@@ -19,7 +11,11 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
         return input_line.find(pattern) != std::string::npos;
     }
     else if (pattern.compare("\\d") == 0) {
-        return contains_digit(input_line);
+        return input_line.find_first_of("1234567890") != std::string::npos;
+    }
+    else if (pattern.compare("\\w") == 0) {
+        std::cout << "este";
+        return 1
     }
     else {
         throw std::runtime_error("Unhandled pattern " + pattern);
