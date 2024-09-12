@@ -72,6 +72,7 @@ int matchGroup(char* regexp, char* text) {
         regexp[length - 1] = '\0';
     }
 
+    std::string copy_text = text;
     std::stringstream ss(regexp);
     std::string token;
     std::vector<std::string> tokens;
@@ -88,8 +89,8 @@ int matchGroup(char* regexp, char* text) {
 
         std::cout << token_array << std::endl;
 
-        if (matchhere(token_array, text) != 1) {
-            continue;
+        if (matchhere(token_array, copy_text) == 1) {
+            return 1;
         }
     }
 
