@@ -17,7 +17,7 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
     const int length = pattern.length();
     char* char_array = new char[length + 1];
 
-    strcpy(char_array, pattern.c_str())
+    strcpy(char_array, pattern.c_str());
 
     match(char_array, input_line);
     if (pattern.length() == 1) {
