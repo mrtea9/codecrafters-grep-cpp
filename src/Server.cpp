@@ -73,7 +73,7 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
         return negate ? !isMatch : isMatch;
     }
     else if (match(regexp, text) == 1) {
-        return 0;
+        return true;
     }
     else {
         throw std::runtime_error("Unhandled pattern " + pattern);
