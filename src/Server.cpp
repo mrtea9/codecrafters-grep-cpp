@@ -25,6 +25,7 @@ int match(char* regexp,char* text) {
     if (regexp[0] == '^') return matchhere(regexp + 1, text);
     do {
         if (matchhere(regexp, text)) return 1;
+        std::cout << text << std:endl;
     } while (*text++ != '\0');
     return 0;
     std::cout << regexp << std::endl;
