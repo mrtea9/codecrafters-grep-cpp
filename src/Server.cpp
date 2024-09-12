@@ -17,12 +17,16 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
         return input_line.find_first_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_") != std::string::npos;
     }
     else if (pattern[0] == '[' && pattern.back() == ']') {
-        std::string matching_characters;
+        std::string chars_to_match;
+        bool negate;
         bool isMatch;
-        matching_characters = pattern.substr(1, pattern.size() - 2);
-        std::cout << matching_characters << std::endl;
-        isMatch = input_line.find_first_of(matching_characters) != std::string::npos;
-        return matching_characters[0] == '^' ? !isMatch : isMatch;
+
+        chars_to_match = pattern.substr(1, pattern.size() - 2);
+        std::cout << chars_to_match << std::endl;
+        negate = chars_to_match[0] == '^'
+
+        isMatch = input_line.find_first_of(chars_to_match) != std::string::npos;
+        return negate ? !isMatch : isMatch;
     }
     else {
         throw std::runtime_error("Unhandled pattern " + pattern);
