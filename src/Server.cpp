@@ -68,7 +68,7 @@ int matchGroup(char* regexp, char* text) {
     std::string test = regexp;
     char separator = '|';
     char* p;
-    p = strtok(test, separator);
+    p = strtok(regexp, separator);
     std::cout << p << std::endl;
 
     do {
