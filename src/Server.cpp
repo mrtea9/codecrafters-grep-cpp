@@ -13,10 +13,12 @@ int matchhere(char* regexp, char* text) {
     std::cout << "RegExp: " << regexp << std::endl;
 
     if (regexp[0] == '\0') return 1;
+
+    if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
     if (regexp[0] == ' ') return matchhere(regexp + 1, text);
     if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
-    if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
+    if (regexp[1] == '+') return matchPlus(regexp[0], regexp + 2, text);
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
 
     if (*text != '\0') return matchhere(regexp, text + 1);
@@ -35,6 +37,16 @@ int matchLetter(char* regexp, char* text) {
     do {
         std::cout << "Letter Text: " << text << std::endl;
         if (isalpha(*text)) return matchhere(regexp, text + 1);
+    } while (*text++ != '\0');
+    return 0;
+}
+
+int matchPlus(char c, char* regexp, char* text) {
+    do {
+        std::cout << "Plus Text: " << text << std::endl;
+        std::cout << "Plus RegExp: " << regexp << std::endl;
+
+        if (c == *text) return matchhere(regexp, text + 1);
     } while (*text++ != '\0');
     return 0;
 }
