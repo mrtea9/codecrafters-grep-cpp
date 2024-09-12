@@ -14,7 +14,7 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
         return input_line.find_first_of("1234567890") != std::string::npos;
     }
     else if (pattern.compare("\\w") == 0) {
-        return input_line.find_first_of("a-zA-z0-9_") != std::string::npos;
+        return input_line.find_first_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_") != std::string::npos;
     }
     else {
         throw std::runtime_error("Unhandled pattern " + pattern);
