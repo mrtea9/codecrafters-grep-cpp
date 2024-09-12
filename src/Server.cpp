@@ -7,7 +7,7 @@
 
 int matchhere(char* regexp, char* text) {
     if (regexp[0] == '\0') return 1;
-    if (*regexp == '\\' && regexp[1 == 'd']) std::cout << "este" << std::endl;
+    if (*regexp == '\\' && regexp[1 == 'd']) return matchhere(regexp + 2, text);
     std::cout << *text << text[1] << std::endl;
     std::cout << *regexp << regexp[1] << std::endl;
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
