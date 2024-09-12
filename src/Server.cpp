@@ -4,9 +4,16 @@
 #include <cstring>
 #include <cctype>
 
+int match(char* regexp, char* text) {
+    std::cout << regexp << std::endl;
+    std::cout << text << std::endl;
+    return 1;
+}
+
 
 bool match_pattern(const std::string& input_line, const std::string& pattern) {
     std::cout << "pattern : " << pattern << std::endl;
+    match(pattern, input_line);
     if (pattern.length() == 1) {
         return input_line.find(pattern) != std::string::npos;
     }
