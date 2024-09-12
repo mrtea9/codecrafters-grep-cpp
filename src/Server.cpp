@@ -57,7 +57,7 @@ int matchPlus(char c, char* regexp, char* text) {
 int matchOptional(char c, char* regexp, char* text) {
     std::cout << "Optional Text: " << text << std::endl;
     std::cout << "Optional RegExp: " << regexp << std::endl;
-    return c == *text ? matchhere(regexp, text + 2) : matchhere(regexp, text + 1)
+    return c == *text ? matchhere(regexp, text + 2) : matchhere(regexp, text + 1);
 }
 
 int match(char* regexp, char* text) {
