@@ -5,6 +5,7 @@
 #include <cctype>
 
 int matchDigit(char* regexp, char* text);
+int matchLetter(char* regexp, char* text);
 
 int matchhere(char* regexp, char* text) {
     int digits = 0;
