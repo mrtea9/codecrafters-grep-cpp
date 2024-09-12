@@ -66,7 +66,7 @@ int matchOptional(char c, char* regexp, char* text) {
 
 int matchGroup(char* regexp, char* text) {
     size_t pos = 0;
-    std::string token;
+    std::stringstream ss(regexp);
     char delimeter = '|';
     std::string s = regexp;
 
