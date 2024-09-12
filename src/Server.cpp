@@ -7,18 +7,33 @@
 
 int matchhere(char* regexp, char* text) {
     int digits = 0;
+    int letters = 0;
+
     if (regexp[0] == '\0') return 1;
+
     if (*regexp == '\\' && regexp[1 == 'd']) {
         digits++;
         return matchhere(regexp + 2, text);
     }
+
+    if (*regexp == '\\' && regexp[1 == 'w']) {
+        letters++;
+        return matchhere(regexp + 2, text);
+    }
+
     if (*regexp == ' ') return matchhere(regexp + 1, text);
+
     if (digits != 0 && isdigit(*text)) {
         digits--;
         return matchhere(regexp, text + 1);
     }
-    //std::cout << regexp << std::endl;
-    //std::cout << text << std::endl;
+    if (digits != 0 && isalpha(*text)) {
+        letters--;
+        return matchhere(regexp, text + 1);
+    }
+
+    std::cout << regexp << std::endl;
+    std::cout << text << std::endl;
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) {
         //std::cout << "avem" << std::endl;
         return matchhere(regexp + 1, text + 1);
