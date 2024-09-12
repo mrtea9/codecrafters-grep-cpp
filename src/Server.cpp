@@ -18,6 +18,9 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
     else if (pattern.compare("\\w") == 0) {
         return input_line.find_first_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_") != std::string::npos;
     }
+    else if (pattern[0] == '[' && pattern.back() == ']') {
+        std::cout << "este" << std::endl;
+    }
     else {
         throw std::runtime_error("Unhandled pattern " + pattern);
     }
