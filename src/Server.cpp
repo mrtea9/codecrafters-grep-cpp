@@ -12,7 +12,7 @@ int matchstar(int c, char* regexp, char* text) {
     return 0;
 }
 
-int mactchhere(char* regexp, char* text) {
+int matchhere(char* regexp, char* text) {
     if (regexp[0] == '\0') return 1;
     if (regexp[1] == '*') return matchstar(regexp[0], regexp + 2, text);
     if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
