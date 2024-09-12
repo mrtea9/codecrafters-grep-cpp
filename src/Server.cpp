@@ -70,7 +70,7 @@ int matchGroup(char* regexp, char* text) {
     size_t pos = 0;
     std::stringstream ss(regexp);
     std::string token;
-    std::vector<string> tokens;
+    std::vector<std::string> tokens;
     char delimeter = '|';
     std::string s = regexp;
 
