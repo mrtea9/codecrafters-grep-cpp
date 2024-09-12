@@ -8,19 +8,16 @@ int matchDigit(char* regexp, char* text);
 int matchLetter(char* regexp, char* text);
 
 int matchhere(char* regexp, char* text) {
-    bool isBeginning = true;
   
     std::cout << "Text: " << text << std::endl;
     std::cout << "RegExp: " << regexp << std::endl;
 
     if (regexp[0] == '\0') return 1;
-    if (*regexp == ' ') return matchhere(regexp + 1, text);
-    if (*regexp == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
-    if (*regexp == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
-    if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) {
-        //std::cout << "avem" << std::endl;
-        return matchhere(regexp + 1, text + 1);
-    }
+    if (regexp[0] == ' ') return matchhere(regexp + 1, text);
+    if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
+    if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
+    if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
+    if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
 
     if (*text != '\0') return matchhere(regexp, text + 1);
     return 0;
@@ -28,7 +25,7 @@ int matchhere(char* regexp, char* text) {
 
 int matchDigit(char* regexp, char* text) {
     do {
-        std::cout << "Digit Text : " << text << std::endl;
+        std::cout << "Digit Text: " << text << std::endl;
         if (isdigit(*text)) return matchhere(regexp, text + 1);
     } while (*text++ != '\0');
     return 0;
