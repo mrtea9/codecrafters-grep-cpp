@@ -27,8 +27,7 @@ static int matchhere(char* regexp, char* text) {
     if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
     if (regexp[1] == '+') return matchPlus(regexp[0], regexp + 2, text);
     if (regexp[0] == '(') {
-        char* end = regexp + 
-            if (std::string(regexp).find('|') != std::string::npos) {
+            if ( std::string(regexp).find('|') != std::string::npos) {
                 return matchOr(regexp + 1, text);
             }
             else {
