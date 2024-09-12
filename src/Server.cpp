@@ -72,7 +72,6 @@ int matchGroup(char* regexp, char* text) {
         regexp[length - 1] = '\0';
     }
 
-    std::string copy_text = text;
     std::stringstream ss(regexp);
     std::string token;
     std::vector<std::string> tokens;
@@ -83,6 +82,7 @@ int matchGroup(char* regexp, char* text) {
     }
 
     for (std::string token : tokens) {
+        char* copy_text = text;
         int length = token.length();
         char* token_array = new char[length + 1];
         strcpy(token_array, token.c_str());
