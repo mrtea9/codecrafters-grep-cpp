@@ -10,7 +10,7 @@ int matchDigit(char* regexp, char* text);
 int matchLetter(char* regexp, char* text);
 int matchPlus(char c, char* regexp, char* text);
 int matchOptional(char c, char* regexp, char* text);
-int matchGroup(char* regexp, char* text);
+int matchOr(char* regexp, char* text);
 
 static int matchhere(char* regexp, char* text) {
   
