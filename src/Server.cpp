@@ -4,7 +4,7 @@
 #include <cstring>
 #include <cctype>
 
-int matchDigit(char* regexp, char* text);
+int matchDigit(char* text);
 
 int matchhere(char* regexp, char* text) {
     int digits = 0;
