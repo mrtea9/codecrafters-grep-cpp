@@ -65,7 +65,8 @@ int matchOptional(char c, char* regexp, char* text) {
 }
 
 int matchGroup(char* regexp, char* text) {
-    std::string test = "I | love | read";
+    std::string test;
+    test = "I love to read articles on Favtutor.";
     std::string str;
     std::stringstream ss(test);
     while (getline(ss, str, '|')) {
