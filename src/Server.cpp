@@ -7,7 +7,7 @@
 
 int matchhere(char* regexp, char* text) {
     if (regexp[0] == '\0') return 1;
-    if (*regexp == '\\') std::cout << "este" << std::endl;
+    if (*regexp == '\\' && regexp[1 == 'd']) std::cout << "este" << std::endl;
     std::cout << *text << text[1] << std::endl;
     std::cout << *regexp << regexp[1] << std::endl;
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
@@ -27,16 +27,17 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
     std::cout << "pattern : " << pattern << std::endl;
 
     const int length = pattern.length();
-    char* char_array = new char[length + 1];
+    char* regexp = new char[length + 1];
 
-    strcpy(char_array, pattern.c_str());
+    strcpy(regexp, pattern.c_str());
 
-    const int length2 = input_line.length();
-    char* char_array2 = new char[length2 + 1];
+    length = input_line.length();
+    char* text = new char[length + 1];
 
-    strcpy(char_array2, input_line.c_str());
+    strcpy(text, input_line.c_str());
 
-    match(char_array, char_array2);
+    std::cout << match(regexp, text) << std::endl;
+
     if (pattern.length() == 1) {
         return input_line.find(pattern) != std::string::npos;
     }
