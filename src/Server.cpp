@@ -23,7 +23,7 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
 
         chars_to_match = pattern.substr(1, pattern.size() - 2);
         std::cout << chars_to_match << std::endl;
-        negate = chars_to_match[0] == '^'
+        negate = chars_to_match[0] == '^';
 
         isMatch = input_line.find_first_of(chars_to_match) != std::string::npos;
         return negate ? !isMatch : isMatch;
