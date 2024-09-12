@@ -13,31 +13,21 @@ int matchhere(char* regexp, char* text) {
 
     if (regexp[0] == '\0') return 1;
 
-    if (*regexp == '\\' && regexp[1 == 'd']) {
-        digits++;
-        return matchhere(regexp + 2, text);
-    }
-
-    if (*regexp == '\\' && regexp[1 == 'w']) {
-        letters++;
-        return matchhere(regexp + 2, text);
-    }
+    if (*regexp == '\\' && regexp[1 == 'd']) return matchdigit(regexp, text);
 
     if (*regexp == ' ') return matchhere(regexp + 1, text);
-
-    if (digits != 0 && isdigit(*text)) {
-        digits--;
-        return matchhere(regexp, text + 1);
-    }
-    if (digits != 0 && isalpha(*text)) {
-        letters--;
-        return matchhere(regexp, text + 1);
-    }
 
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) {
         //std::cout << "avem" << std::endl;
         return matchhere(regexp + 1, text + 1);
     }
+    return 0;
+}
+
+int matchdigit(char* regexp, char* text) {
+    do {
+        if (matchhere(regexp, text)) return 1;
+    } while (*text != '\0' && isdigit(*text));
     return 0;
 }
 
