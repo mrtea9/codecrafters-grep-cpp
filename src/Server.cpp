@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <cstring>
 #include <cctype>
+#include <sstream>
 
 int matchDigit(char* regexp, char* text);
 int matchLetter(char* regexp, char* text);
@@ -69,14 +70,6 @@ int matchGroup(char* regexp, char* text) {
     std::stringstream ss(regexp);
     char delimeter = '|';
     std::string s = regexp;
-
-    while ((pos = s.find(delimeter) != std::string::npos)) {
-        token = s.substr(0, pos);
-        std::cout << "Token: " << token << std::endl;
-        s.erase(0, pos + 1 - 1);
-    }
-
-    std::cout << "Token2: " << token << std::endl;
 
     do {
         std::cout << "Group Text: " << text << std::endl;
