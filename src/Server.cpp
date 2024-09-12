@@ -6,6 +6,7 @@
 
 int matchDigit(char* regexp, char* text);
 int matchLetter(char* regexp, char* text);
+int matchPlus(char c, char* regexp, char* text);
 
 int matchhere(char* regexp, char* text) {
   
