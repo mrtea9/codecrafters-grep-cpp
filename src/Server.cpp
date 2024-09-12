@@ -17,8 +17,8 @@ int matchhere(char* regexp, char* text) {
         digits--;
         return matchhere(regexp, text + 1);
     }
-    std::cout << regexp << std::endl;
-    std::cout << text << std::endl;
+    //std::cout << regexp << std::endl;
+    //std::cout << text << std::endl;
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) {
         std::cout << "avem" << std::endl;
         return matchhere(regexp + 1, text + 1);
@@ -48,7 +48,7 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
 
     strcpy(text, input_line.c_str());
 
-    std::cout << match(regexp, text) << std::endl;
+    //std::cout << match(regexp, text) << std::endl;
 
     if (pattern.length() == 1) {
         return input_line.find(pattern) != std::string::npos;
