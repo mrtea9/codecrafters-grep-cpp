@@ -66,9 +66,9 @@ int matchOptional(char c, char* regexp, char* text) {
 
 int matchGroup(char* regexp, char* text) {
     std::string test = regexp;
-    char separator = '|';
+    const char* separator = '|';
     char* p;
-    p = strtok(regexp, '|');
+    p = strtok(regexp, separator);
     std::cout << p << std::endl;
 
     do {
