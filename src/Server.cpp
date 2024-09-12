@@ -9,7 +9,7 @@ int matchLetter(char* regexp, char* text);
 int matchPlus(char c, char* regexp, char* text);
 int matchOptional(char c, char* regexp, char* text);
 
-int matchhere(char* regexp, char* text) {
+static int matchhere(char* regexp, char* text) {
   
     std::cout << "Text: " << text << std::endl;
     std::cout << "RegExp: " << regexp << std::endl;
@@ -62,14 +62,14 @@ int matchOptional(char c, char* regexp, char* text) {
     return c == *text ? matchhere(regexp, text + 1) : matchhere(regexp, text);
 }
 
-int match(char* regexp, char* text) {
+static int match(char* regexp, char* text) {
     if (regexp[0] == '^' && regexp[1] == *text) return matchhere(regexp + 1, text);
     if (matchhere(regexp, text)) return 1;
     return 0;
 }
 
 
-bool match_pattern(const std::string& input_line, const std::string& pattern) {
+static bool match_pattern(const std::string& input_line, const std::string& pattern) {
     std::cout << "pattern : " << pattern << std::endl;
 
     int length = pattern.length();
