@@ -80,6 +80,7 @@ int matchGroup(char* regexp, char* text) {
 
     while (getline(ss, token, delimeter)) {
         tokens.push_back(token);
+        std::cout << token << std::endl;
     }
 
     for (std::string part : tokens) {
