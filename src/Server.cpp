@@ -8,6 +8,8 @@
 int matchhere(char* regexp, char* text) {
     int digits = 0;
     int letters = 0;
+    std::cout << regexp << std::endl;
+    std::cout << text << std::endl;
 
     if (regexp[0] == '\0') return 1;
 
@@ -32,8 +34,6 @@ int matchhere(char* regexp, char* text) {
         return matchhere(regexp, text + 1);
     }
 
-    std::cout << regexp << std::endl;
-    std::cout << text << std::endl;
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) {
         //std::cout << "avem" << std::endl;
         return matchhere(regexp + 1, text + 1);
