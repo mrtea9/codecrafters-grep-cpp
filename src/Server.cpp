@@ -28,7 +28,7 @@ int match(char* regexp,char* text) {
     return 0;
     std::cout << regexp << std::endl;
     std::cout << text << std::endl;
-    mactchhere(regexp + 1, text);
+    matchhere(regexp + 1, text);
     return 1;
 }
 
