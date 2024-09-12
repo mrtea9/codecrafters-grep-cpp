@@ -65,13 +65,11 @@ int matchOptional(char c, char* regexp, char* text) {
 }
 
 int matchGroup(char* regexp, char* text) {
-    std::string test;
-    test = "I love to read articles on Favtutor.";
-    std::string str;
-    std::stringstream ss(test);
-    while (getline(ss, str, '|')) {
-        std::cout << str << std::endl;
-    }
+    size_t pos = 0;
+    std::string token;
+    std::string delimeter = '|';
+    std::string s = regexp;
+
 
     do {
         std::cout << "Group Text: " << text << std::endl;
