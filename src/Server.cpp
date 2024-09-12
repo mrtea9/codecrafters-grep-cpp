@@ -26,7 +26,6 @@ int matchhere(char* regexp, char* text) {
 
 int matchDigit(char* text) {
     do {
-        std::cout << regexp << std::endl;
         std::cout << text << std::endl;
         if (isdigit(*text)) return 1;
     } while (*text++ != '\0');
