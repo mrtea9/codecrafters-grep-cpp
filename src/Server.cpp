@@ -13,7 +13,7 @@ int matchhere(char* regexp, char* text) {
         return matchhere(regexp + 2, text);
     }
     if (*regexp == ' ') return matchhere(regexp + 1, text);
-    if (digits != 0 && isdigit(*text) {
+    if (digits != 0 && isdigit(*text)) {
         digits--;
         return matchhere(regexp, text + 1);
     }
