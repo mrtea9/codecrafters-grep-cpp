@@ -15,7 +15,10 @@ int matchhere(char* regexp, char* text) {
     if (*regexp == ' ') return matchhere(regexp + 1, text);
     std::cout << regexp << std::endl;
     std::cout << text << std::endl;
-    if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
+    if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) {
+        std::cout << "avem" << std::endl;
+        return matchhere(regexp + 1, text + 1);
+    }
     return 0;
 }
 
