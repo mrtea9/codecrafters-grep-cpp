@@ -4,7 +4,7 @@
 #include <cstring>
 #include <cctype>
 
-int match(char* regexp, std::string& text) {
+int match(char* regexp,const std::string& text) {
     std::cout << regexp << std::endl;
     std::cout << text << std::endl;
     return 1;
