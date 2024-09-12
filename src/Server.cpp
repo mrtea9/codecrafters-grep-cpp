@@ -7,8 +7,6 @@
 
 bool match_pattern(const std::string& input_line, const std::string& pattern) {
     std::cout << "pattern : " << pattern << std::endl;
-    std::cout << pattern.back() << std::endl;
-    std::cout << pattern[0] << std::endl;
     if (pattern.length() == 1) {
         return input_line.find(pattern) != std::string::npos;
     }
@@ -19,7 +17,9 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
         return input_line.find_first_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_") != std::string::npos;
     }
     else if (pattern[0] == '[' && pattern.back() == ']') {
-        std::cout << "este" << std::endl;
+        matching_characters = pattern.substr(1, pattern.size() = 2);
+        std::cout << matching_characters << std::endl;
+        return input_line.find_first_of(matching_characters) != std::string::npos;
     }
     else {
         throw std::runtime_error("Unhandled pattern " + pattern);
