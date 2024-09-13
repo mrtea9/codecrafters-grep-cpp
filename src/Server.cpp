@@ -148,7 +148,7 @@ int matchAnd(char* regexp, char* text) {
             result_regexp = captured_group + " and " + backreference;
             std::cout << result_regexp << std::endl;
 
-            return matchhere()
+            //return matchhere()
         }
 
     }
