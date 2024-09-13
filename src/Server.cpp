@@ -113,7 +113,25 @@ int matchAnd(char* regexp, char* text) {
     std::cout << "And RegExp: " << regexp << std::endl;
 
     if (std::string(regexp).find("and") != std::string::npos) {
-        std::cout << "este" << std::string::npos;
+        std::cout << "este" << std::endl;
+
+        std::stringstream ss(regexp);
+        std::string token;
+        std::vector<std::string> tokens;
+        std::string delimeter = "and";
+
+        while (getline(ss, token, delimeter)) {
+            tokens.push_back(token);
+        }
+
+        for (std::string token : tokens) {
+            char* copy_text = text;
+            int length = token.length();
+            char* token_array = new char[length + 1];
+            strcpy(token_array, token.c_str());
+
+            std::cout << "Or Variant RegExp: " << token_array << std::endl;
+        }
     }
 
     return 0;
