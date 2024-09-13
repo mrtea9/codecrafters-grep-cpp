@@ -119,7 +119,6 @@ int capturedGroup(char* regexp, char* text) {
         std::cout << "capturedGroup Text: " << text << std::endl;
         std::cout << "capturedGroup RegExp: " << regexp << std::endl;
 
-        if (*regexp == '(')
     } while (*regexp++ != '\0');
 
     return 0;
