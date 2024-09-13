@@ -120,20 +120,21 @@ std::string ReplaceAll(std::string str, const std::string& from, const std::stri
 
 int capturedGroup(char* regexp, char* text) {
     std::string captured = regexp;
-    std::string test = regexp;
+    std::string string_regexp = regexp;
     size_t begin_group = captured.find('(');
     size_t end_group = captured.find(')');
     captured = captured.substr(begin_group + 1, end_group - 1);
 
     std::cout << "captured: " << captured << std::endl;
 
-    std::cout << "capturedGroup test: " << ReplaceAll(test, "\\1", captured) << std::endl;
+    string_regexp = ReplaceAll(string_regexp, "\\1", captured);
 
-    do {
-        std::cout << "capturedGroup Text: " << text << std::endl;
-        std::cout << "capturedGroup RegExp: " << regexp << std::endl;
+    int length = string_regexp.length();
+    char* result_regexp = new char[length + 1];
+    strcpy(result_regexp, string_regexp.c_str());
 
-    } while (*regexp++ != '\0');
+    std::cout << "Backreference Group Text: " << text << std::endl;
+    std::cout << "Backreference Group RegExp: " << result_regexp << std::endl;
 
     return 0;
 }
