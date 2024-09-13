@@ -164,6 +164,7 @@ int matchGroup(char* regexp, char* text) {
 
     std::string captured = regexp;
     std::string string_regexp = regexp;
+    std::string text_string = text;
     size_t begin_group = captured.find_first_of('[');
     size_t end_group = captured.find_first_of(']');
 
@@ -176,7 +177,7 @@ int matchGroup(char* regexp, char* text) {
     std::cout << "[Group] Chars to Match: " << chars_to_match << std::endl;
     negate = chars_to_match[0] == '^';
 
-    isMatch = input_line.find_first_of(chars_to_match) != std::string::npos;
+    isMatch = text_string.find_first_of(chars_to_match) != std::string::npos;
     
     std::cout << "[Group] Chars to Match: " << isMatch << std::endl;
 
