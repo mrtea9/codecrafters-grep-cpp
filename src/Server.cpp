@@ -134,6 +134,8 @@ int capturedGroup(char* regexp, char* text) {
     strcpy(result_regexp, string_regexp.c_str());
 
     std::cout << "Backreference Group Text: " << text << std::endl;
+    std::cout << "Backreference Group RegExp: " << string_regexp << std::endl;
+
     std::cout << "Backreference Group RegExp: " << result_regexp << std::endl;
 
     return 0;
