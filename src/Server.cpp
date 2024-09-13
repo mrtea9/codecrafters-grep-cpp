@@ -128,7 +128,8 @@ int capturedGroup(char* regexp, char* text) {
     std::cout << "captured: " << captured << std::endl;
 
     string_regexp = ReplaceAll(string_regexp, "\\1", captured);
-    std::cout << "Backreference Group RegExp: " << string_regexp << std::endl;
+    string_regexp = ReplaceAll(string_regexp, "(", "");
+    string_regexp = ReplaceAll(string_regexp, ")", "");
 
     int length = string_regexp.length();
     char* result_regexp = new char[length + 1];
