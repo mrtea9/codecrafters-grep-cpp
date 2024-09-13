@@ -137,10 +137,14 @@ int matchAnd(char* regexp, char* text) {
 
             if (token[0] == '(') {
                 captured_group = token.substr(1, token.size() - 3);
+
+                std::cout << "Captured Group: " << result_regexp << std::endl;
             }
 
             if (token.find("\\") != std::string::npos) {
                 backreference = captured_group;
+
+                std::cout << "Backreference Group: " << result_regexp << std::endl;
             }
         }
         result_regexp = captured_group + " and " + backreference;
