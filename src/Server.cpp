@@ -142,8 +142,12 @@ int matchAnd(char* regexp, char* text) {
 
             std::cout << "And Variant RegExp: " << token_array << std::endl;
 
-            if (token[0] == '(' && token.back()) {
+            if (token[0] == '(' && token.back() == ')') {
                 captured_group = token.substr(1, token.size() - 3);
+            }
+
+            if (token[0] == '\\') {
+                std::cout << "est2" << std::endl;
             }
 
             std::cout << captured_group << std::endl;
