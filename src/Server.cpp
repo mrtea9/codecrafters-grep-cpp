@@ -178,8 +178,14 @@ int matchGroup(char* regexp, char* text) {
     negate = chars_to_match[0] == '^';
 
     isMatch = text_string.find_first_of(chars_to_match) != std::string::npos;
+
+    isMatch = negate ? !isMatch : isMatch;
     
-    std::cout << "[Group] Chars to Match: " << isMatch << std::endl;
+    std::cout << "[Group] isMatch: " << isMatch << std::endl;
+
+    int length = chars_to_match.length();
+
+    if (isMatch) return matchHere(regexp + length + 2, text + length);
 
     return 0;
 }
