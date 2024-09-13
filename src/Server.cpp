@@ -31,7 +31,7 @@ static int matchhere(char* regexp, char* text) {
                 return matchOr(regexp + 1, text);
             }
             else {
-                return matchBackreference(regexp, text);
+                return matchBackreference(regexp + 1, text);
             }
         }
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
@@ -108,14 +108,11 @@ int matchOr(char* regexp, char* text) {
 }
 
 char* capturedGroup(char* regexp, char* text) {
-    char* captured_group;
 
     do {
         std::cout << "capturedGroup Text: " << text << std::endl;
         std::cout << "capturedGroup RegExp: " << regexp << std::endl;
-        *captured_group = *regexp;
 
-        if (*regexp == ')') return captured_group;
     } while (*regexp++ != '\0');
 
     return 0;
@@ -123,17 +120,12 @@ char* capturedGroup(char* regexp, char* text) {
 
 
 int matchBackreference(char* regexp, char* text) {
-    char* captured_group;
 
     do {
         std::cout << "Backreference Text: " << text << std::endl;
         std::cout << "Backreference RegExp: " << regexp << std::endl;
 
-        if (*regexp == '(') {
-            captured_group = capturedGroup(regexp, text);
-
-            std::cout << "Backreference captured_group = " << captured_group << std::endl;
-        }
+        if (*regexp == '\\') return capturedGroup(regexp, text);
     } while (*regexp++ != '\0');
 
     return 0;
