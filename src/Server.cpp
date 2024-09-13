@@ -185,7 +185,7 @@ int matchGroup(char* regexp, char* text) {
 
     int length = chars_to_match.length();
 
-    if (isMatch) return matchHere(regexp + length + 2, text + length);
+    if (isMatch) return matchHere(regexp + length + 3, text + length);
 
     return 0;
 }
