@@ -130,7 +130,7 @@ int matchAnd(char* regexp, char* text) {
         std::string captured_group;
         std::string backreference;
 
-        std::vector<std::string> tokens = split(text, "and");
+        std::vector<std::string> tokens = split(std::string(text), "and");
 
         for (std::string token : tokens) {
             std::cout << "And Variant RegExp: " << token << std::endl;
