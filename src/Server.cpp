@@ -171,7 +171,7 @@ int matchGroup(char* regexp, char* text) {
     bool negate;
     bool isMatch;
 
-    chars_to_match = captured.substr(begin_group + 1, end_group - 1)
+    chars_to_match = captured.substr(begin_group + 1, end_group - 1);
 
     std::cout << "[Group] Chars to Match: " << chars_to_match << std::endl;
     negate = chars_to_match[0] == '^';
