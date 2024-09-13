@@ -108,6 +108,20 @@ int matchOr(char* regexp, char* text) {
     return 0;
 }
 
+std::vector<std::string> split(const std::string& s, const std::string& delimeter) {
+    std::vector<std::string> tokens;
+    size_t pos = 0;
+    std::string token;
+    while ((pos = s.find(delimeter)) != std::string::npos) {
+        token = s.substr(0, pos);
+        tokens.push_back(token);
+        s.erase(0, pos + delimeter.length());
+    }
+    tokens.push_back(s);
+
+    return tokens;
+}
+
 int matchAnd(char* regexp, char* text) {
     std::cout << "And Text: " << text << std::endl;
     std::cout << "And RegExp: " << regexp << std::endl;
@@ -116,10 +130,17 @@ int matchAnd(char* regexp, char* text) {
     if (std::string(regexp).find("and") != std::string::npos) {
         std::cout << "este" << std::endl;
 
-        std::string delimeter = "and";
-        std::string token = test.substr(0, test.find(delimeter));
+        std::vector<std::string> tokens = split(test, "and");
 
-        std::cout << token << std::endl;
+        for (std::string token : tokens) {
+            char* copy_text = text;
+            int length = token.length();
+            char* token_array = new char[length + 1];
+            strcpy(token_array, token.c_str());
+
+            std::cout << "Or Variant RegExp: " << token_array << std::endl;
+        }
+
     }
 
     return 0;
