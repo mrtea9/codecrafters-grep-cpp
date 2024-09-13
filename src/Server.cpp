@@ -111,7 +111,7 @@ int capturedGroup(char* regexp, char* text) {
     std::string captured = regexp;
     size_t begin_group = captured.find('(');
     size_t end_group = captured.find(')');
-    captured = captured.substr(begin_group + 1, end_group);
+    captured = captured.substr(begin_group + 1, end_group - 1);
 
     std::cout << "captured: " << captured << std::endl;
 
