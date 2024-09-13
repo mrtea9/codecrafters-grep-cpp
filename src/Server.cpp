@@ -150,6 +150,12 @@ int matchAnd(char* regexp, char* text) {
         }
         std::cout << "Result RegExp: " << result_regexp << std::endl;
 
+        int length = result_regexp.length();
+        char* regexp_array = new char[length + 1];
+        strcpy(regexp_array, result_regexp.c_str());
+
+        std::cout << "Result RegExp Array: " << regexp_array << std::endl;
+
     }
 
     return 0;
