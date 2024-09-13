@@ -22,7 +22,6 @@ static int matchhere(char* regexp, char* text) {
 
     if (regexp[0] == ' ') return matchhere(regexp + 1, text);
     if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
-    if (regexp[0] == '.') return matchhere(regexp + 1, text + 1);
     if (regexp[1] == '?') return matchOptional(regexp[0], regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
