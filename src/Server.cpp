@@ -120,12 +120,13 @@ int capturedGroup(char* regexp, char* text) {
 
 
 int matchBackreference(char* regexp, char* text) {
+    char* original_regexp = regexp;
 
     do {
         std::cout << "Backreference Text: " << text << std::endl;
         std::cout << "Backreference RegExp: " << regexp << std::endl;
 
-        if (*regexp == '\\') return capturedGroup(regexp, text);
+        if (*regexp == '\\') return capturedGroup(original_regexp, text);
     } while (*regexp++ != '\0');
 
     return 0;
