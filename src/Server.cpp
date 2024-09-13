@@ -130,7 +130,7 @@ int matchBackreference(char* regexp, char* text) {
         std::cout << "Backreference RegExp: " << regexp << std::endl;
 
         if (*regexp == '(') {
-            captured_group = capturedGroup(char* regexp, char* text);
+            captured_group = capturedGroup(regexp, text);
         }
     } while (*regexp++ != '\0');
 
