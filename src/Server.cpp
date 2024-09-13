@@ -120,7 +120,7 @@ int matchAnd(char* regexp, char* text) {
         ptr = strtok(regexp, "and");
         while (ptr != NULL)
         {
-            cout << ptr << endl; // print the string token  
+            std::cout << ptr << std::endl; // print the string token  
             ptr = strtok(NULL, " , ");
         }
     }
