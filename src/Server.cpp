@@ -107,7 +107,7 @@ int matchOr(char* regexp, char* text) {
     return 0;
 }
 
-char* capturedGroup(char* regexp, char* text) {
+int capturedGroup(char* regexp, char* text) {
 
     do {
         std::cout << "capturedGroup Text: " << text << std::endl;
