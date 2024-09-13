@@ -5,6 +5,8 @@
 #include <cctype>
 #include <sstream>
 #include <vector>
+#include <algorithm>
+
 
 int matchDigit(char* regexp, char* text);
 int matchLetter(char* regexp, char* text);
@@ -116,7 +118,7 @@ int capturedGroup(char* regexp, char* text) {
 
     std::cout << "captured: " << captured << std::endl;
 
-    std::_Replace_first_parameter(test.begin(), test.end(), "\\1", captured);
+    std::replace(test.begin(), test.end(), "\\1", captured);
 
     std::cout << "capturedGroup test: " << test << std::endl;
     do {
