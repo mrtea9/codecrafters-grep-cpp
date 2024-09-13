@@ -107,6 +107,20 @@ int matchOr(char* regexp, char* text) {
     return 0;
 }
 
+int capturedGroup(char* regexp, char* text) {
+    char* capturedGroup;
+
+    do {
+        std::cout << "capturedGroup Text: " << text << std::endl;
+        std::cout << "capturedGroup RegExp: " << regexp << std::endl;
+        *capturedGroup = *regexp;
+
+        if (*regexp == ')') return capturedGroup;
+    } while (*regexp++ != '\0');
+
+    return 0;
+}
+
 
 int matchBackreference(char* regexp, char* text) {
 
@@ -114,7 +128,7 @@ int matchBackreference(char* regexp, char* text) {
         std::cout << "Backreference Text: " << text << std::endl;
         std::cout << "Backreference RegExp: " << regexp << std::endl;
 
-        if (*regexp == '(') std::cout << "este" << std::endl;
+        if (*regexp == '(') return capturedGroup(char* regexp, char* text);
     } while (*regexp++ != '\0');
 
     return 0;
