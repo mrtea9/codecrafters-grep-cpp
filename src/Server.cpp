@@ -116,13 +116,10 @@ int matchAnd(char* regexp, char* text) {
     if (std::string(regexp).find("and") != std::string::npos) {
         std::cout << "este" << std::endl;
 
-        char* ptr;
-        ptr = strtok(regexp, "and");
-        while (ptr != NULL)
-        {
-            std::cout << ptr << std::endl; // print the string token  
-            ptr = strtok(NULL, " , ");
-        }
+        std::string delimeter = "and";
+        std::string token = test.substr(0, test.find(delimeter));
+
+        std::cout << token << std::endl;
     }
 
     return 0;
