@@ -109,6 +109,15 @@ int matchOr(char* regexp, char* text) {
     return 0;
 }
 
+std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
+    size_t start_pos = 0;
+    while ((start_pos = str.find(from, start_pos)) != std::string::npos) {
+        str.replace(start_pos, from.length(), to);
+        start_pos += to.length(); // Handles case where 'to' is a substring of 'from'
+    }
+    return str;
+}
+
 int capturedGroup(char* regexp, char* text) {
     std::string captured = regexp;
     std::string test = regexp;
@@ -118,9 +127,8 @@ int capturedGroup(char* regexp, char* text) {
 
     std::cout << "captured: " << captured << std::endl;
 
-    std::replace(test.begin(), test.end(), "\\1", captured);
+    std::cout << "capturedGroup test: " << ReplaceAll(test, "\\1", captured) << std::endl;
 
-    std::cout << "capturedGroup test: " << test << std::endl;
     do {
         std::cout << "capturedGroup Text: " << text << std::endl;
         std::cout << "capturedGroup RegExp: " << regexp << std::endl;
