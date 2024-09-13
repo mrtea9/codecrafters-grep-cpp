@@ -109,12 +109,16 @@ int matchOr(char* regexp, char* text) {
 
 int capturedGroup(char* regexp, char* text) {
     std::string captured = regexp;
+    std::string test = regexp;
     size_t begin_group = captured.find('(');
     size_t end_group = captured.find(')');
     captured = captured.substr(begin_group + 1, end_group - 1);
 
     std::cout << "captured: " << captured << std::endl;
 
+    std::replace(test.begin(), test.end(), "\\1", captured);
+
+    std::cout << "capturedGroup test: " << test << std::endl;
     do {
         std::cout << "capturedGroup Text: " << text << std::endl;
         std::cout << "capturedGroup RegExp: " << regexp << std::endl;
