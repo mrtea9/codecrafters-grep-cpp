@@ -123,9 +123,7 @@ std::vector<std::string> split(std::string s, std::string delimeter) {
 }
 
 int matchAnd(char* regexp, char* text) {
-    std::cout << "And Text: " << text << std::endl;
     std::cout << "And RegExp: " << regexp << std::endl;
-    std::string test = regexp;
     std::string result_regexp;
 
     if (std::string(regexp).find("and") != std::string::npos) {
@@ -146,11 +144,13 @@ int matchAnd(char* regexp, char* text) {
             }
 
             result_regexp = captured_group + " and " + backreference;
-            std::cout << result_regexp << std::endl;
-
-            //return matchhere()
+            std::cout << "And Result RegExp: " << result_regexp << std::endl;
         }
+        int length = result_regexp.length();
+        char* regexp = new char[length + 1];
+        strcpy(regexp, result_regexp.c_str());
 
+        return matchhere(regexp, text);
     }
 
     return 0;
