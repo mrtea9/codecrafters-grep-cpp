@@ -142,10 +142,9 @@ int matchAnd(char* regexp, char* text) {
             if (token.find("\\") != std::string::npos) {
                 backreference = captured_group;
             }
-
-            result_regexp = captured_group + " and " + backreference;
-            std::cout << "And Result RegExp: " << result_regexp << std::endl;
         }
+        result_regexp = captured_group + " and " + backreference;
+        std::cout << "And Result RegExp: " << result_regexp << std::endl;
         int length = result_regexp.length();
         char* regexp = new char[length + 1];
         strcpy(regexp, result_regexp.c_str());
