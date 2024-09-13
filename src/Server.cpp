@@ -123,12 +123,13 @@ int capturedGroup(char* regexp, char* text) {
     std::string string_regexp = regexp;
     size_t begin_group = captured.find('(');
     size_t end_group = captured.find(')');
+
     captured = captured.substr(begin_group + 1, end_group - 1);
 
     std::cout << "captured: " << captured << std::endl;
 
     string_regexp = ReplaceAll(string_regexp, "\\1", captured);
-    string_regexp = string_regexp.replace(string_regexp.begin(), string_regexp.end(), '(', ' ');
+    string_regexp = ReplaceAll(string_regexp, "(", "");
     string_regexp = ReplaceAll(string_regexp, ")", "");
 
     int length = string_regexp.length();
@@ -136,11 +137,9 @@ int capturedGroup(char* regexp, char* text) {
     strcpy(result_regexp, string_regexp.c_str());
 
     std::cout << "Backreference Group Text: " << text << std::endl;
-    std::cout << "Backreference Group RegExp: " << string_regexp << std::endl;
-
     std::cout << "Backreference Group RegExp: " << result_regexp << std::endl;
 
-    return 0;
+    return matchhere(result_regexp, text);
 }
 
 
