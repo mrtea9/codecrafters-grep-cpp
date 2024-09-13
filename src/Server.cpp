@@ -118,7 +118,11 @@ int matchAnd(char* regexp, char* text) {
 
         char* ptr;
         ptr = strtok(regexp, "and");
-        std::cout << ptr << std::endl;
+        while (ptr != NULL)
+        {
+            cout << ptr << endl; // print the string token  
+            ptr = strtok(NULL, " , ");
+        }
     }
 
     return 0;
