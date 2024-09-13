@@ -128,7 +128,7 @@ int capturedGroup(char* regexp, char* text) {
     std::cout << "captured: " << captured << std::endl;
 
     string_regexp = ReplaceAll(string_regexp, "\\1", captured);
-    string_regexp = ReplaceAll(string_regexp, "(", "");
+    string_regexp = string_regexp.replace(string_regexp.begin(), string_regexp.end(), '(', '');
     string_regexp = ReplaceAll(string_regexp, ")", "");
 
     int length = string_regexp.length();
