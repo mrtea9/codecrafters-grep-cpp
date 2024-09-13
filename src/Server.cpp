@@ -47,7 +47,7 @@ static int matchHere(char* regexp, char* text) {
             }
         }
     if (regexp[0] == '[') return matchGroup(regexp, text);
-    if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
+    if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchHere(regexp + 1, text + 1);
 
     if (*text != '\0') return matchHere(regexp, text + 1);
     return 0;
