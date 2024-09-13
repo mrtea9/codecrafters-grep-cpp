@@ -131,6 +131,7 @@ int matchAnd(char* regexp, char* text) {
     if (std::string(regexp).find("and") != std::string::npos) {
         std::cout << "este" << std::endl;
         std::string captured_group;
+        std::string backreference;
 
         std::vector<std::string> tokens = split(test, "and");
 
@@ -147,10 +148,11 @@ int matchAnd(char* regexp, char* text) {
             }
 
             if (token.find("\\") != std::string::npos) {
-                std::cout << "est2" << std::endl;
+                backreference = captured_group;
             }
 
-            std::cout << captured_group << std::endl;
+            result_regexp = captured_group + " and " + backreference;
+            std::cout << result_regexp << std::endl;
         }
 
     }
