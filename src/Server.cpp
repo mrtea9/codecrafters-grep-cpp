@@ -117,7 +117,7 @@ int matchAnd(char* regexp, char* text) {
         std::cout << "este" << std::endl;
 
         char* ptr;
-        ptr = strtok(test, "and");
+        ptr = strtok(regexp, "and");
         std::cout << ptr << std::endl;
     }
 
