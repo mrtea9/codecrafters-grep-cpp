@@ -15,14 +15,23 @@ int matchOptional(char c, char* regexp, char* text);
 int matchOr(char* regexp, char* text);
 int matchBackreference(char* regexp, char* text);
 
-static int matchhere(char* regexp, char* text) {
+std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
+    size_t start_pos = 0;
+    while ((start_pos = str.find(from, start_pos)) != std::string::npos) {
+        str.replace(start_pos, from.length(), to);
+        start_pos += to.length(); // Handles case where 'to' is a substring of 'from'
+    }
+    return str;
+}
+
+static int matchHere(char* regexp, char* text) {
   
     std::cout << "Text: " << text << std::endl;
     std::cout << "RegExp: " << regexp << std::endl;
 
     if (regexp[0] == '\0') return 1;
 
-    if (regexp[0] == ' ') return matchhere(regexp + 1, text);
+    if (regexp[0] == ' ') return matchHere(regexp + 1, text);
     if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
     if (regexp[1] == '?') return matchOptional(regexp[0], regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
@@ -36,16 +45,17 @@ static int matchhere(char* regexp, char* text) {
                 return matchBackreference(regexp, text);
             }
         }
+    if (regexp[0] == '[') return matchGroup(regexp, text);
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
 
-    if (*text != '\0') return matchhere(regexp, text + 1);
+    if (*text != '\0') return matchHere(regexp, text + 1);
     return 0;
 }
 
 int matchDigit(char* regexp, char* text) {
     do {
         std::cout << "Digit Text: " << text << std::endl;
-        if (isdigit(*text)) return matchhere(regexp, text + 1);
+        if (isdigit(*text)) return matchHere(regexp, text + 1);
     } while (*text++ != '\0');
     return 0;
 }
@@ -53,7 +63,7 @@ int matchDigit(char* regexp, char* text) {
 int matchLetter(char* regexp, char* text) {
     do {
         std::cout << "Letter Text: " << text << std::endl;
-        if (isalpha(*text)) return matchhere(regexp, text + 1);
+        if (isalpha(*text)) return matchHere(regexp, text + 1);
     } while (*text++ != '\0');
     return 0;
 }
@@ -63,7 +73,7 @@ int matchPlus(char c, char* regexp, char* text) {
         std::cout << "Plus Text: " << text << std::endl;
         std::cout << "Plus RegExp: " << regexp << std::endl;
 
-        if (c == *text) return matchhere(regexp, text + 1);
+        if (c == *text) return matchHere(regexp, text + 1);
     } while (*text++ != '\0');
     return 0;
 }
@@ -72,7 +82,7 @@ int matchOptional(char c, char* regexp, char* text) {
     std::cout << "Optional Text: " << text << std::endl;
     std::cout << "Optional RegExp: " << regexp << std::endl;
 
-    return c == *text ? matchhere(regexp, text + 1) : matchhere(regexp, text);
+    return c == *text ? matchHere(regexp, text + 1) : matchHere(regexp, text);
 }
 
 int matchOr(char* regexp, char* text) {
@@ -101,21 +111,12 @@ int matchOr(char* regexp, char* text) {
 
         std::cout << "Or Variant RegExp: " << token_array << std::endl;
 
-        if (matchhere(token_array, copy_text) == 1) {
+        if (matchHere(token_array, copy_text) == 1) {
             return 1;
         }
     }
 
     return 0;
-}
-
-std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
-    size_t start_pos = 0;
-    while ((start_pos = str.find(from, start_pos)) != std::string::npos) {
-        str.replace(start_pos, from.length(), to);
-        start_pos += to.length(); // Handles case where 'to' is a substring of 'from'
-    }
-    return str;
 }
 
 int capturedGroup(char* regexp, char* text) {
@@ -139,7 +140,7 @@ int capturedGroup(char* regexp, char* text) {
     std::cout << "Backreference Group Text: " << text << std::endl;
     std::cout << "Backreference Group RegExp: " << result_regexp << std::endl;
 
-    return matchhere(result_regexp, text);
+    return matchHere(result_regexp, text);
 }
 
 
@@ -156,9 +157,16 @@ int matchBackreference(char* regexp, char* text) {
     return 0;
 }
 
+int matchGroup(char* regexp, char* text) {
+    std::cout << "[Group] Text: " << text << std::endl;
+    std::cout << "[Group] RegExp: " << regexp << std::endl;
+    
+    return 0;
+}
+
 static int match(char* regexp, char* text) {
-    if (regexp[0] == '^' && regexp[1] == *text) return matchhere(regexp + 1, text);
-    if (matchhere(regexp, text)) return 1;
+    if (regexp[0] == '^' && regexp[1] == *text) return matchHere(regexp + 1, text);
+    if (matchHere(regexp, text)) return 1;
     return 0;
 }
 
