@@ -161,7 +161,25 @@ int matchBackreference(char* regexp, char* text) {
 int matchGroup(char* regexp, char* text) {
     std::cout << "[Group] Text: " << text << std::endl;
     std::cout << "[Group] RegExp: " << regexp << std::endl;
+
+    std::string captured = regexp;
+    std::string string_regexp = regexp;
+    size_t begin_group = captured.find_first_of('[');
+    size_t end_group = captured.find_first_of(']');
+
+    std::string chars_to_match;
+    bool negate;
+    bool isMatch;
+
+    chars_to_match = captured.substr(begin_group + 1, end_group - 1)
+
+    std::cout << "[Group] Chars to Match: " << chars_to_match << std::endl;
+    negate = chars_to_match[0] == '^';
+
+    isMatch = input_line.find_first_of(chars_to_match) != std::string::npos;
     
+    std::cout << "[Group] Chars to Match: " << isMatch << std::endl;
+
     return 0;
 }
 
