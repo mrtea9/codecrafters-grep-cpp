@@ -109,9 +109,13 @@ int matchOr(char* regexp, char* text) {
 
 
 int matchBackreference(char* regexp, char* text) {
-    
-    std::cout << "Backreference Text: " << text << std::endl;
-    std::cout << "Backreference RegExp: " << regexp << std::endl;
+
+    do {
+        std::cout << "Backreference Text: " << text << std::endl;
+        std::cout << "Backreference Text: " << regexp << std::endl;
+
+        if (*text == '(') "este";
+    } while (*regexp++ != '\0');
 
     return 0;
 }
