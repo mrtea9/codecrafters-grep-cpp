@@ -146,7 +146,7 @@ int matchAnd(char* regexp, char* text) {
                 captured_group = token.substr(1, token.size() - 3);
             }
 
-            if (token.find("\\" != std::string::npos) {
+            if (token.find("\\") != std::string::npos) {
                 std::cout << "est2" << std::endl;
             }
 
