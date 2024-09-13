@@ -126,7 +126,7 @@ int matchAnd(char* regexp, char* text) {
     std::cout << "And Text: " << text << std::endl;
     std::cout << "And RegExp: " << regexp << std::endl;
     std::string test = regexp;
-    std::string result_regexp;
+    char* result_regexp;
 
     if (std::string(regexp).find("and") != std::string::npos) {
         std::cout << "este" << std::endl;
@@ -153,6 +153,8 @@ int matchAnd(char* regexp, char* text) {
 
             result_regexp = captured_group + " and " + backreference;
             std::cout << result_regexp << std::endl;
+
+            return matchhere()
         }
 
     }
