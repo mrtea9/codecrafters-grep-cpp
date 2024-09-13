@@ -123,37 +123,35 @@ std::vector<std::string> split(std::string s, std::string delimeter) {
 }
 
 int matchAnd(char* regexp, char* text) {
+    std::cout << "And Text: " << text << std::endl;
     std::cout << "And RegExp: " << regexp << std::endl;
+    std::string test = regexp;
     std::string result_regexp;
 
     if (std::string(regexp).find("and") != std::string::npos) {
         std::string captured_group;
         std::string backreference;
 
-        std::vector<std::string> tokens = split(std::string(text), "and");
+        std::vector<std::string> tokens = split(test, "and");
 
         for (std::string token : tokens) {
+
             std::cout << "And Variant RegExp: " << token << std::endl;
 
             if (token[0] == '(') {
                 captured_group = token.substr(1, token.size() - 3);
-
-                std::cout << "Captured Group: " << result_regexp << std::endl;
             }
 
             if (token.find("\\") != std::string::npos) {
                 backreference = captured_group;
-
-                std::cout << "Backreference Group: " << result_regexp << std::endl;
             }
-        }
-        result_regexp = captured_group + " and " + backreference;
-        std::cout << "And Result RegExp: " << result_regexp << std::endl;
-        int length = result_regexp.length();
-        char* regexp = new char[length + 1];
-        strcpy(regexp, result_regexp.c_str());
 
-        return matchhere(regexp, text);
+            result_regexp = captured_group + " and " + backreference;
+            std::cout << result_regexp << std::endl;
+
+
+        }
+
     }
 
     return 0;
