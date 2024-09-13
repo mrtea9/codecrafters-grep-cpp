@@ -108,7 +108,7 @@ int matchOr(char* regexp, char* text) {
     return 0;
 }
 
-std::vector<std::string> split(std::string& s, std::string& delimeter) {
+std::vector<std::string> split(std::string s, std::string delimeter) {
     std::vector<std::string> tokens;
     size_t pos = 0;
     std::string token;
