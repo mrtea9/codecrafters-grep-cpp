@@ -11,7 +11,7 @@ int matchLetter(char* regexp, char* text);
 int matchPlus(char c, char* regexp, char* text);
 int matchOptional(char c, char* regexp, char* text);
 int matchOr(char* regexp, char* text);
-int matchAnd(char* regexp, char* text);
+int matchBackreference(char* regexp, char* text);
 
 static int matchhere(char* regexp, char* text) {
   
@@ -31,7 +31,7 @@ static int matchhere(char* regexp, char* text) {
                 return matchOr(regexp + 1, text);
             }
             else {
-                return matchAnd(regexp, text);
+                return matchBackreference(regexp, text);
             }
         }
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
@@ -107,56 +107,11 @@ int matchOr(char* regexp, char* text) {
     return 0;
 }
 
-std::vector<std::string> split(std::string s, std::string delimeter) {
-    std::vector<std::string> tokens;
-    size_t pos = 0;
-    std::string token;
-    while ((pos = s.find(delimeter)) != std::string::npos) {
-        token = s.substr(0, pos);
-        tokens.push_back(token);
-        s.erase(0, pos + delimeter.length());
-    }
-    tokens.push_back(s);
 
-    return tokens;
-}
-
-int matchAnd(char* regexp, char* text) {
-    std::cout << "And Text: " << text << std::endl;
-    std::cout << "And RegExp: " << regexp << std::endl;
-    std::string test = regexp;
-    std::string result_regexp;
-
-    if (std::string(regexp).find("and") != std::string::npos) {
-        std::string captured_group;
-        std::string backreference;
-
-        std::vector<std::string> tokens = split(test, "and");
-
-        for (std::string token : tokens) {
-
-            std::cout << "And Variant RegExp: " << token << std::endl;
-
-            if (token[0] == '(') {
-                captured_group = token.substr(1, token.size() - 3);
-            }
-
-            if (token.find("\\") != std::string::npos) {
-                backreference = captured_group;
-            }
-
-            result_regexp = captured_group + " and " + backreference;
-        }
-        std::cout << "Result RegExp: " << result_regexp << std::endl;
-
-        int length = result_regexp.length();
-        char* regexp_array = new char[length + 1];
-        strcpy(regexp_array, result_regexp.c_str());
-
-        std::cout << "Result RegExp Array: " << regexp_array << std::endl;
-        return matchhere(regexp_array, text);
-
-    }
+int matchBackreference(char* regexp, char* text) {
+    
+    std::cout << "Backreference Text: " << text << std::endl;
+    std::cout << "Backreference RegExp: " << regexp << std::endl;
 
     return 0;
 }
