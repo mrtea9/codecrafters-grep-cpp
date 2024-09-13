@@ -126,22 +126,16 @@ int matchAnd(char* regexp, char* text) {
     std::cout << "And Text: " << text << std::endl;
     std::cout << "And RegExp: " << regexp << std::endl;
     std::string test = regexp;
-    char* result_regexp;
+    std::string result_regexp;
 
     if (std::string(regexp).find("and") != std::string::npos) {
-        std::cout << "este" << std::endl;
         std::string captured_group;
         std::string backreference;
 
         std::vector<std::string> tokens = split(test, "and");
 
         for (std::string token : tokens) {
-            char* copy_text = text;
-            int length = token.length();
-            char* token_array = new char[length + 1];
-            strcpy(token_array, token.c_str());
-
-            std::cout << "And Variant RegExp: " << token_array << std::endl;
+            std::cout << "And Variant RegExp: " << token << std::endl;
 
             if (token[0] == '(') {
                 captured_group = token.substr(1, token.size() - 3);
