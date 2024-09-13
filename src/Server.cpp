@@ -14,6 +14,7 @@ int matchPlus(char c, char* regexp, char* text);
 int matchOptional(char c, char* regexp, char* text);
 int matchOr(char* regexp, char* text);
 int matchBackreference(char* regexp, char* text);
+int matchGroup(char* regexp, char* text);
 
 std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
     size_t start_pos = 0;
