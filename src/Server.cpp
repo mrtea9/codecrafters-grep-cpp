@@ -31,7 +31,7 @@ static int matchhere(char* regexp, char* text) {
                 return matchOr(regexp + 1, text);
             }
             else {
-                return matchBackreference(regexp + 1, text);
+                return matchBackreference(regexp, text);
             }
         }
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchhere(regexp + 1, text + 1);
@@ -108,11 +108,18 @@ int matchOr(char* regexp, char* text) {
 }
 
 int capturedGroup(char* regexp, char* text) {
+    std::string captured = regexp;
+    size_t begin_group = captured.find('(');
+    size_t end_group = captured.find(')');
+    captured = captured.substr(begin_group, end_group);
+
+    std::cout << "captured: " << captured << std::endl;
 
     do {
         std::cout << "capturedGroup Text: " << text << std::endl;
         std::cout << "capturedGroup RegExp: " << regexp << std::endl;
 
+        if (*regexp == '(')
     } while (*regexp++ != '\0');
 
     return 0;
