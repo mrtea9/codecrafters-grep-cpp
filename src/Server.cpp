@@ -155,6 +155,7 @@ int matchAnd(char* regexp, char* text) {
         strcpy(regexp_array, result_regexp.c_str());
 
         std::cout << "Result RegExp Array: " << regexp_array << std::endl;
+        return matchhere(regexp_array, text);
 
     }
 
