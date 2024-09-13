@@ -131,6 +131,8 @@ int matchBackreference(char* regexp, char* text) {
 
         if (*regexp == '(') {
             captured_group = capturedGroup(regexp, text);
+
+            std::cout << "Backreference captured_group = " << captured_group << std::endl;
         }
     } while (*regexp++ != '\0');
 
