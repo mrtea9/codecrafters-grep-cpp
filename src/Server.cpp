@@ -39,7 +39,7 @@ static int matchHere(char* regexp, char* text) {
     if (regexp[1] == '+') return matchPlus(regexp[0], regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
-    if (regexp[0] == '(' && std::string(regexp).find('\\' != std::string::npos)) {
+    if (regexp[0] == '(' && std::string(regexp).find_first_of('\\' != std::string::npos)) {
         std::cout << "este12441421111142" << std::endl;
         return matchBackreference(regexp, text);
     }
