@@ -71,7 +71,7 @@ int matchLetter(char* regexp, char* text) {
         std::cout << "[Letter] Text: " << text << std::endl;
         std::cout << "[Letter] RegExp: " << regexp << std::endl;
 
-        if (*regexp == '+' && isalpha(text)) {
+        if (*regexp == '+' && isalpha(*text)) {
             *regexp++;
 
             do {
