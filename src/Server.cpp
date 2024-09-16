@@ -203,9 +203,12 @@ int capturedGroup(char* regexp, char* text) {
 
     while (finded) {
         reference = "\\" + std::to_string(count);
+        finded = string_regexp.find(reference) != std::string::npos;
         std::cout << "[captured Group reference]: " << reference << std::endl;
-        finded = captured.find(reference) != std::string::npos;
         std::cout << "[captured Group finded]: " << finded << std::endl;
+        std::cout << "[captured Backreference Group] Text: " << text << std::endl;
+        std::cout << "[captured Backreference Group] RegExp: " << string_regexp << std::endl;
+
         begin_group = captured.find('(');
         end_group = captured.find(')');
         if (finded) {
