@@ -221,7 +221,7 @@ int capturedGroup(char* regexp, char* text) {
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
 
-                captured = string_regexp.substr(begin_group + 1, end_group);
+                captured = string_regexp.substr(begin_group + 1, end_group - 1);
 
                 string_regexp.replace(begin_group, 1, "");
 
