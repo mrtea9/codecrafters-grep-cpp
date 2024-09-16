@@ -162,33 +162,35 @@ int matchBackreference(char* regexp, char* text) {
 }
 
 int matchGroup(char* regexp, char* text) {
-    std::cout << "[Group] Text: " << text << std::endl;
-    std::cout << "[Group] RegExp: " << regexp << std::endl;
-
     std::string captured = regexp;
     std::string string_regexp = regexp;
     std::string text_string = text;
-    size_t begin_group = captured.find_first_of('[');
-    size_t end_group = captured.find_first_of(']');
-
     std::string chars_to_match;
     bool negate;
     bool isMatch;
 
+    std::cout << "[Group] Text: " << text << std::endl;
+    std::cout << "[Group] RegExp: " << regexp << std::endl;
+
+    if (string_regexp.find_first_of('+') != std::string::npos) {
+        std::cout << "[este] Este: " << std::endl;
+    }
+
+    size_t begin_group = captured.find_first_of('[');
+    size_t end_group = captured.find_first_of(']');
+
     chars_to_match = captured.substr(begin_group + 1, end_group - 1);
+    int length = chars_to_match.length();
 
     std::cout << "[Group] Chars to Match: " << chars_to_match << std::endl;
     negate = chars_to_match[0] == '^';
 
     isMatch = text_string.find_first_of(chars_to_match) != std::string::npos;
-
     isMatch = negate ? !isMatch : isMatch;
     
     std::cout << "[Group] isMatch: " << isMatch << std::endl;
 
-    int length = chars_to_match.length();
-
-    if (isMatch) return matchHere(regexp + length + 3, text + length);
+    if (isMatch) return matchHere(regexp + length + 2, text + length);
 
     return 0;
 }
