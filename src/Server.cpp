@@ -206,22 +206,22 @@ int capturedGroup(char* regexp, char* text) {
         std::cout << "[captured Group reference]: " << reference << std::endl;
         finded = captured.find(reference) != std::string::npos;
         std::cout << "[captured Group finded]: " << finded << std::endl;
+        if (finded) {
+            if (captured.find('|') != std::string::npos) {
+                captured = captured.substr(begin_group, end_group + 1);
+                string_regexp = ReplaceAll(string_regexp, reference, captured);
+            }
+            else {
+                captured = captured.substr(begin_group + 1, end_group - 1);
+                string_regexp = ReplaceAll(string_regexp, "(", "");
+                string_regexp = ReplaceAll(string_regexp, ")", "");
+                string_regexp = ReplaceAll(string_regexp, reference, captured);
+            }
+        }
+
+        std::cout << "[captured]: " << captured << std::endl;
         count++;
     }
-
-
-    if (captured.find('|') != std::string::npos) {
-        captured = captured.substr(begin_group, end_group + 1);
-        string_regexp = ReplaceAll(string_regexp, "\\1", captured);
-    }
-    else {
-        captured = captured.substr(begin_group + 1, end_group - 1);
-        string_regexp = ReplaceAll(string_regexp, "(", "");
-        string_regexp = ReplaceAll(string_regexp, ")", "");
-        string_regexp = ReplaceAll(string_regexp, "\\1", captured);
-    }
-
-    std::cout << "[captured]: " << captured << std::endl;
 
     int length = string_regexp.length();
     char* result_regexp = new char[length + 1];
