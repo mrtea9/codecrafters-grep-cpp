@@ -39,13 +39,9 @@ static int matchHere(char* regexp, char* text) {
     if (regexp[1] == '+') return matchPlus(regexp[0], regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
+    if (regexp[0] == '(' std::string(regexp).find('\\' != std::string::npos) return matchBackreference(regexp, text);
     if (regexp[0] == '(') {
-            if ( std::string(regexp).find('|') != std::string::npos) {
-                return matchOr(regexp + 1, text);
-            }
-            else {
-                return matchBackreference(regexp, text);
-            }
+            if ( std::string(regexp).find('|') != std::string::npos) return matchOr(regexp + 1, text);
         }
     if (regexp[0] == '[') return matchGroup(regexp, text);
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchHere(regexp + 1, text + 1);
@@ -158,7 +154,7 @@ int matchOr(char* regexp, char* text) {
     }
 
     for (std::string token : tokens) {
-        token = token + " " + rest_regexp;
+        token = token + rest_regexp;
 
         char* copy_text = text;
         int length = token.length();
