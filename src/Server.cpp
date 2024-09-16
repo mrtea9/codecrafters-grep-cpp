@@ -30,8 +30,6 @@ static int matchHere(char* regexp, char* text) {
     std::cout << "[Text]: " << text << std::endl;
     std::cout << "[RegExp]: " << regexp << std::endl;
 
-    std::find()
-
     if (regexp[0] == '\0') return 1;
 
     if (regexp[0] == ' ') return matchHere(regexp + 1, text);
