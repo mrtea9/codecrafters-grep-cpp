@@ -206,8 +206,6 @@ int capturedGroup(char* regexp, char* text) {
         finded = string_regexp.find(reference) != std::string::npos;
         std::cout << "[captured Group reference]: " << reference << std::endl;
         std::cout << "[captured Group finded]: " << finded << std::endl;
-        std::cout << "[captured Backreference Group] Text: " << text << std::endl;
-        std::cout << "[captured Backreference Group] RegExp: " << string_regexp << std::endl;
 
         begin_group = captured.find('(');
         end_group = captured.find(')');
@@ -218,9 +216,8 @@ int capturedGroup(char* regexp, char* text) {
             }
             else {
                 captured = captured.substr(begin_group + 1, end_group - 1);
-                string_regexp = ReplaceAll(string_regexp, "(", "");
-                string_regexp = ReplaceAll(string_regexp, ")", "");
                 string_regexp = ReplaceAll(string_regexp, reference, captured);
+                std::cout << "[captured Backreference Group] RegExp: " << string_regexp << std::endl;
             }
         }
 
