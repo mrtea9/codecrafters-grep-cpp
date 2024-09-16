@@ -124,7 +124,7 @@ int matchOptional(char c, char* regexp, char* text) {
     std::cout << "[Optional] Text: " << text << std::endl;
     std::cout << "[Optional] RegExp: " << regexp << std::endl;
 
-    if (*text++ != ' ') return 0;
+    if (text[1] != ' ') return 0;
 
     std::cout << "test" << std::endl;
 
