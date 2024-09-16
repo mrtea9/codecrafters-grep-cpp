@@ -195,8 +195,19 @@ int matchOr(char* regexp, char* text) {
 int capturedGroup(char* regexp, char* text) {
     std::string captured = regexp;
     std::string string_regexp = regexp;
+    std::string reference;
+    bool finded = true;
     size_t begin_group = captured.find('(');
     size_t end_group = captured.find(')');
+    int count = 1;
+
+    while (finded) {
+        referenece = "\\" + std::to_string(count);
+        std::cout << "[captured Group reference]: " << reference << std::endl;
+        finded = captured.find(reference) != std::string::npos;
+        std::cout << "[captured Group finded]: " << reference << std::endl;
+        count++;
+    }
 
 
     if (captured.find('|') != std::string::npos) {
