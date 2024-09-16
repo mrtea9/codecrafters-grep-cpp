@@ -27,6 +27,7 @@ std::string ReplaceAll(std::string str, const std::string& from, const std::stri
 
 static int matchHere(char* regexp, char* text) {
   
+    std::cout << std::endl;
     std::cout << "[Text]: " << text << std::endl;
     std::cout << "[RegExp]: " << regexp << std::endl;
 
