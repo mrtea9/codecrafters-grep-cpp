@@ -200,10 +200,10 @@ int matchGroup(char* regexp, char* text) {
     chars_to_match = captured.substr(begin_group + 1, end_group - 1);
     int length = chars_to_match.length();
 
-    if (end_group + 1 == plus_pos) return matchPlus(chars_to_match, regexp + length + 3, text);
-
     std::cout << "[Group] Chars to Match: " << chars_to_match << std::endl;
     negate = chars_to_match[0] == '^';
+
+    if (end_group + 1 == plus_pos) return matchPlus(chars_to_match, regexp + length + 3, text);
 
     isMatch = text_string.find_first_of(chars_to_match) != std::string::npos;
     isMatch = negate ? !isMatch : isMatch;
