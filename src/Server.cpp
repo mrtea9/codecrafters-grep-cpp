@@ -215,8 +215,10 @@ int capturedGroup(char* regexp, char* text) {
                 string_regexp = ReplaceAll(string_regexp, reference, captured);
             }
             else {
+                begin_group = captured.find('(');
                 captured = captured.substr(begin_group + 1, end_group - 1);
-                //string_regexp = string_regexp.replace(begin_group, 1, "");
+                string_regexp = string_regexp.replace(begin_group, 1, "");
+                end_group = captured.find(')');
                 string_regexp = string_regexp.replace(end_group, 1, "");;
                 string_regexp = ReplaceAll(string_regexp, reference, captured);
                 std::cout << "[captured Backreference Group] RegExp: " << string_regexp << std::endl;
