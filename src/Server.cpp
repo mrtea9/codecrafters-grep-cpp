@@ -58,6 +58,9 @@ int matchDigit(char* regexp, char* text) {
     do {
         std::cout << "[Digit] Text: " << text << std::endl;
         std::cout << "[Digit] RegExp: " << regexp << std::endl;
+
+
+
         if (isdigit(*text)) return matchHere(regexp, text + 1);
     } while (*text++ != '\0');
     return 0;
@@ -67,6 +70,18 @@ int matchLetter(char* regexp, char* text) {
     do {
         std::cout << "[Letter] Text: " << text << std::endl;
         std::cout << "[Letter] RegExp: " << regexp << std::endl;
+
+        if (*text == '+') {
+
+            do {
+                std::cout << "[Letter +] Text: " << text << std::endl;
+                std::cout << "[Letter +] RegExp: " << regexp << std::endl;
+
+                *text++;
+            } while (isalpha(*text));
+
+        }
+
         if (isalpha(*text)) return matchHere(regexp, text + 1);
     } while (*text++ != '\0');
     return 0;
