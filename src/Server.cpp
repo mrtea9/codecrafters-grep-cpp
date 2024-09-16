@@ -259,7 +259,7 @@ int matchGroup(char* regexp, char* text) {
 }
 
 static int match(char* regexp, char* text) {
-    if (regexp[0] == '^' && regexp[1] == *text) return matchHere(regexp + 1, text);
+    if (regexp[0] == '^' && (regexp[1] == *text || regexp[1] == '(' || regexp[1] == '[')) return matchHere(regexp + 1, text);
     if (matchHere(regexp, text)) return 1;
 
     return 0;
