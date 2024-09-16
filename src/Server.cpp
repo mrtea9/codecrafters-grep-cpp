@@ -121,10 +121,13 @@ int matchPlus(std::string chars, char* regexp, char* text) {
 }
 
 int matchOptional(char c, char* regexp, char* text) {
+
+    if (c == *text) *text++;
+
     std::cout << "[Optional] Text: " << text << std::endl;
     std::cout << "[Optional] RegExp: " << regexp << std::endl;
 
-    if (c == *text) *text++;
+    if (c == *text) return 0;
 
     return matchHere(regexp, text);
 }
