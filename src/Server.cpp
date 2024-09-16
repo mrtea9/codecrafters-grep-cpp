@@ -40,7 +40,6 @@ static int matchHere(char* regexp, char* text) {
     if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
     if (regexp[0] == '(' && std::string(regexp).find('\\') != std::string::npos) {
-        std::cout << "este12441421111142" << std::endl;
         return matchBackreference(regexp, text);
     }
     if (regexp[0] == '(') {
@@ -133,7 +132,7 @@ int matchOptional(char c, char* regexp, char* text) {
 int matchOr(char* regexp, char* text) {
     std::size_t length = strlen(regexp);
     if (length) {
-        regexp[length] = '\0';
+        regexp[length - 1] = '\0';
     }
 
     std::cout << "[Or] Text: " << text << std::endl;
