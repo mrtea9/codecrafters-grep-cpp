@@ -158,7 +158,7 @@ int matchOr(char* regexp, char* text) {
     }
 
     for (std::string token : tokens) {
-
+        token = token + " " + rest_regexp;
 
         char* copy_text = text;
         int length = token.length();
