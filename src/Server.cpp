@@ -58,7 +58,19 @@ int matchDigit(char* regexp, char* text) {
         std::cout << "[Digit] Text: " << text << std::endl;
         std::cout << "[Digit] RegExp: " << regexp << std::endl;
 
+        if (*regexp == '+' && isdigit(*text)) {
+            *regexp++;
 
+            do {
+                *text++;
+
+                std::cout << "[Digit +] Text: " << text << std::endl;
+                std::cout << "[Digit +] RegExp: " << regexp << std::endl;
+
+            } while (isdigit(*text));
+
+            return matchHere(regexp, text);
+        }
 
         if (isdigit(*text)) return matchHere(regexp, text + 1);
     } while (*text++ != '\0');
