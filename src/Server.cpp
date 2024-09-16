@@ -197,8 +197,8 @@ int capturedGroup(char* regexp, char* text) {
     std::string string_regexp = regexp;
     std::string reference;
     bool finded = true;
-    size_t begin_group = captured.find('(');
-    size_t end_group = captured.find(')');
+    size_t begin_group;
+    size_t end_group;
     int count = 1;
 
     while (finded) {
@@ -206,6 +206,8 @@ int capturedGroup(char* regexp, char* text) {
         std::cout << "[captured Group reference]: " << reference << std::endl;
         finded = captured.find(reference) != std::string::npos;
         std::cout << "[captured Group finded]: " << finded << std::endl;
+        begin_group = captured.find('(');
+        end_group = captured.find(')');
         if (finded) {
             if (captured.find('|') != std::string::npos) {
                 captured = captured.substr(begin_group, end_group + 1);
