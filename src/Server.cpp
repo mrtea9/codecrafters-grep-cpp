@@ -202,7 +202,7 @@ int capturedGroup(char* regexp, char* text) {
     int count = 1;
 
     while (finded) {
-        referenece = "\\" + std::to_string(count);
+        reference = "\\" + std::to_string(count);
         std::cout << "[captured Group reference]: " << reference << std::endl;
         finded = captured.find(reference) != std::string::npos;
         std::cout << "[captured Group finded]: " << reference << std::endl;
