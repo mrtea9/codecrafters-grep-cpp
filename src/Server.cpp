@@ -140,6 +140,14 @@ int matchOr(char* regexp, char* text) {
     std::cout << "[Or] Text: " << text << std::endl;
     std::cout << "[Or] RegExp: " << regexp << std::endl;
 
+    std::string captured = regexp;
+    std::string result;
+    size_t begin_group = captured.find(')');
+    size_t end_group = captured.length();
+
+    rest_regexp = captured.substr(begin_group + 1, end_group - 1);
+    std::cout << "[Or] Rest: " << rest_regexp << std::endl;
+
     std::stringstream ss(regexp);
     std::string token;
     std::vector<std::string> tokens;
@@ -150,6 +158,8 @@ int matchOr(char* regexp, char* text) {
     }
 
     for (std::string token : tokens) {
+
+
         char* copy_text = text;
         int length = token.length();
         char* token_array = new char[length + 1];
