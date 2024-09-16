@@ -199,7 +199,7 @@ int capturedGroup(char* regexp, char* text) {
     bool finded = true;
     size_t begin_group;
     size_t end_group;
-    size_t length;
+    size_t length2;
     int count = 1;
 
     while (finded) {
@@ -221,14 +221,14 @@ int capturedGroup(char* regexp, char* text) {
 
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
-                length = end_group - begin_group;
+                length2 = end_group - begin_group;
 
                 std::cout << "[captured Backreference Group] start pos: " << begin_group << std::endl;
                 std::cout << "[captured Backreference Group] end pos: " << end_group << std::endl;
 
                 std::cout << "[captured Backreference Group2] RegExp: " << string_regexp << std::endl;
                 std::cout << "[captured1]: " << captured << std::endl;
-                captured = string_regexp.substr(begin_group + 1, length - 1);
+                captured = string_regexp.substr(begin_group + 1, length2 - 1);
                 std::cout << "[captured2]: " << captured << std::endl;
                 std::cout << "[captured Backreference Group3] RegExp: " << string_regexp << std::endl;
 
