@@ -96,7 +96,7 @@ int matchPlus(std::string chars, char* regexp, char* text) {
 
         if (*chars_array == *text) *chars_array++;
 
-        if (*chars_array == '\0') return matchHere(regexp + 1, text);
+        if (*chars_array == '\0') return matchHere(regexp + 1, text + 1);
 
     } while (*text++ != '\0');
 
