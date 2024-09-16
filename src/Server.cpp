@@ -207,15 +207,17 @@ int capturedGroup(char* regexp, char* text) {
         std::cout << "[captured Group reference]: " << reference << std::endl;
         std::cout << "[captured Group finded]: " << finded << std::endl;
 
-        begin_group = string_regexp.find('(');
-        end_group = string_regexp.find(')');
         if (finded) {
             if (captured.find('|') != std::string::npos) {
+                begin_group = string_regexp.find_first_of('(');
+                end_group = string_regexp.find_first_of(')');
                 captured = captured.substr(begin_group, end_group + 1);
                 string_regexp = ReplaceAll(string_regexp, reference, captured);
             }
             else {
-                captured = captured.substr(begin_group + 1, end_group - 1);
+                begin_group = string_regexp.find_first_of('(');
+                end_group = string_regexp.find_first_of(')');
+                captured = string_regexp.substr(begin_group + 1, end_group - 1);
                 string_regexp = string_regexp.replace(begin_group, 1, "");
                 string_regexp = string_regexp.replace(end_group, 1, "");;
                 string_regexp = ReplaceAll(string_regexp, reference, captured);
