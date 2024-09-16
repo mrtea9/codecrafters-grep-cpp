@@ -224,7 +224,7 @@ int capturedGroup(char* regexp, char* text) {
                 std::cout << "[captured Backreference Group] start pos: " << begin_group << std::endl;
                 std::cout << "[captured Backreference Group] end pos: " << end_group << std::endl;
 
-                captured = string_regexp.substr(begin_group + 1, end_group - 3);
+                captured = string_regexp.substr(begin_group + 1, end_group - 1);
 
                 string_regexp = ReplaceAll(string_regexp, reference, captured);
                 std::cout << "[captured Backreference Group2] RegExp: " << string_regexp << std::endl;
