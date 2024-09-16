@@ -230,9 +230,8 @@ int capturedGroup(char* regexp, char* text) {
                 std::cout << "[captured Backreference Group2] RegExp: " << string_regexp << std::endl;
 
                 begin_group = string_regexp.find_first_of('(');
-                end_group = string_regexp.find_first_of(')');
-
                 string_regexp.replace(begin_group, 1, "");
+                end_group = string_regexp.find_first_of(')');
                 string_regexp.replace(end_group, 1, "");
 
                 std::cout << "[captured Backreference Group3] RegExp: " << string_regexp << std::endl;
