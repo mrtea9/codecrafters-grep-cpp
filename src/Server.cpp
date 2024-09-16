@@ -156,12 +156,16 @@ int matchOr(char* regexp, char* text) {
     }
 
     for (std::string token : tokens) {
+        if (token.find(')') != std::string::npos) token = token.pop_back();
+
         token = token + rest_regexp;
 
         char* copy_text = text;
         int length = token.length();
         char* token_array = new char[length + 1];
         strcpy(token_array, token.c_str());
+
+
 
         std::cout << "[Or Variant] RegExp: " << token_array << std::endl;
 
