@@ -126,6 +126,8 @@ int matchOptional(char c, char* regexp, char* text) {
     std::cout << "[Optional] Text: " << text << std::endl;
     std::cout << "[Optional] RegExp: " << regexp << std::endl;
 
+    if (*text++ != '') return 0;
+
     return c == *text ? matchHere(regexp, text + 1) : matchHere(regexp, text);
 }
 
