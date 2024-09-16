@@ -79,6 +79,7 @@ int matchPlus(char c, char* regexp, char* text) {
 
         if (c == *text) return matchHere(regexp, text + 1);
     } while (*text++ != '\0');
+
     return 0;
 }
 
@@ -98,6 +99,7 @@ int matchPlus(std::string chars, char* regexp, char* text) {
         if (*chars_array == '\0') return matchHere(regexp, text);
 
     } while (*text++ != '\0');
+
     return 0;
 }
 
