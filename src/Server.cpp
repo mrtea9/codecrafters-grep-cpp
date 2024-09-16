@@ -172,6 +172,8 @@ int matchGroup(char* regexp, char* text) {
     std::cout << "[Group] Text: " << text << std::endl;
     std::cout << "[Group] RegExp: " << regexp << std::endl;
 
+    std::cout << "[test] " << string_regexp.find_first_of('+');
+
     size_t begin_group = captured.find_first_of('[');
     size_t end_group = captured.find_first_of(']');
 
