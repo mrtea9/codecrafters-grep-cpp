@@ -29,7 +29,8 @@ static int matchHere(char* regexp, char* text) {
   
     std::cout << "[Text]: " << text << std::endl;
     std::cout << "[RegExp]: " << regexp << std::endl;
-    std::cout << "[RegExp - 1]: " << regexp - 1 << std::endl;
+
+    std::find()
 
     if (regexp[0] == '\0') return 1;
 
