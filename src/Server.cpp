@@ -134,7 +134,7 @@ int matchOptional(char c, char* regexp, char* text) {
 int matchOr(char* regexp, char* text) {
     std::size_t length = strlen(regexp);
     if (length) {
-        regexp[length - 1] = '\0';
+        regexp[length] = '\0';
     }
 
     std::cout << "[Or] Text: " << text << std::endl;
