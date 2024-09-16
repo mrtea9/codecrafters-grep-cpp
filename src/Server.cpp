@@ -193,7 +193,7 @@ int matchOr(char* regexp, char* text) {
 }
 
 int capturedGroup(char* regexp, char* text) {
-    std::string captured = regexp;
+    std::string captured;
     std::string string_regexp = regexp;
     std::string reference;
     bool finded = true;
@@ -211,7 +211,7 @@ int capturedGroup(char* regexp, char* text) {
             if (captured.find('|') != std::string::npos) {
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
-                captured = captured.substr(begin_group, end_group + 1);
+                captured = string_regexp.substr(begin_group, end_group + 1);
                 string_regexp = ReplaceAll(string_regexp, reference, captured);
             }
             else {
@@ -220,6 +220,8 @@ int capturedGroup(char* regexp, char* text) {
 
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
+
+                std::cout << "[captured Backreference Group] end pos: " << end_group << std::endl;
 
                 captured = string_regexp.substr(begin_group + 1, end_group - 1);
 
