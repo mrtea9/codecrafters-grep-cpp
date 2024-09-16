@@ -27,8 +27,8 @@ std::string ReplaceAll(std::string str, const std::string& from, const std::stri
 
 static int matchHere(char* regexp, char* text) {
   
-    std::cout << "Text: " << text << std::endl;
-    std::cout << "RegExp: " << regexp << std::endl;
+    std::cout << "[Text]: " << text << std::endl;
+    std::cout << "[RegExp]: " << regexp << std::endl;
 
     if (regexp[0] == '\0') return 1;
 
@@ -50,6 +50,7 @@ static int matchHere(char* regexp, char* text) {
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchHere(regexp + 1, text + 1);
 
     if (*text != '\0') return matchHere(regexp, text + 1);
+
     return 0;
 }
 
