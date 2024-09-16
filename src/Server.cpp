@@ -90,13 +90,13 @@ int matchPlus(std::string chars, char* regexp, char* text) {
     strcpy(chars_array, chars.c_str());
 
     do {
-        std::cout << "[Plus] Text: " << text << std::endl;
-        std::cout << "[Plus] RegExp: " << regexp << std::endl;
-        std::cout << "[Plus] Chars: " << chars_array << std::endl;
+        std::cout << "[Plus2] Text: " << text << std::endl;
+        std::cout << "[Plus2] RegExp: " << regexp << std::endl;
+        std::cout << "[Plus2] Chars: " << chars_array << std::endl;
 
         if (*chars_array == *text) *chars_array++;
 
-        if (*chars_array == '\0') return matchHere(regexp, text);
+        if (*chars_array == '\0') return matchHere(regexp + 1, text);
 
     } while (*text++ != '\0');
 
@@ -203,7 +203,7 @@ int matchGroup(char* regexp, char* text) {
     std::cout << "[Group] Chars to Match: " << chars_to_match << std::endl;
     negate = chars_to_match[0] == '^';
 
-    if (end_group + 1 == plus_pos) return matchPlus(chars_to_match, regexp + length + 3, text);
+    if (end_group + 1 == plus_pos) return matchPlus(chars_to_match, regexp + length + 2, text);
 
     isMatch = text_string.find_first_of(chars_to_match) != std::string::npos;
     isMatch = negate ? !isMatch : isMatch;
