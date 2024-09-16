@@ -82,6 +82,15 @@ int matchPlus(char c, char* regexp, char* text) {
     return 0;
 }
 
+int matchPlus(std::string chars, char* regexp, char* text) {
+    do {
+        std::cout << "[Plus] Text: " << text << std::endl;
+        std::cout << "[Plus] RegExp: " << regexp << std::endl;
+
+    } while (*text++ != '\0');
+    return 0;
+}
+
 int matchOptional(char c, char* regexp, char* text) {
     std::cout << "[Optional] Text: " << text << std::endl;
     std::cout << "[Optional] RegExp: " << regexp << std::endl;
@@ -176,12 +185,10 @@ int matchGroup(char* regexp, char* text) {
     size_t end_group = captured.find_first_of(']');
     size_t plus_pos = string_regexp.find_first_of('+');
 
-    if (end_group + 1 == plus_pos) {
-        std::cout << "[test] plus pos: " << plus_pos << std::endl;
-    }
-
     chars_to_match = captured.substr(begin_group + 1, end_group - 1);
     int length = chars_to_match.length();
+
+    if (end_group + 1 == plus_pos) return matchPlus(chars_to_match, regexp, text);
 
     std::cout << "[Group] Chars to Match: " << chars_to_match << std::endl;
     negate = chars_to_match[0] == '^';
