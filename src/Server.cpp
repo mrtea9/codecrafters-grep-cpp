@@ -156,7 +156,7 @@ int matchOr(char* regexp, char* text) {
     }
 
     for (std::string token : tokens) {
-        if (token.find(')') != std::string::npos) token = token.pop_back();
+        if (token.find(')') != std::string::npos) token.pop_back();
 
         token = token + rest_regexp;
 
