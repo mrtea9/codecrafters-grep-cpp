@@ -75,13 +75,14 @@ int matchLetter(char* regexp, char* text) {
             *regexp++;
 
             do {
+                *text++;
 
                 std::cout << "[Letter +] Text: " << text << std::endl;
                 std::cout << "[Letter +] RegExp: " << regexp << std::endl;
 
-                *text++;
             } while (isalpha(*text));
 
+            return matchHere(regexp, text);
         }
 
         if (isalpha(*text)) return matchHere(regexp, text + 1);
