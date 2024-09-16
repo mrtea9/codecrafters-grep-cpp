@@ -199,7 +199,7 @@ int capturedGroup(char* regexp, char* text) {
     bool finded = true;
     size_t begin_group = captured.find('(');
     size_t end_group = captured.find(')');
-    int count = 1;
+    int count = 0;
 
     while (finded) {
         reference = "\\" + std::to_string(count);
