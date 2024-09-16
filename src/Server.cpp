@@ -141,7 +141,7 @@ int matchOr(char* regexp, char* text) {
     std::cout << "[Or] RegExp: " << regexp << std::endl;
 
     std::string captured = regexp;
-    std::string result;
+    std::string rest_regexp;
     size_t begin_group = captured.find(')');
     size_t end_group = captured.length();
 
