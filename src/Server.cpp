@@ -89,16 +89,12 @@ int matchPlus(std::string chars, char* regexp, char* text) {
     char* chars_array = new char[length + 1];
     strcpy(chars_array, chars.c_str());
 
-    bool negate = chars[0] == '^';
-
     do {
         std::cout << "[Plus2] Text: " << text << std::endl;
         std::cout << "[Plus2] RegExp: " << regexp << std::endl;
         std::cout << "[Plus2] Chars: " << chars_array << std::endl;
 
-        if (*chars_array == *text && !negate) *chars_array++;
-
-        if (*chars_array != *text && negate) *chars_array++;
+        if (*chars_array == *text) *chars_array++;
 
         if (*chars_array == '\0') return matchHere(regexp + 1, text + 1);
 
@@ -207,12 +203,14 @@ int matchGroup(char* regexp, char* text) {
     std::cout << "[Group] Chars to Match: " << chars_to_match << std::endl;
     negate = chars_to_match[0] == '^';
 
-    if (end_group + 1 == plus_pos) return matchPlus(chars_to_match, regexp + length + 2, text);
+    if (end_group + 1 == plus_pos && !negate) return matchPlus(chars_to_match, regexp + length + 2, text);
 
     isMatch = text_string.find_first_of(chars_to_match) != std::string::npos;
     isMatch = negate ? !isMatch : isMatch;
     
     std::cout << "[Group] isMatch: " << isMatch << std::endl;
+
+    if (isMatch && negate) return matchHere(regexp + length + 3, text + length);
 
     if (isMatch) return matchHere(regexp + length + 2, text + length);
 
