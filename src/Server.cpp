@@ -55,7 +55,8 @@ static int matchHere(char* regexp, char* text) {
 
 int matchDigit(char* regexp, char* text) {
     do {
-        std::cout << "Digit Text: " << text << std::endl;
+        std::cout << "[Digit] Text: " << text << std::endl;
+        std::cout << "[Digit] RegExp: " << regexp << std::endl;
         if (isdigit(*text)) return matchHere(regexp, text + 1);
     } while (*text++ != '\0');
     return 0;
@@ -63,7 +64,8 @@ int matchDigit(char* regexp, char* text) {
 
 int matchLetter(char* regexp, char* text) {
     do {
-        std::cout << "Letter Text: " << text << std::endl;
+        std::cout << "[Letter] Text: " << text << std::endl;
+        std::cout << "[Letter] RegExp: " << regexp << std::endl;
         if (isalpha(*text)) return matchHere(regexp, text + 1);
     } while (*text++ != '\0');
     return 0;
@@ -71,8 +73,8 @@ int matchLetter(char* regexp, char* text) {
 
 int matchPlus(char c, char* regexp, char* text) {
     do {
-        std::cout << "Plus Text: " << text << std::endl;
-        std::cout << "Plus RegExp: " << regexp << std::endl;
+        std::cout << "[Plus] Text: " << text << std::endl;
+        std::cout << "[Plus] RegExp: " << regexp << std::endl;
 
         if (c == *text) return matchHere(regexp, text + 1);
     } while (*text++ != '\0');
@@ -80,8 +82,8 @@ int matchPlus(char c, char* regexp, char* text) {
 }
 
 int matchOptional(char c, char* regexp, char* text) {
-    std::cout << "Optional Text: " << text << std::endl;
-    std::cout << "Optional RegExp: " << regexp << std::endl;
+    std::cout << "[Optional] Text: " << text << std::endl;
+    std::cout << "[Optional] RegExp: " << regexp << std::endl;
 
     return c == *text ? matchHere(regexp, text + 1) : matchHere(regexp, text);
 }
@@ -92,8 +94,8 @@ int matchOr(char* regexp, char* text) {
         regexp[length - 1] = '\0';
     }
 
-    std::cout << "Or Text: " << text << std::endl;
-    std::cout << "Or RegExp: " << regexp << std::endl;
+    std::cout << "[Or] Text: " << text << std::endl;
+    std::cout << "[Or] RegExp: " << regexp << std::endl;
 
     std::stringstream ss(regexp);
     std::string token;
@@ -110,7 +112,7 @@ int matchOr(char* regexp, char* text) {
         char* token_array = new char[length + 1];
         strcpy(token_array, token.c_str());
 
-        std::cout << "Or Variant RegExp: " << token_array << std::endl;
+        std::cout << "[Or Variant] RegExp: " << token_array << std::endl;
 
         if (matchHere(token_array, copy_text) == 1) {
             return 1;
@@ -128,7 +130,7 @@ int capturedGroup(char* regexp, char* text) {
 
     captured = captured.substr(begin_group + 1, end_group - 1);
 
-    std::cout << "captured: " << captured << std::endl;
+    std::cout << "[captured]: " << captured << std::endl;
 
     string_regexp = ReplaceAll(string_regexp, "\\1", captured);
     string_regexp = ReplaceAll(string_regexp, "(", "");
@@ -138,8 +140,8 @@ int capturedGroup(char* regexp, char* text) {
     char* result_regexp = new char[length + 1];
     strcpy(result_regexp, string_regexp.c_str());
 
-    std::cout << "Backreference Group Text: " << text << std::endl;
-    std::cout << "Backreference Group RegExp: " << result_regexp << std::endl;
+    std::cout << "[Backreference Group] Text: " << text << std::endl;
+    std::cout << "[Backreference Group] RegExp: " << result_regexp << std::endl;
 
     return matchHere(result_regexp, text);
 }
@@ -149,8 +151,8 @@ int matchBackreference(char* regexp, char* text) {
     char* original_regexp = regexp;
 
     do {
-        std::cout << "Backreference Text: " << text << std::endl;
-        std::cout << "Backreference RegExp: " << regexp << std::endl;
+        std::cout << "[Backreference] Text: " << text << std::endl;
+        std::cout << "[Backreference] RegExp: " << regexp << std::endl;
 
         if (*regexp == '\\') return capturedGroup(original_regexp, text);
     } while (*regexp++ != '\0');
