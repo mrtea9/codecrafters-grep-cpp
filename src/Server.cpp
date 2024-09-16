@@ -35,9 +35,9 @@ static int matchHere(char* regexp, char* text) {
     if (regexp[0] == ' ') return matchHere(regexp + 1, text);
     if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
     if (regexp[1] == '?') return matchOptional(regexp[0], regexp + 2, text);
+    if (regexp[1] == '+' || regexp[0] == '+' || regexp[0] == '+') return matchPlus(regexp[0], regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
-    if (regexp[1] == '+' || regexp[0] == '+') return matchPlus(regexp[0], regexp + 2, text);
     if (regexp[0] == '(') {
             if ( std::string(regexp).find('|') != std::string::npos) {
                 return matchOr(regexp + 1, text);
