@@ -93,6 +93,8 @@ int matchPlus(std::string chars, char* regexp, char* text) {
         std::cout << "[Plus] RegExp: " << regexp << std::endl;
         std::cout << "[Plus] Chars: " << chars << std::endl;
 
+        if (*chars_array == *text) *chars_array++;
+
     } while (*text++ != '\0');
     return 0;
 }
