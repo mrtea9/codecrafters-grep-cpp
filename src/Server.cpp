@@ -199,13 +199,13 @@ int capturedGroup(char* regexp, char* text) {
     bool finded = true;
     size_t begin_group = captured.find('(');
     size_t end_group = captured.find(')');
-    int count = 0;
+    int count = 1;
 
     while (finded) {
         reference = "\\" + std::to_string(count);
         std::cout << "[captured Group reference]: " << reference << std::endl;
         finded = captured.find(reference) != std::string::npos;
-        std::cout << "[captured Group finded]: " << reference << std::endl;
+        std::cout << "[captured Group finded]: " << finded << std::endl;
         count++;
     }
 
