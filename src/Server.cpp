@@ -186,6 +186,7 @@ int capturedGroup(char* regexp, char* text) {
     size_t begin_group = captured.find('(');
     size_t end_group = captured.find(')');
 
+
     if (captured.find('|') != std::string::npos) {
         captured = captured.substr(begin_group, end_group + 1);
         string_regexp = ReplaceAll(string_regexp, "\\1", captured);
