@@ -29,6 +29,7 @@ static int matchHere(char* regexp, char* text) {
   
     std::cout << "[Text]: " << text << std::endl;
     std::cout << "[RegExp]: " << regexp << std::endl;
+    std::cout << "[RegExp - 1]: " << *regexp - 1 << std::endl;
 
     if (regexp[0] == '\0') return 1;
 
@@ -171,10 +172,6 @@ int matchGroup(char* regexp, char* text) {
 
     std::cout << "[Group] Text: " << text << std::endl;
     std::cout << "[Group] RegExp: " << regexp << std::endl;
-
-    if (string_regexp.find_first_of('+') != std::string::npos) {
-        std::cout << "[este] Este: " << std::endl;
-    }
 
     size_t begin_group = captured.find_first_of('[');
     size_t end_group = captured.find_first_of(']');
