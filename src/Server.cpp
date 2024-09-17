@@ -242,7 +242,7 @@ char* returnCaptured(char* regexp, char* text) {
                 }
                 test += *text;
             }
-        } while (*text++ != '\0');
+        } while (*text++ != '\0' && isdigit(*text));
     }
 
     if (regexp[0] == '\\' && regexp[1] == 'w') {
@@ -288,7 +288,7 @@ char* returnCaptured(char* regexp, char* text) {
                 }
                 test += *text;
             }
-        } while (*text++ != '\0');
+        } while (*text++ != '\0' && isalpha(*text));
 
     }
 
