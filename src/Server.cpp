@@ -202,7 +202,7 @@ char* returnCaptured(char* regexp, char* text) {
 
 
     if (regexp[0] == '\\' && regexp[1] == 'd') {
-        if (regexp[0] == '\\' && regexp[1] == 'w') {
+        if (regexp[0] == '\\' && regexp[1] == 'd') {
             regexp += 2;
         }
         else {
@@ -234,7 +234,7 @@ char* returnCaptured(char* regexp, char* text) {
             }
 
             if (isdigit(*text)) {
-                if (regexp[0] == '\\' && regexp[1] == 'w') {
+                if (regexp[0] == '\\' && regexp[1] == 'd') {
                     regexp += 2;
                 }
                 else {
