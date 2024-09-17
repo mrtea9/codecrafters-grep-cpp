@@ -368,6 +368,9 @@ int capturedGroup(char* regexp, char* text) {
                     string_text.replace(end_group2, std::string(result).length(), "");
                     std::cout << "[string_text]: " << string_text << std::endl;
                 }
+                else {
+                    result = captured_array;
+                }
 
                 begin_group = string_regexp.find_first_of('(');
                 string_regexp.replace(begin_group, 1, "");
