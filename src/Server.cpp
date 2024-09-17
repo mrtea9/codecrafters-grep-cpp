@@ -193,7 +193,7 @@ int matchOr(char* regexp, char* text) {
 }
 
 char* returnCaptured(char* regexp, char* text) {
-    std::string test = "captured"
+    std::string test = "captured";
     int length = test.length();
     char* result = new char[length + 1];
     strcpy(result, test.c_str());
