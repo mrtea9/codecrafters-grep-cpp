@@ -193,12 +193,15 @@ int matchOr(char* regexp, char* text) {
 }
 
 char* returnCaptured(char* regexp, char* text) {
+    char* result;
 
     if (regexp[0] == '\\' && regexp[1] == 'd' && matchDigit(regexp + 2, text) == 1) {
         std::cout << "este2" << std::endl;
     }
 
-    return 'dsad';
+    strcpy(result, "captured".c_str());
+
+    return result;
 
     //if (regexp[0] == '\\' && regexp[1] == 'd' && matchDigit(regexp + 2, text) == 1);
     //if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
