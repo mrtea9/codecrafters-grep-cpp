@@ -224,7 +224,7 @@ int capturedGroup(char* regexp, char* text) {
                 std::cout << "[captured]: " << captured << std::endl;
 
                 int len = captured.length();
-                char* captured_array = new char[length + 1];
+                char* captured_array = new char[len + 1];
                 strcpy(captured_array, captured.c_str());
 
                 if (matchHere(captured_array, text) == 1) {
