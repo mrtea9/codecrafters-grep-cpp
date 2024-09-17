@@ -199,9 +199,7 @@ char* returnCaptured(char* regexp, char* text) {
     strcpy(result, test.c_str());
 
     if (regexp[0] == '\\' && regexp[1] == 'd' && matchDigit(regexp + 2, text) == 1) {
-        while (matchDigit(regexp + 2, text) == 1) {
-            test += *text++;
-        }
+        test += *text++;
     }
 
     std::cout << "[test]: " << test << std::endl;
