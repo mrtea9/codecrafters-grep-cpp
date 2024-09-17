@@ -355,8 +355,11 @@ int capturedGroup(char* regexp, char* text) {
                 char* text_array = new char[len2 + 1];
                 strcpy(text_array, string_text.c_str());
 
-                if (matchHere(captured_array, text_array) == 1) {
+                if (matchHere(captured_array, text_array) == 1 && regexp[0] != '\\') {
                     result = returnCaptured(captured_array, text_array);
+                }
+                else {
+                    result = captured;
                 }
 
                 std::cout << "[result]: " << result << std::endl;
