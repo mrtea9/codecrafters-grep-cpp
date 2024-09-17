@@ -210,9 +210,6 @@ char* returnCaptured(char* regexp, char* text) {
     strcpy(result, test.c_str());
 
     return result;
-
-    //if (regexp[0] == '\\' && regexp[1] == 'd' && matchDigit(regexp + 2, text) == 1);
-    //if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
 }
 
 int capturedGroup(char* regexp, char* text) {
@@ -254,6 +251,8 @@ int capturedGroup(char* regexp, char* text) {
                 if (matchHere(captured_array, text) == 1) {
                     result = returnCaptured(captured_array, text);
                 }
+
+                std::cout << "[result]: " << result << std::endl;
 
                 string_regexp = ReplaceAll(string_regexp, reference, result);
 
