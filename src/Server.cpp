@@ -355,11 +355,8 @@ int capturedGroup(char* regexp, char* text) {
                 char* text_array = new char[len2 + 1];
                 strcpy(text_array, string_text.c_str());
 
-                if (matchHere(captured_array, text_array) == 1 && regexp[0] == '\\') {
+                if (matchHere(captured_array, text_array) == 1) {
                     result = returnCaptured(captured_array, text_array);
-                }
-                else {
-                    result = captured_array;
                 }
 
                 std::cout << "[result]: " << result << std::endl;
@@ -370,6 +367,10 @@ int capturedGroup(char* regexp, char* text) {
                     std::cout << "[end_group2]: " << end_group2 << std::endl;
                     string_text.replace(end_group2, std::string(result).length(), "");
                     std::cout << "[string_text]: " << string_text << std::endl;
+                }
+
+                if (result == '') {
+                    result = captured_array;
                 }
 
                 string_regexp = ReplaceAll(string_regexp, reference, result);
