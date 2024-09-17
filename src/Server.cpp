@@ -200,6 +200,8 @@ char* returnCaptured(char* regexp, char* text) {
     std::cout << "[test] *text: " << *text << std::endl;
 
     if (regexp[0] == '\\' && regexp[1] == 'd') {
+        regexp += 2;
+
         do {
             std::cout << "[returnCaptured Digit] Text: " << text << std::endl;
             std::cout << "[returnCaptured Digit] RegExp: " << regexp << std::endl;
@@ -219,11 +221,16 @@ char* returnCaptured(char* regexp, char* text) {
 
             }
 
-            if (isdigit(*text)) test += *text++;
+            if (isdigit(*text)) {
+                *regexp++;
+                test += *text++;
+            }
         } while (*text++ != '\0');
     }
 
     if (regexp[0] == '\\' && regexp[1] == 'w') {
+        *regexp += 2;
+
         do {
             std::cout << "[returnCaptured Letter] Text: " << text << std::endl;
             std::cout << "[returnCaptured Letter] RegExp: " << regexp << std::endl;
@@ -243,7 +250,10 @@ char* returnCaptured(char* regexp, char* text) {
 
             }
 
-            if (isalpha(*text)) test += *text++;
+            if (isalpha(*text)) {
+                *regexp++;
+                test += *text++;
+            }
         } while (*text++ != '\0');
 
     }
