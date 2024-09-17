@@ -239,6 +239,7 @@ char* returnCaptured(char* regexp, char* text) {
             std::cout << "[returnCaptured Letter] Text: " << text << std::endl;
             std::cout << "[returnCaptured Letter] RegExp: " << regexp << std::endl;
             std::cout << "[returnCaptured Letter test]: " << test << std::endl;
+            std::cout << "[returnCaptured Letter] *text: " << *text << std::endl;
 
             if (regexp[0] == '\0') break;
 
@@ -257,8 +258,8 @@ char* returnCaptured(char* regexp, char* text) {
             }
 
             if (isalpha(*text)) {
-                *regexp++;
                 test += *text++;
+                *regexp++;
             }
         } while (*text++ != '\0');
 
