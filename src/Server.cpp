@@ -199,7 +199,7 @@ char* returnCaptured(char* regexp, char* text) {
         test += *text++;
     }
 
-    if (regexp[0] == '\\' && regexp[1] == 'd' && matchLetter(regexp + 2, text) == 1) {
+    if (regexp[0] == '\\' && regexp[1] == 'w' && matchLetter(regexp + 2, text) == 1) {
         test += *text++;
     }
 
