@@ -344,12 +344,14 @@ int capturedGroup(char* regexp, char* text) {
                     result = returnCaptured(captured_array, text);
                 }
 
-                std::cout << "[result]: " << result << std::endl;
-                std::cout << "[string_text]: " << string_text << std::endl;
-                end_group2 = string_text.find_first_of(std::string(result));
-                std::cout << "[end_group2]: " << end_group2 << std::endl;
-                string_text.replace(end_group2, std::string(result).length(), "");
-                std::cout << "[string_text]: " << string_text << std::endl;
+                if (result != NULL) {
+                    std::cout << "[result]: " << result << std::endl;
+                    std::cout << "[string_text]: " << string_text << std::endl;
+                    end_group2 = string_text.find_first_of(std::string(result));
+                    std::cout << "[end_group2]: " << end_group2 << std::endl;
+                    string_text.replace(end_group2, std::string(result).length(), "");
+                    std::cout << "[string_text]: " << string_text << std::endl;
+                }
 
                 string_regexp = ReplaceAll(string_regexp, reference, result);
 
