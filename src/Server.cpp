@@ -348,9 +348,10 @@ int capturedGroup(char* regexp, char* text) {
                     result = returnCaptured(captured_array, text_array);
                 }
 
+                std::cout << "[result]: " << result << std::endl;
+                std::cout << "[string_text]: " << string_text << std::endl;
+
                 if (string_text.find_first_of(std::string(result)) != std::string::npos) {
-                    std::cout << "[result]: " << result << std::endl;
-                    std::cout << "[string_text]: " << string_text << std::endl;
                     end_group2 = string_text.find_first_of(std::string(result));
                     std::cout << "[end_group2]: " << end_group2 << std::endl;
                     string_text.replace(end_group2, std::string(result).length(), "");
