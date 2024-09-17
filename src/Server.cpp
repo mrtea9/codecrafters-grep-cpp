@@ -292,11 +292,6 @@ char* returnCaptured(char* regexp, char* text) {
 
     }
 
-    if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) {
-        test += *text++;
-        *regexp++;
-    }
-
     std::cout << "[test]: " << test << std::endl;
 
     int length = test.length();
