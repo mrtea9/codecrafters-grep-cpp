@@ -223,7 +223,11 @@ int capturedGroup(char* regexp, char* text) {
                 captured = string_regexp.substr(begin_group + 1, length2 - 1);
                 std::cout << "[captured]: " << captured << std::endl;
 
-                if (matchHere(captured, text) == 1) {
+                int len = captured.length();
+                char* captured_array = new char[length + 1];
+                strcpy(captured_array, captured.c_str());
+
+                if (matchHere(captured_array, text) == 1) {
                     std::cout << "este" << std::endl;
                 }
 
