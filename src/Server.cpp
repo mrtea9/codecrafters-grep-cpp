@@ -194,13 +194,16 @@ int matchOr(char* regexp, char* text) {
 
 char* returnCaptured(char* regexp, char* text) {
     std::string test = "";
+    std::cout << "[test]: " << test << std::endl;
+    std::cout << "[test] *text: " << *text << std::endl;
 
     if (regexp[0] == '\\' && regexp[1] == 'd' && matchDigit(regexp + 2, text) == 1) {
+        std::cout << "*text digit = " << *text << std::endl;
         test += *text++;
     }
 
     if (regexp[0] == '\\' && regexp[1] == 'w' && matchLetter(regexp + 2, text) == 1) {
-        std::cout << "*text = " << *text << std::endl;
+        std::cout << "*text letter = " << *text << std::endl;
         test += *text++;
     }
 
