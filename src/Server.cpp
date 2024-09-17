@@ -241,8 +241,6 @@ char* returnCaptured(char* regexp, char* text) {
 
     if (regexp[0] == '\\' && regexp[1] == 'w') {
 
-        regexp += 2;
-
         do {
             std::cout << "[returnCaptured Letter] Text: " << text << std::endl;
             std::cout << "[returnCaptured Letter] RegExp: " << regexp << std::endl;
