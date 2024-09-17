@@ -374,13 +374,8 @@ int capturedGroup(char* regexp, char* text) {
                 end_group = string_regexp.find_first_of(')');
                 string_regexp.replace(end_group, 1, "");
 
-                if (std::string(result) != "") {
-                    result = captured_array;
-                    string_regexp = ReplaceAll(string_regexp, reference, result);
-                }
-                else {
-                    string_regexp = ReplaceAll(string_regexp, reference, result);
-                }
+                string_regexp = ReplaceAll(string_regexp, reference, result);
+
 
                 std::cout << "[captured Backreference Group] RegExp: " << string_regexp << std::endl;
             }
