@@ -199,14 +199,55 @@ char* returnCaptured(char* regexp, char* text) {
     std::cout << "[test]: " << test << std::endl;
     std::cout << "[test] *text: " << *text << std::endl;
 
-    if (regexp[0] == '\\' && regexp[1] == 'd' && matchDigit(regexp + 2, text) == 1) {
-        std::cout << "*text digit = " << *text << std::endl;
-        test += *text++;
+    if (regexp[0] == '\\' && regexp[1] == 'd') {
+        do {
+            std::cout << "[returnCaptured Digit] Text: " << text << std::endl;
+            std::cout << "[returnCaptured Digit] RegExp: " << regexp << std::endl;
+            std::cout << "[returnCaptured Digit test]: " << test << std::endl;
+
+            if (*regexp == '+' && isdigit(*text)) {
+                *regexp++;
+
+                do {
+                    test += *text++;
+
+                    std::cout << "[returnCaptured Digit +] Text: " << text << std::endl;
+                    std::cout << "[returnCaptured Digit +] RegExp: " << regexp << std::endl;
+                    std::cout << "[returnCaptured Digit + test]: " << test << std::endl;
+
+                } while (isdigit(*text));
+
+                return test;
+            }
+
+            if (isdigit(*text)) test += *text++;
+        } while (*text++ != '\0');
     }
 
-    if (regexp[0] == '\\' && regexp[1] == 'w' && matchLetter(regexp + 2, text) == 1) {
-        std::cout << "*text letter = " << *text << std::endl;
-        test += *text++;
+    if (regexp[0] == '\\' && regexp[1] == 'w') {
+        do {
+            std::cout << "[returnCaptured Letter] Text: " << text << std::endl;
+            std::cout << "[returnCaptured Letter] RegExp: " << regexp << std::endl;
+            std::cout << "[returnCaptured Letter test]: " << test << std::endl;
+
+            if (*regexp == '+' && isalpha(*text)) {
+                *regexp++;
+
+                do {
+                    test += *text++;
+
+                    std::cout << "[returnCaptured Letter +] Text: " << text << std::endl;
+                    std::cout << "[returnCaptured Letter +] RegExp: " << regexp << std::endl;
+                    std::cout << "[returnCaptured Letter + test]: " << test << std::endl;
+
+                } while (isalpha(*text));
+
+                return test;
+            }
+
+            if (isalpha(*text)) test += *text++;
+        } while (*text++ != '\0');
+
     }
 
     std::cout << "[test]: " << test << std::endl;
