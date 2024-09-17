@@ -325,7 +325,9 @@ int capturedGroup(char* regexp, char* text) {
             if (string_regexp.find('|') != std::string::npos) {
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
-                captured = string_regexp.substr(begin_group, end_group + 1);
+                length2 = end_group - begin_group;
+
+                captured = string_regexp.substr(begin_group + 1, length2 - 1);
                 std::cout << "[captured]: " << captured << std::endl;
                 std::cout << "[string_regexp]: " << string_regexp << std::endl;
 
