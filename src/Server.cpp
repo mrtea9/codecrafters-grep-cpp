@@ -216,32 +216,21 @@ int capturedGroup(char* regexp, char* text) {
                 string_regexp = ReplaceAll(string_regexp, reference, captured);
             }
             else {
-                std::cout << std::endl;
-                std::cout << "[captured Backreference Group1] RegExp: " << string_regexp << std::endl;
-
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
                 length2 = end_group - begin_group;
 
-                std::cout << "[captured Backreference Group] start pos: " << begin_group << std::endl;
-                std::cout << "[captured Backreference Group] end pos: " << end_group << std::endl;
-
-                std::cout << "[captured Backreference Group2] RegExp: " << string_regexp << std::endl;
-                std::cout << "[captured1]: " << captured << std::endl;
                 captured = string_regexp.substr(begin_group + 1, length2 - 1);
-                std::cout << "[captured2]: " << captured << std::endl;
-                std::cout << "[captured Backreference Group3] RegExp: " << string_regexp << std::endl;
+                std::cout << "[captured]: " << captured << std::endl;
 
                 string_regexp = ReplaceAll(string_regexp, reference, captured);
-                std::cout << "[captured Backreference Group4] RegExp: " << string_regexp << std::endl;
 
                 begin_group = string_regexp.find_first_of('(');
                 string_regexp.replace(begin_group, 1, "");
                 end_group = string_regexp.find_first_of(')');
                 string_regexp.replace(end_group, 1, "");
 
-                std::cout << "[captured Backreference Group5] RegExp: " << string_regexp << std::endl;
-                std::cout << "[captured3]: " << captured << std::endl;
+                std::cout << "[captured Backreference Group] RegExp: " << string_regexp << std::endl;
             }
         }
 
