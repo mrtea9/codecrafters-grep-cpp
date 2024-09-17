@@ -217,7 +217,6 @@ char* returnCaptured(char* regexp, char* text) {
 
                 } while (isdigit(*text));
 
-                return test;
             }
 
             if (isdigit(*text)) test += *text++;
@@ -242,7 +241,6 @@ char* returnCaptured(char* regexp, char* text) {
 
                 } while (isalpha(*text));
 
-                return test;
             }
 
             if (isalpha(*text)) test += *text++;
