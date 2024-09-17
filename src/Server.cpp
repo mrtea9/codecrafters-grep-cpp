@@ -199,6 +199,10 @@ char* returnCaptured(char* regexp, char* text) {
         test += *text++;
     }
 
+    if (regexp[0] == '\\' && regexp[1] == 'd' && matchLetter(regexp + 2, text) == 1) {
+        test += *text++;
+    }
+
     std::cout << "[test]: " << test << std::endl;
 
     int length = test.length();
@@ -249,7 +253,6 @@ int capturedGroup(char* regexp, char* text) {
 
                 if (matchHere(captured_array, text) == 1) {
                     result = returnCaptured(captured_array, text);
-                    std::cout << "este" << std::endl;
                 }
 
                 string_regexp = ReplaceAll(string_regexp, reference, result);
