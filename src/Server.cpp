@@ -194,8 +194,8 @@ int matchOr(char* regexp, char* text) {
 
 char* returnCaptured(char* regexp, char* text) {
     std::string test = "captured"
-    int len = test.length();
-    char* result = new char[len + 1];
+    int length = test.length();
+    char* result = new char[length + 1];
     strcpy(result, test.c_str());
 
     if (regexp[0] == '\\' && regexp[1] == 'd' && matchDigit(regexp + 2, text) == 1) {
