@@ -193,13 +193,14 @@ int matchOr(char* regexp, char* text) {
 }
 
 char* returnCaptured(char* regexp, char* text) {
-    char* result;
+    std::string test = "captured"
+    int len = test.length();
+    char* result = new char[len + 1];
+    strcpy(result, test.c_str());
 
     if (regexp[0] == '\\' && regexp[1] == 'd' && matchDigit(regexp + 2, text) == 1) {
         std::cout << "este2" << std::endl;
     }
-
-    strcpy(result, "captured".c_str());
 
     return result;
 
