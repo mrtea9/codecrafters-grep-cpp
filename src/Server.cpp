@@ -203,8 +203,6 @@ char* returnCaptured(char* regexp, char* text) {
 
     if (regexp[0] == '\\' && regexp[1] == 'd') {
 
-        regexp += 2;
-
         do {
             std::cout << "[returnCaptured Digit] Text: " << text << std::endl;
             std::cout << "[returnCaptured Digit] RegExp: " << regexp << std::endl;
