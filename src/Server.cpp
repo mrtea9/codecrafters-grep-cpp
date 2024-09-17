@@ -327,10 +327,8 @@ int capturedGroup(char* regexp, char* text) {
                 end_group = string_regexp.find_first_of(')');
                 captured = string_regexp.substr(begin_group, end_group + 1);
                 std::cout << "[captured]: " << captured << std::endl;
-                std::cout << "[string_text]: " << string_text << std::endl;
+                std::cout << "[string_regexp]: " << string_regexp << std::endl;
 
-                string_text.replace(begin_group, captured.length(), "");
-                std::cout << "[string_text]: " << string_text << std::endl;   
 
                 string_regexp = ReplaceAll(string_regexp, reference, captured);
             }
