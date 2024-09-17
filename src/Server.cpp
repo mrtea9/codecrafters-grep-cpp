@@ -226,7 +226,7 @@ char* returnCaptured(char* regexp, char* text) {
 
             if (isdigit(*text)) {
                 *regexp++;
-                test += *text++;
+                test += *text;
             }
         } while (*text++ != '\0');
     }
