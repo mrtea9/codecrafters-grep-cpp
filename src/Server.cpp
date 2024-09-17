@@ -198,7 +198,7 @@ char* returnCaptured(char* regexp, char* text) {
         std::cout << "este2" << std::endl;
     }
 
-    return 'd';
+    return 'dsad';
 
     //if (regexp[0] == '\\' && regexp[1] == 'd' && matchDigit(regexp + 2, text) == 1);
     //if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
