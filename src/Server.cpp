@@ -192,10 +192,23 @@ int matchOr(char* regexp, char* text) {
     return 0;
 }
 
+char* returnCaptured(char* regexp, char* text) {
+
+    if (regexp[0] == '\\' && regexp[1] == 'd' && matchDigit(regexp + 2, text) == 1) {
+        std::cout << "este2" << std::endl;
+    }
+
+    return 'd';
+
+    //if (regexp[0] == '\\' && regexp[1] == 'd' && matchDigit(regexp + 2, text) == 1);
+    //if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
+}
+
 int capturedGroup(char* regexp, char* text) {
     std::string captured;
     std::string string_regexp = regexp;
     std::string reference;
+    char* result;
     bool finded = true;
     size_t begin_group;
     size_t end_group;
@@ -228,6 +241,7 @@ int capturedGroup(char* regexp, char* text) {
                 strcpy(captured_array, captured.c_str());
 
                 if (matchHere(captured_array, text) == 1) {
+                    result = returnCaptured(captured_array, text);
                     std::cout << "este" << std::endl;
                 }
 
