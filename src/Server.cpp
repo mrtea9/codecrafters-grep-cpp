@@ -329,8 +329,9 @@ int capturedGroup(char* regexp, char* text) {
                 std::cout << "[captured]: " << captured << std::endl;
                 std::cout << "[string_regexp]: " << string_regexp << std::endl;
 
-
                 string_regexp = ReplaceAll(string_regexp, reference, captured);
+
+                std::cout << "[string_regexp2]: " << string_regexp << std::endl;
             }
             else {
                 begin_group = string_regexp.find_first_of('(');
