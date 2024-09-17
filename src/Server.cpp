@@ -229,6 +229,8 @@ char* returnCaptured(char* regexp, char* text) {
     }
 
     if (regexp[0] == '\\' && regexp[1] == 'w') {
+        if (regexp[0] == '\0') break;
+
         *regexp += 2;
 
         do {
