@@ -258,7 +258,7 @@ char* returnCaptured(char* regexp, char* text) {
             }
 
             if (isalpha(*text)) {
-                test += *text++;
+                test += *text;
                 *regexp++;
             }
         } while (*text++ != '\0');
