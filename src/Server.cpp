@@ -326,6 +326,16 @@ int capturedGroup(char* regexp, char* text) {
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
                 captured = string_regexp.substr(begin_group, end_group + 1);
+                std::cout << "[captured]: " << captured << std::endl;
+                std::cout << "[string_text]: " << string_text << std::endl;
+
+                if (string_text.find_first_of(captured) != std::string::npos) {
+                    end_group2 = string_text.find_first_of(std::string(result));
+                    std::cout << "[end_group2]: " << end_group2 << std::endl;
+                    string_text.replace(end_group2, captured.length(), "");
+                    std::cout << "[string_text]: " << string_text << std::endl;
+                }
+
                 string_regexp = ReplaceAll(string_regexp, reference, captured);
             }
             else {
