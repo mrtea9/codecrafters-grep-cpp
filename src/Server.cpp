@@ -200,7 +200,7 @@ char* returnCaptured(char* regexp, char* text) {
     std::cout << "[test] *text: " << *text << std::endl;
 
     if (regexp[0] == '\\' && regexp[1] == 'd') {
-        if (regexp[0] == '\0') return test;
+        if (regexp[0] == '\0') continue;
         regexp += 2;
 
         do {
@@ -230,7 +230,7 @@ char* returnCaptured(char* regexp, char* text) {
     }
 
     if (regexp[0] == '\\' && regexp[1] == 'w') {
-        if (regexp[0] == '\0') return test;
+        if (regexp[0] == '\0') continue;
 
         *regexp += 2;
 
