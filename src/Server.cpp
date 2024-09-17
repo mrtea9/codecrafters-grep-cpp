@@ -340,8 +340,12 @@ int capturedGroup(char* regexp, char* text) {
                 char* captured_array = new char[len + 1];
                 strcpy(captured_array, captured.c_str());
 
-                if (matchHere(captured_array, text) == 1) {
-                    result = returnCaptured(captured_array, text);
+                int len2 = string_text.length();
+                char* text_array = new char[len2 + 1];
+                strcpy(text_array, string_text.c_str());
+
+                if (matchHere(captured_array, text_array) == 1) {
+                    result = returnCaptured(captured_array, text_array);
                 }
 
                 if (string_text.find_first_of(std::string(result)) != std::string::npos) {
