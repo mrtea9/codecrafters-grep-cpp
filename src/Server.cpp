@@ -460,6 +460,7 @@ static int match(char* regexp, char* text) {
 static bool match_pattern(const std::string& input_line, const std::string& pattern) {
     std::cout << "pattern : " << pattern << std::endl;
 
+
     int length = pattern.length();
     char* regexp = new char[length + 1];
 
