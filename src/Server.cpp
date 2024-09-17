@@ -304,11 +304,14 @@ char* returnCaptured(char* regexp, char* text) {
 int capturedGroup(char* regexp, char* text) {
     std::string captured;
     std::string string_regexp = regexp;
+    std::string string_text = text;
     std::string reference;
     char* result;
     bool finded = true;
     size_t begin_group;
     size_t end_group;
+    size_t begin_group2;
+    size_t end_group2;
     size_t length2;
     int count = 1;
 
@@ -342,6 +345,9 @@ int capturedGroup(char* regexp, char* text) {
                 }
 
                 std::cout << "[result]: " << result << std::endl;
+                end_group2 = string_text.find_first_of(std::string(result));
+                string_text.replace(end_group2, 1, "");
+                std::cout << "[string_text]: " << string_text << std::endl;
 
                 string_regexp = ReplaceAll(string_regexp, reference, result);
 
