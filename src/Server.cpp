@@ -194,6 +194,8 @@ int matchOr(char* regexp, char* text) {
 
 char* returnCaptured(char* regexp, char* text) {
     std::string test = "";
+    std::cout << "[returnCaptured] Text: " << text << std::endl;
+    std::cout << "[returnCaptured] RegExp: " << regexp << std::endl;
     std::cout << "[test]: " << test << std::endl;
     std::cout << "[test] *text: " << *text << std::endl;
 
