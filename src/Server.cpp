@@ -369,7 +369,7 @@ int capturedGroup(char* regexp, char* text) {
                     std::cout << "[string_text]: " << string_text << std::endl;
                 }
 
-                if (result == '') {
+                if (result == NULL) {
                     result = captured_array;
                 }
 
