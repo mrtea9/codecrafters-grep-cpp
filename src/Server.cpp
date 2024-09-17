@@ -369,9 +369,7 @@ int capturedGroup(char* regexp, char* text) {
                     std::cout << "[string_text]: " << string_text << std::endl;
                 }
 
-                if (std::string(result) == "") {
-                    result = captured_array;
-                }
+                
 
                 string_regexp = ReplaceAll(string_regexp, reference, result);
 
