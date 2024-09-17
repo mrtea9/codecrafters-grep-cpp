@@ -344,7 +344,7 @@ int capturedGroup(char* regexp, char* text) {
                     result = returnCaptured(captured_array, text);
                 }
 
-                if (result != "") {
+                if (string_text.find_first_of(std::string(result)) != std::string::npos) {
                     std::cout << "[result]: " << result << std::endl;
                     std::cout << "[string_text]: " << string_text << std::endl;
                     end_group2 = string_text.find_first_of(std::string(result));
