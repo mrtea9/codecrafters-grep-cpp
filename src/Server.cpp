@@ -327,7 +327,7 @@ int capturedGroup(char* regexp, char* text) {
                 end_group = string_regexp.find_first_of(')');
                 length2 = end_group - begin_group;
 
-                captured = string_regexp.substr(begin_group, length2);
+                captured = string_regexp.substr(begin_group, length2 + 1);
                 std::cout << "[captured]: " << captured << std::endl;
                 std::cout << "[string_regexp]: " << string_regexp << std::endl;
 
