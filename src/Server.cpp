@@ -342,12 +342,12 @@ int capturedGroup(char* regexp, char* text) {
 
                 if (matchHere(captured_array, text) == 1) {
                     result = returnCaptured(captured_array, text);
+                    end_group2 = string_text.find_first_of(std::string(result));
+                    string_text.replace(end_group2, 1, "");
+                    std::cout << "[string_text]: " << string_text << std::endl;
                 }
 
                 std::cout << "[result]: " << result << std::endl;
-                end_group2 = string_text.find_first_of(std::string(result));
-                string_text.replace(end_group2, 1, "");
-                std::cout << "[string_text]: " << string_text << std::endl;
 
                 string_regexp = ReplaceAll(string_regexp, reference, result);
 
