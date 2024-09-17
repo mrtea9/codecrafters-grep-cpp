@@ -209,7 +209,7 @@ int capturedGroup(char* regexp, char* text) {
         std::cout << "[captured Group finded]: " << finded << std::endl;
 
         if (finded) {
-            if (captured.find('|') != std::string::npos) {
+            if (string_regexp.find('|') != std::string::npos) {
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
                 captured = string_regexp.substr(begin_group, end_group + 1);
@@ -222,6 +222,10 @@ int capturedGroup(char* regexp, char* text) {
 
                 captured = string_regexp.substr(begin_group + 1, length2 - 1);
                 std::cout << "[captured]: " << captured << std::endl;
+
+                if (matchHere(captured, text) == 1) {
+                    std::cout << "este" << std::endl;
+                }
 
                 string_regexp = ReplaceAll(string_regexp, reference, captured);
 
