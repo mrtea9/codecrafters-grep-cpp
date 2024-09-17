@@ -194,15 +194,16 @@ int matchOr(char* regexp, char* text) {
 
 char* returnCaptured(char* regexp, char* text) {
     std::string test = "";
-    int length = test.length();
-    char* result = new char[length + 1];
-    strcpy(result, test.c_str());
 
     if (regexp[0] == '\\' && regexp[1] == 'd' && matchDigit(regexp + 2, text) == 1) {
         test += *text++;
     }
 
     std::cout << "[test]: " << test << std::endl;
+
+    int length = test.length();
+    char* result = new char[length + 1];
+    strcpy(result, test.c_str());
 
     return result;
 
@@ -251,7 +252,7 @@ int capturedGroup(char* regexp, char* text) {
                     std::cout << "este" << std::endl;
                 }
 
-                string_regexp = ReplaceAll(string_regexp, reference, captured);
+                string_regexp = ReplaceAll(string_regexp, reference, result);
 
                 begin_group = string_regexp.find_first_of('(');
                 string_regexp.replace(begin_group, 1, "");
