@@ -305,7 +305,6 @@ int capturedGroup(char* regexp, char* text) {
     std::string captured;
     std::string string_regexp = regexp;
     std::string string_text = text;
-    std::string number;
     std::string reference;
     char* result;
     bool finded = true;
@@ -315,12 +314,9 @@ int capturedGroup(char* regexp, char* text) {
     size_t end_group2;
     size_t length2;
     int count = 1;
-    number = string_regexp.substr(string_regexp.find("\\"), 2);
-    std::cout << "[string_regexp]: " << string_regexp << std::endl;
-    std::cout << "[captured Group number]: " << number << std::endl;
 
     while (finded) {
-        reference = "\\" + std::to_string(count);
+        reference = string_regexp.substr(string_regexp.find("\\"), 2);
         finded = string_regexp.find(reference) != std::string::npos;
         std::cout << "[captured Group reference]: " << reference << std::endl;
         std::cout << "[captured Group finded]: " << finded << std::endl;
