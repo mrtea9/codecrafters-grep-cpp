@@ -326,7 +326,6 @@ int capturedGroup(char* regexp, char* text) {
         while (pos != std::string::npos) {
             if (string_regexp[pos] == '\\' && string_regexp[pos + 1] != 'w' && string_regexp[pos + 1] != 'd') {
                 std::cout << "[captured Group pos2]: " << pos << std::endl;
-                std::cout << "[captured Group reference3]: " << reference << std::endl;
                 reference = string_regexp.substr(pos, 2);
                 break;
             }
