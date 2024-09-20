@@ -323,7 +323,7 @@ int capturedGroup(char* regexp, char* text) {
         std::cout << "[captured Group finded1]: " << finded << std::endl;
         if (string_regexp.find("\\") != std::string::npos) {
             std::cout << "[string_regexp.find]: " << string_regexp.find("\\") << std::endl;
-            std::cout << "[string_regexp.find2]: " << typeof(string_regexp[string_regexp.find("\\") + 1]) << std::endl;
+            std::cout << "[string_regexp.find2]: " << std::typeof(string_regexp[string_regexp.find("\\") + 1]) << std::endl;
 
             reference = string_regexp.substr(string_regexp.find("\\"), 2);
         }
