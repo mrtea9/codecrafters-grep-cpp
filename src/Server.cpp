@@ -315,8 +315,8 @@ int capturedGroup(char* regexp, char* text) {
     std::string string_regexp = regexp;
     std::string string_text = text;
     std::string reference;
-    vector<int> locationsOpen = findLocation(string_regexp, '(');
-    vector<int> locationsClosed = findLocation(string_regexp, ')');
+    std::vector<int> locationsOpen = findLocation(string_regexp, '(');
+    std::vector<int> locationsClosed = findLocation(string_regexp, ')');
     for (int location : locationsOpen) {
         std::cout << "[captured Group location]: " << location << std::endl;
     }
