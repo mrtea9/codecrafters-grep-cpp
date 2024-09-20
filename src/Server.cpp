@@ -404,8 +404,6 @@ int capturedGroup(char* regexp, char* text) {
             }
         }
 
-
-        std::cout << "[captured Backreference Group2] RegExp: " << string_regexp << std::endl;
         count++;
     }
 
