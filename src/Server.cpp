@@ -412,6 +412,8 @@ int capturedGroup(char* regexp, char* text) {
     string_regexp = ReplaceAll(string_regexp, "{", "(");
     string_regexp = ReplaceAll(string_regexp, "}", ")");
 
+    std::cout << "[captured Backreference Group3] RegExp: " << string_regexp << std::endl;
+
     int length = string_regexp.length();
     char* result_regexp = new char[length + 1];
     strcpy(result_regexp, string_regexp.c_str());
