@@ -365,7 +365,6 @@ int capturedGroup(char* regexp, char* text) {
                 pos_brace = string_regexp.find("(");
                 while (pos_brace != std::string::npos) {
                     std::cout << std::endl;
-                    std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
 
                     if (string_regexp[pos_brace] == '(') {
                         openBrace++;
