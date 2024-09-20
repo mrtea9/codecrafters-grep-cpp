@@ -325,6 +325,7 @@ int capturedGroup(char* regexp, char* text) {
         while ((pos = string_regexp.find("\\")) != std::string::npos) {
             if (pos + 1 < string_regexp.size() && isdigit(string_regexp[pos + 1])) {
                 reference = string_regexp.substr(string_regexp.find("\\"), 2);
+                break;
             }
             pos++;
         }
