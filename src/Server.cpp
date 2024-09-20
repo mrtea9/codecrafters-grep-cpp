@@ -16,15 +16,6 @@ int matchOr(char* regexp, char* text);
 int matchBackreference(char* regexp, char* text);
 int matchGroup(char* regexp, char* text);
 
-std::vector<int> findLocation(std::string sample, char findIt) {
-    std::vector<int> characterLocations;
-    for (int i = 0; i < sample.size(); i++) {
-        if (sample[i] == findIt) characterLocations.push_back(sample[i]);
-    }
-
-    return characterLocations;
-}
-
 std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
     size_t start_pos = 0;
     while ((start_pos = str.find(from, start_pos)) != std::string::npos) {
@@ -315,15 +306,6 @@ int capturedGroup(char* regexp, char* text) {
     std::string string_regexp = regexp;
     std::string string_text = text;
     std::string reference;
-    std::vector<int> locationsOpen = findLocation(string_regexp, '(');
-    std::vector<int> locationsClosed = findLocation(string_regexp, ')');
-    for (int location : locationsOpen) {
-        std::cout << "[captured Group location open]: " << location << std::endl;
-    }
-    for (int location : locationsClosed) {
-        std::cout << "[captured Group location closed]: " << location << std::endl;
-    }
-
     char* result;
     bool finded = true;
     size_t begin_group;
@@ -358,7 +340,24 @@ int capturedGroup(char* regexp, char* text) {
                 std::cout << "[string_regexp2]: " << string_regexp << std::endl;
             }
             else {
-                int bracesOpen = 1;
+                int bracesOpen = 0;
+                int bracesClosed = 0;
+
+                while (*regexp != '\0') {
+
+                    if (regexp[0] == '(') {
+                        bracesOpen++;
+                    }
+
+                    if (regexp[0] == '(') {
+                        bracesClosed++;
+                    }
+
+                    *regexp++;
+                }
+
+                std::cout << "[bracesOpened]: " << bracesOpen << std::endl;
+                std::cout << "[bracesClosed]: " << bracesClosed << std::endl;
 
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
