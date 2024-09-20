@@ -341,27 +341,10 @@ int capturedGroup(char* regexp, char* text) {
                 end_group = string_regexp.find_first_of(')');
                 string_regexp.replace(end_group, 1, "}");
                 std::cout << "[string_regexp2]: " << string_regexp << std::endl;
-            }
-            else {
-                int bracesOpen = 0;
-                int bracesClosed = 0;
-
-                while (*regexp != '\0') {
-
-                    if (regexp[0] == '(') {
-                        bracesOpen++;
-                    }
-
-                    if (regexp[0] == '(') {
-                        bracesClosed++;
-                    }
-
-                    *regexp++;
-                }
-
-                std::cout << "[bracesOpened]: " << bracesOpen << std::endl;
-                std::cout << "[bracesClosed]: " << bracesClosed << std::endl;
-
+            } else if (reference != reference_count) {
+                std::cout << "este" << std::endl;
+                break;
+            } else {
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
                 length2 = end_group - begin_group;
