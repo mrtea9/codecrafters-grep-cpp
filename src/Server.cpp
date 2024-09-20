@@ -464,10 +464,10 @@ int capturedGroup(char* regexp, char* text) {
 
                 std::cout << "[result2]: " << result << std::endl;
 
-                begin_group = string_regexp.find_first_of('(');
-                string_regexp.replace(begin_group, 1, "");
-                end_group = string_regexp.find_first_of(')');
-                string_regexp.replace(end_group, 1, "");
+                //begin_group = string_regexp.find_first_of('(');
+                //string_regexp.replace(begin_group, 1, "");
+                //end_group = string_regexp.find_first_of(')');
+                //string_regexp.replace(end_group, 1, "");
 
                 std::cout << "[string_regexp2]: " << string_regexp << std::endl;
                 std::cout << "[reference]: " << reference << std::endl;
