@@ -400,6 +400,8 @@ int capturedGroup(char* regexp, char* text) {
                 end_group = string_regexp.find_first_of(')');
                 string_regexp.replace(end_group, 1, "");
 
+                std::cout << "[reference]: " << reference << std::endl;
+
                 string_regexp = ReplaceAll(string_regexp, reference, result);
 
 
