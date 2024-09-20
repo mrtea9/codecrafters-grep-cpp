@@ -325,6 +325,7 @@ int capturedGroup(char* regexp, char* text) {
             text = text + string_regexp.find("\\");
             while (*text != '\0') {
                 if (isdigit(*text)) reference = "\\" + *text;
+                *text++;
                 break;
             }
             //reference = string_regexp.substr(string_regexp.find("\\"), 2);
