@@ -366,18 +366,23 @@ int capturedGroup(char* regexp, char* text) {
                 while (pos_brace != std::string::npos) {
                     if (string_regexp[pos_brace] == '(') {
                         openBrace++;
+                        std::cout << "[openBrace]: " << openBrace << std::endl;
                     }
 
                     if (string_regexp[pos_brace] == ')') {
                         closedBrace++;
+                        std::cout << "[closedBrace]: " << closedBrace << std::endl;
+
                     }
 
                     if (string_regexp[pos_brace] == '(' && openBrace - 1 == closedBrace) {
                         start_pos == pos;
+                        std::cout << "[start_pos]: " << start_pos << std::endl;
                     }
 
                     if (string_regexp[pos_brace] == ')' && openBrace == closedBrace) {
                         end_pos = pos_brace;
+                        std::cout << "[end_pos]: " << start_pos << std::endl;
 
                         test = string_regexp.substr(start_pos + 1, end_pos - start_pos - 1);
                         std::cout << "[CAPTURED]: " << test << std::endl;
