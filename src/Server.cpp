@@ -392,12 +392,12 @@ int capturedGroup(char* regexp, char* text) {
                     result = captured_array;
                 }
 
-                begin_group = string_regexp.find_first_of('(');
-                string_regexp.replace(begin_group, 1, "");
-                end_group = string_regexp.find_first_of(')');
-                string_regexp.replace(end_group, 1, "");
+                //begin_group = string_regexp.find_first_of('(');
+                //string_regexp.replace(begin_group, 1, "");
+                //end_group = string_regexp.find_first_of(')');
+                //string_regexp.replace(end_group, 1, "");
 
-                string_regexp = ReplaceAll(string_regexp, reference, result);
+                //string_regexp = ReplaceAll(string_regexp, reference, result);
 
 
                 std::cout << "[captured Backreference Group] RegExp: " << string_regexp << std::endl;
