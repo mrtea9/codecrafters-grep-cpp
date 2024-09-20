@@ -414,8 +414,8 @@ int capturedGroup(char* regexp, char* text) {
         count++;
     }
 
-    string_regexp = ReplaceAll(string_regexp, "{", "(");
-    string_regexp = ReplaceAll(string_regexp, "}", ")");
+    //string_regexp = ReplaceAll(string_regexp, "{", "(");
+    //string_regexp = ReplaceAll(string_regexp, "}", ")");
 
     int length = string_regexp.length();
     char* result_regexp = new char[length + 1];
