@@ -364,28 +364,36 @@ int capturedGroup(char* regexp, char* text) {
                 size_t end_pos = 0;
                 pos_brace = string_regexp.find("(");
                 while (pos_brace != std::string::npos) {
+                    std::cout << std::endl;
+                    std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
+
                     if (string_regexp[pos_brace] == '(') {
                         openBrace++;
                         std::cout << "[openBrace]: " << openBrace << std::endl;
+                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                     }
 
                     if (string_regexp[pos_brace] == ')') {
                         closedBrace++;
                         std::cout << "[closedBrace]: " << closedBrace << std::endl;
+                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
 
                     }
 
                     if (string_regexp[pos_brace] == '(' && openBrace - 1 == closedBrace) {
                         start_pos == pos;
                         std::cout << "[start_pos]: " << start_pos << std::endl;
+                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                     }
 
                     if (string_regexp[pos_brace] == ')' && openBrace == closedBrace) {
                         end_pos = pos_brace;
                         std::cout << "[end_pos]: " << start_pos << std::endl;
+                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
 
                         test = string_regexp.substr(start_pos + 1, end_pos - start_pos - 1);
                         std::cout << "[CAPTURED]: " << test << std::endl;
+                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                     }
 
 
