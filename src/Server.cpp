@@ -399,7 +399,7 @@ int capturedGroup(char* regexp, char* text) {
 
                     if (string_regexp[pos_brace] == ')') {
                         closedBrace++;
-                        start_pos = string_regexp.find_first_of('(');
+                        //start_pos = string_regexp.find_first_of('(');
                         end_pos = pos_brace;
 
                         std::cout << std::endl;
