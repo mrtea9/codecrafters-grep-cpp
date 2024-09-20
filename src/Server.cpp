@@ -326,11 +326,9 @@ int capturedGroup(char* regexp, char* text) {
         pos = string_regexp.find("\\");
         while (pos != std::string::npos) {
             if (string_regexp[pos] == '\\' && string_regexp[pos + 1] != 'w' && string_regexp[pos + 1] != 'd') {
-                std::cout << "[captured Group pos2]: " << pos << std::endl;
                 reference = string_regexp.substr(pos, 2);
                 break;
             }
-            std::cout << "[captured Group pos1]: " << pos << std::endl;
             pos++;
             if (pos == string_regexp.length()) break;
         }
