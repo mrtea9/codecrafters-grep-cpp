@@ -316,6 +316,7 @@ int capturedGroup(char* regexp, char* text) {
     size_t length2;
     int count = 1;
     number = string_regexp.substr(string_regexp.find("\\"), 1);
+    std::cout << "[string_regexp]: " << string_regexp << std::endl;
     std::cout << "[captured Group number]: " << reference << std::endl;
 
     while (finded) {
