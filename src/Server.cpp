@@ -322,13 +322,16 @@ int capturedGroup(char* regexp, char* text) {
         std::cout << "[captured Group reference_count1]: " << reference_count << std::endl;
         std::cout << "[captured Group finded1]: " << finded << std::endl;
         size_t pos = 0;
-        while ((pos = string_regexp.find("\\")) != std::string::npos || (pos + 1 < string_regexp.length())) {
-            if (pos + 1 < string_regexp.size() && isdigit(string_regexp[pos + 1])) {
-                reference = string_regexp.substr(string_regexp.find("\\"), 2);
-                break;
+        pos = string_regexp.find("\\");
+        while (pos != std::string::npos) {
+            if (string_regexp[pos + 1] != 'w' && string_regexp[pos + 1] != 'd') {
+                std::cout << "[captured Group pos2]: " << pos << std::endl;
             }
+            std::cout << "[captured Group pos1]: " << pos << std::endl;
             pos++;
+            if (pos == string_regexp.length()) break;
         }
+        reference = string_regexp.substr(string_regexp.find("\\"), 2);
         reference_count = "\\" + std::to_string(count);
         finded = string_regexp.find(reference) != std::string::npos;
         std::cout << "[captured Group reference2]: " << reference << std::endl;
