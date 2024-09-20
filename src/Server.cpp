@@ -17,7 +17,7 @@ int matchBackreference(char* regexp, char* text);
 int matchGroup(char* regexp, char* text);
 
 std::vector<int> findLocation(std::string sample, char findIt) {
-    vector<int> characterLocations;
+    std::vector<int> characterLocations;
     for (int i = 0; i < sample.size(); i++) {
         if (sample[i] == findIt) characterLocations.push_back(sample[i]);
     }
