@@ -406,6 +406,10 @@ int capturedGroup(char* regexp, char* text) {
 
                         std::cout << "[CAPTURED1]: " << test << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
+                        count--;
+                        openBrace--;
+                        closedBrace--;
+                        pos_brace = 0;
                         break;
                     }
 
@@ -422,10 +426,12 @@ int capturedGroup(char* regexp, char* text) {
                         count--;
                         openBrace--;
                         closedBrace--;
-                        break;
+                        pos_brace = 0;
+                        continue;
                     }
 
                     pos_brace++;
+                    if (count == 0) break;
                     if (pos_brace == string_regexp.length()) break;
                 }
 
