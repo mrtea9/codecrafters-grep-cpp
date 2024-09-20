@@ -16,6 +16,15 @@ int matchOr(char* regexp, char* text);
 int matchBackreference(char* regexp, char* text);
 int matchGroup(char* regexp, char* text);
 
+vector<int> findLocation(std::string sample, char findIt) {
+    vector<int> characterLocations;
+    for (int i = 0; i < sample.size(); i++) {
+        if (sample[i] == findIt) characterLocations.push_back(sample[i]);
+    }
+
+    return characterLocations;
+}
+
 std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
     size_t start_pos = 0;
     while ((start_pos = str.find(from, start_pos)) != std::string::npos) {
@@ -306,6 +315,13 @@ int capturedGroup(char* regexp, char* text) {
     std::string string_regexp = regexp;
     std::string string_text = text;
     std::string reference;
+    vector<int> locationsOpen = findLocation(string_regexp, '(');
+    vector<int> locationsClosed = findLocation(string_regexp, ')');
+    for (int location : locationsOpen) {
+        std::cout << "[captured Group location]: " << location << std::endl;
+    }
+
+
     char* result;
     bool finded = true;
     size_t begin_group;
@@ -340,6 +356,8 @@ int capturedGroup(char* regexp, char* text) {
                 std::cout << "[string_regexp2]: " << string_regexp << std::endl;
             }
             else {
+                int bracesOpen = 1;
+
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
                 length2 = end_group - begin_group;
