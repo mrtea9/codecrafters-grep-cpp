@@ -410,8 +410,8 @@ int capturedGroup(char* regexp, char* text) {
 
                     if (string_regexp[pos_brace] == '\\' && string_regexp[pos_brace + 1] != 'w' && string_regexp[pos_brace + 1] != 'd') {
                         test = string_regexp.substr(start_pos + 1, end_pos - start_pos - 1);
-                        string_regexp.replace(start_pos, 1);
-                        string_regexp.replace(end_pos, 1);
+                        string_regexp.replace(start_pos, 1, "");
+                        string_regexp.replace(end_pos, 1, "");
 
                         std::cout << "[CAPTURED2]: " << test << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
