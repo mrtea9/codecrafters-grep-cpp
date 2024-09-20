@@ -400,10 +400,12 @@ int capturedGroup(char* regexp, char* text) {
                 end_group = string_regexp.find_first_of(')');
                 string_regexp.replace(end_group, 1, "");
 
+                std::cout << "[string_regexp2]: " << string_regexp << std::endl;
                 std::cout << "[reference]: " << reference << std::endl;
 
                 string_regexp = ReplaceAll(string_regexp, reference, result);
 
+                std::cout << "[string_regexp3]: " << string_regexp << std::endl;
 
                 std::cout << "[captured Backreference Group] RegExp: " << string_regexp << std::endl;
             }
