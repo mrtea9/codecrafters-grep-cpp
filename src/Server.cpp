@@ -417,6 +417,7 @@ int capturedGroup(char* regexp, char* text) {
 
                     }
 
+                    string_regexp = ReplaceAll(string_regexp, reference, test);
                     pos_brace++;
                     if (pos_brace == string_regexp.length()) break;
                 }
