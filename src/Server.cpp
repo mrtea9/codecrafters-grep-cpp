@@ -356,22 +356,38 @@ int capturedGroup(char* regexp, char* text) {
                 string_regexp.replace(end_group, 1, "}");
                 std::cout << "[string_regexp2]: " << string_regexp << std::endl;
             } else {
+                std::string test;
+                size_t pos_brace = 0;
+                int openBrace = 0;
+                int closedBrace = 0;
+                size_t start_pos = 0;
+                size_t end_pos = 0;
+                pos_brace = string_regexp.find("(");
+                while (pos_brace != std::string::npos) {
+                    if (string_regexp[pos_brace] == '(') {
+                        openBrace++;
+                    }
 
-                if (string_regexp.find_first_of('{') != std::string::npos) {
-                    begin_group = string_regexp.find_first_of('{');
-                    std::cout << "[string_regexp1]: " << string_regexp << std::endl;
-                    string_regexp.replace(begin_group, 1, "(");
-                    std::cout << "[string_regexp2]: " << string_regexp << std::endl;
+                    if (string_regexp[pos_brace] == ')') {
+                        closedBrace++;
+                    }
+
+                    if (string_regexp[pos_brace] == '(' && openBrace - 1 == closedBrace) {
+                        start_pos == pos;
+                    }
+
+                    if (string_regexp[pos_brace] == ')' && openBrace == closedBrace) {
+                        end_pos = pos_brace;
+
+                        test = string_regexp.substr(start_pos + 1, end_pos - start_pos - 1);
+                        std::cout << "[CAPTURED]: " << test << std::endl;
+                    }
+
+
+
+                    pos_brace++;
+                    if (pos_brace == string_regexp.length()) break;
                 }
-
-                if (reference != reference_count) {
-                    begin_group = string_regexp.find_first_of('(');
-                    std::cout << "[string_regexp1]: " << string_regexp << std::endl;
-                    string_regexp.replace(begin_group, 1, "{");
-                    std::cout << "[string_regexp2]: " << string_regexp << std::endl;
-                    count--;
-                }
-
 
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
