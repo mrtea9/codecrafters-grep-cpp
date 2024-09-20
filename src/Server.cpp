@@ -408,6 +408,8 @@ int capturedGroup(char* regexp, char* text) {
 
                         std::cout << "[CAPTURED1]: " << test << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
+                        closedBrace--;
+                        openBrace--;
                         break;
                     }
 
@@ -418,6 +420,8 @@ int capturedGroup(char* regexp, char* text) {
 
                         std::cout << "[CAPTURED2]: " << test << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
+                        closedBrace--;
+                        openBrace--;
 
                         break;
                     }
