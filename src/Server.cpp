@@ -417,8 +417,6 @@ int capturedGroup(char* regexp, char* text) {
                         std::cout << "[CAPTURED2]: " << test << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
 
-                        string_regexp = ReplaceAll(string_regexp, reference, test);
-                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                         break;
                     }
 
