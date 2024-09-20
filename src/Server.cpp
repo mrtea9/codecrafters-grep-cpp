@@ -372,6 +372,7 @@ int capturedGroup(char* regexp, char* text) {
 
                         std::cout << "[openBrace]: " << openBrace << std::endl;
                         std::cout << "[start_pos]: " << start_pos << std::endl;
+                        std::cout << "[end_pos]: " << end_pos << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                     }
 
@@ -381,6 +382,7 @@ int capturedGroup(char* regexp, char* text) {
 
                         std::cout << std::endl;
                         std::cout << "[closedBrace]: " << closedBrace << std::endl;
+                        std::cout << "[start_pos]: " << start_pos << std::endl;
                         std::cout << "[end_pos]: " << end_pos << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
 
@@ -391,6 +393,7 @@ int capturedGroup(char* regexp, char* text) {
 
                         std::cout << std::endl;
                         std::cout << "[start_pos]: " << start_pos << std::endl;
+                        std::cout << "[end_pos]: " << end_pos << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                     }
 
@@ -399,6 +402,7 @@ int capturedGroup(char* regexp, char* text) {
                         end_pos = pos_brace;
 
                         std::cout << std::endl;
+                        std::cout << "[start_pos]: " << start_pos << std::endl;
                         std::cout << "[end_pos]: " << end_pos << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
 
@@ -418,6 +422,8 @@ int capturedGroup(char* regexp, char* text) {
                         string_regexp.replace(start_pos, 1, "");
                         string_regexp.replace(end_pos - 1, 1, "");
 
+                        std::cout << "[start_pos]: " << start_pos << std::endl;
+                        std::cout << "[end_pos]: " << end_pos << std::endl;
                         std::cout << "[CAPTURED2]: " << test << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                         closedBrace--;
