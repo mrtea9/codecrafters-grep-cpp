@@ -390,7 +390,7 @@ int capturedGroup(char* regexp, char* text) {
                     if (string_regexp[pos_brace] == ')' && openBrace == closedBrace) {
                         end_pos = pos_brace;
                         std::cout << std::endl;
-                        std::cout << "[end_pos]: " << start_pos << std::endl;
+                        std::cout << "[end_pos]: " << end_pos << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
 
                         test = string_regexp.substr(start_pos + 1, end_pos - start_pos - 1);
