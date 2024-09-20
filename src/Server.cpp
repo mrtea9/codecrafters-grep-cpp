@@ -386,7 +386,7 @@ int capturedGroup(char* regexp, char* text) {
                     end_group2 = string_text.find_first_of(std::string(result));
                     std::cout << "[end_group2]: " << end_group2 << std::endl;
                     string_text.replace(end_group2, std::string(result).length(), "");
-                    std::cout << "[string_text]: " << string_text << std::endl;
+                    std::cout << "[string_text2]: " << string_text << std::endl;
                 }
                 else {
                     result = captured_array;
@@ -409,8 +409,8 @@ int capturedGroup(char* regexp, char* text) {
         count++;
     }
 
-    //string_regexp = ReplaceAll(string_regexp, "{", "(");
-   // string_regexp = ReplaceAll(string_regexp, "}", ")");
+    string_regexp = ReplaceAll(string_regexp, "{", "(");
+    string_regexp = ReplaceAll(string_regexp, "}", ")");
 
     int length = string_regexp.length();
     char* result_regexp = new char[length + 1];
