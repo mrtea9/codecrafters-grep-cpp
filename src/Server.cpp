@@ -403,8 +403,14 @@ int capturedGroup(char* regexp, char* text) {
 
                         test = string_regexp.substr(start_pos + 1, end_pos - start_pos - 1);
 
-                        std::cout << "[CAPTURED]: " << test << std::endl;
+                        std::cout << "[CAPTURED1]: " << test << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
+                    }
+
+                    if (string_regexp[pos_brace] == '\\') {
+                        test = string_regexp.substr(start_pos + 1, end_pos - start_pos - 1);
+
+                        std::cout << "[CAPTURED2]: " << test << std::endl;
                     }
 
                     pos_brace++;
