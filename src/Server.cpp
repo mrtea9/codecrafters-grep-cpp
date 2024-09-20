@@ -346,7 +346,7 @@ int capturedGroup(char* regexp, char* text) {
                 if (reference != reference_count) {
                     begin_group = string_regexp.find_first_of('(');
                     std::cout << "[string_regexp1]: " << string_regexp << std::endl;
-                    string_regexp = string_regexp.substr(begin_group + 1, string_regexp.length());
+                    string_regexp = string_regexp.substr(begin_group + 1, string_regexp.length() - 1);
                     std::cout << "[string_regexp2]: " << string_regexp << std::endl;
                 }
 
