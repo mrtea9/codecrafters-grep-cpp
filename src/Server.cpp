@@ -394,7 +394,7 @@ int capturedGroup(char* regexp, char* text) {
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                     }
 
-                    if (string_regexp[pos_brace] == ')' && (openBrace == closedBrace || openBrace - 1 == closedBrace)) {
+                    if (string_regexp[pos_brace] == ')' && (openBrace == closedBrace)) {
                         start_pos = string_regexp.find_first_of('(');
                         end_pos = pos_brace;
 
