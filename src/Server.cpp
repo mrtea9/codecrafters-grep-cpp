@@ -406,6 +406,7 @@ int capturedGroup(char* regexp, char* text) {
 
                         std::cout << "[CAPTURED1]: " << test << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
+                        break;
                     }
 
                     if (string_regexp[pos_brace] == '\\' && string_regexp[pos_brace + 1] != 'w' && string_regexp[pos_brace + 1] != 'd') {
@@ -419,6 +420,9 @@ int capturedGroup(char* regexp, char* text) {
                         string_regexp = ReplaceAll(string_regexp, reference, test);
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                         count--;
+                        openBrace--;
+                        closedBrace--;
+                        break;
                     }
 
                     pos_brace++;
@@ -429,7 +433,12 @@ int capturedGroup(char* regexp, char* text) {
                 end_group = string_regexp.find_first_of(')');
                 length2 = end_group - begin_group;
 
-                captured = string_regexp.substr(begin_group + 1, length2 - 1);
+                if (test != "") {
+                    captured = test;
+                }
+                else {
+                    captured = string_regexp.substr(begin_group + 1, length2 - 1);
+                }
                 std::cout << "[captured]: " << captured << std::endl;
 
                 int len = captured.length();
