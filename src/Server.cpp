@@ -341,10 +341,15 @@ int capturedGroup(char* regexp, char* text) {
                 end_group = string_regexp.find_first_of(')');
                 string_regexp.replace(end_group, 1, "}");
                 std::cout << "[string_regexp2]: " << string_regexp << std::endl;
-            } else if (reference != reference_count) {
-                std::cout << "este" << std::endl;
-                break;
             } else {
+
+                if (reference != reference_count) {
+                    begin_group = string_regexp.find_first_of('(');
+                    std::cout << "[string_regexp1]: " << string_regexp << std::endl;
+                    string_regexp = string_regexp.substr(begin_group, string_regexp.length());
+                    std::cout << "[string_regexp2]: " << string_regexp << std::endl;
+                }
+
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
                 length2 = end_group - begin_group;
