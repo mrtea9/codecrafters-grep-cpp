@@ -344,6 +344,13 @@ int capturedGroup(char* regexp, char* text) {
                 std::cout << "[string_regexp2]: " << string_regexp << std::endl;
             } else {
 
+                if (string_regexp.find_first_of('{') != std::string::npos) {
+                    begin_group = string_regexp.find_first_of('{');
+                    std::cout << "[string_regexp1]: " << string_regexp << std::endl;
+                    string_regexp.replace(begin_group, 1, "(");
+                    std::cout << "[string_regexp2]: " << string_regexp << std::endl;
+                }
+
                 if (reference != reference_count) {
                     begin_group = string_regexp.find_first_of('(');
                     std::cout << "[string_regexp1]: " << string_regexp << std::endl;
@@ -352,12 +359,6 @@ int capturedGroup(char* regexp, char* text) {
                     count--;
                 }
 
-                if (string_regexp.find_first_of('{') != std::string::npos) {
-                    begin_group = string_regexp.find_first_of('{');
-                    std::cout << "[string_regexp1]: " << string_regexp << std::endl;
-                    string_regexp.replace(begin_group, 1, "(");
-                    std::cout << "[string_regexp2]: " << string_regexp << std::endl;
-                }
 
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
