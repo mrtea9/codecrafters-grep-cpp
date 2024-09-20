@@ -247,7 +247,6 @@ char* returnCaptured(char* regexp, char* text) {
 
     if (regexp[0] == '\\' && regexp[1] == 'w') {
         if (regexp[0] == '\\' && regexp[1] == 'w') {
-            test += *text;
             regexp += 2;
         }
         else {
