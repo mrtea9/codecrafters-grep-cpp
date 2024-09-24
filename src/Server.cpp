@@ -37,8 +37,8 @@ static bool match_pattern(const std::string& input_line, const std::string& patt
         isMatch = input_line.find_first_of(chars_to_match) != std::string::npos;
         return negate ? !isMatch : isMatch;
     }
-    else if (match(regexp, text) == 1) {
-        return true;
+   // else if (match(regexp, text) == 1) {
+   //     return true;
     }
     else {
         throw std::runtime_error("Unhandled pattern " + pattern);
