@@ -7,6 +7,34 @@
 #include <vector>
 #include <algorithm>
 
+int matchHere(char* regexp, char* text);
+
+int matchStar(int c, char* regexp, char* text) {
+    do {
+        if (matchHere(regexp, text)) return 1;
+    } while (*text != '\0' && (*text++ == c || c == '.'));
+
+    return 0;
+}
+
+int matchHere(char* regexp, char* text) {
+
+    if (regexp[0] == '\0') return 1;
+    if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
+    if (regexp[1] == '*') return matchStar(regexp[0], regexp + 2, text);
+    if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchHere(regexp + 1, text + 1);
+
+    return 0;
+}
+
+static int match(char* regexp, char* text) {
+    if (regexp[0] == '^') return matchHere(regexp + 1, text);
+    do {
+        if (matchHere(regexp, text)) return 1;
+    } while (*text++ != '\0');
+    return 0;
+}
+
 
 static bool match_pattern(const std::string& input_line, const std::string& pattern) {
     std::cout << "pattern : " << pattern << std::endl;
@@ -37,9 +65,9 @@ static bool match_pattern(const std::string& input_line, const std::string& patt
         isMatch = input_line.find_first_of(chars_to_match) != std::string::npos;
         return negate ? !isMatch : isMatch;
     }
-   // else if (match(regexp, text) == 1) {
-   //     return true;
-   // }
+    else if (match(regexp, text) == 1) {
+        return true;
+    }
     else {
         throw std::runtime_error("Unhandled pattern " + pattern);
     }
