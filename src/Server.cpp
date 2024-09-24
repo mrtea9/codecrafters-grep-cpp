@@ -20,12 +20,14 @@ std::string ReplaceAll(std::string str, const std::string& from, const std::stri
 
 int matchBackreference(char reference, char* regexp, char* orig_regexp) {
     int len = 0;
+    size_t start_pos = 0;
     std::string string_regexp = regexp;
     std::string string_orig = orig_regexp;
     std::string captured;
     std::string reference_full = "\\" + std::string() + reference;
     std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
-
+    start_pos = string_orig.find(string_regexp);
+    
     do {
         std::cout << std::endl;
         std::cout << "[matchBackreference RegExp]: " << regexp << std::endl;
@@ -46,7 +48,7 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp) {
 
     string_orig = ReplaceAll(string_orig, reference_full, captured);
 
-    std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
+    std::cout << "[matchBackreference start_pos]: " << start_pos << std::endl;
 
     return 0;
 }
