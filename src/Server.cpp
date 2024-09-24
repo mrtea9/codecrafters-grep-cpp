@@ -37,6 +37,10 @@ int matchHere(char* regexp, char* text) {
 static int match(char* regexp, char* text) {
     if (regexp[0] == '^') return matchHere(regexp + 1, text);
     do {
+        std::cout << std::endl;
+        std::cout << "[Text]: " << text << std::endl;
+        std::cout << "[RegExp]: " << regexp << std::endl;
+
         if (matchHere(regexp, text)) return 1;
     } while (*text++ != '\0');
     return 0;
