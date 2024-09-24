@@ -36,7 +36,7 @@ int matchBackreference(char reference, char* regexp, char* text) {
         std::cout << "[matchBackreference RegExp2]: " << regexp << std::endl;
         std::cout << "[matchBackreference Reference2]: " << reference << std::endl;
 
-    } while (*regexp != '\0' && (*regexp++ != '\\' && regexp[1] == reference));
+    } while (*regexp != '\0' && (*regexp++ != '\\' && regexp[1] != reference));
 
     return 0;
 }
