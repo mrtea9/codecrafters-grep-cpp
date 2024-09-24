@@ -371,6 +371,7 @@ int capturedGroup(char* regexp, char* text) {
                 while (pos_brace != std::string::npos) {
 
                     if (string_regexp[pos_brace] == ')') {
+                        std::cout << "[string_regexp brace1]: " << string_regexp << std::endl;
                         pos_brace = string_regexp.find("(");
                         start_pos = pos_brace;
                         end_pos = string_regexp.find_last_of(")");
@@ -378,7 +379,7 @@ int capturedGroup(char* regexp, char* text) {
                         string_regexp.replace(start_pos, 1, "");
                         string_regexp.replace(end_pos - 1, 1, "");
                         std::cout << "[CAPTURED2]: " << test << std::endl;
-                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
+                        std::cout << "[string_regexp brace2]: " << string_regexp << std::endl;
                     }
 
                     pos_brace++;
