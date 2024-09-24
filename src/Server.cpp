@@ -305,6 +305,7 @@ char* returnCaptured(char* regexp, char* text) {
 int capturedGroup(char* regexp, char* text) {
     std::string captured;
     std::string string_regexp = regexp;
+    std::string copy_regexp = regexp;
     std::string string_text = text;
     std::string reference;
     std::string reference_count;
@@ -369,6 +370,21 @@ int capturedGroup(char* regexp, char* text) {
                 pos_brace = string_regexp.find("(");
 
                 while (pos_brace != std::string::npos) {
+
+                    if (string_regexp[pos_brace] == '(') {
+                        openBrace++;
+                        if (openBrace != closedBrace) continue;
+                        start_pos = pos_brace;
+                        std::cout << "[start_pos]: " << start_pos << std::endl;
+                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
+                    }
+
+                    if (string_regexp[pos_brace] == ')') {
+                        closedBrace++;
+                        if (closedBrace == openBrace) end_pos = pos_brace;
+                        std::cout << "[end_pos]: " << end_pos << std::endl;
+                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
+                    }
 
                     if (string_regexp[pos_brace] == ')') {
                         std::cout << "[string_regexp brace1]: " << string_regexp << std::endl;
