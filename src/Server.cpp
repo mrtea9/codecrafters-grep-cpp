@@ -405,7 +405,7 @@ int capturedGroup(char* regexp, char* text) {
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
 
                         captured_groups.push_back(test);
-                        continue;
+                        break;
                     }
 
                     if (string_regexp[pos_brace] == '\\' && string_regexp[pos_brace + 1] != 'w' && string_regexp[pos_brace + 1] != 'd') {
@@ -421,7 +421,7 @@ int capturedGroup(char* regexp, char* text) {
                         openBrace--;
 
                         captured_groups.push_back(test);
-                        continue;
+                        break;
                     }
 
                     pos_brace++;
