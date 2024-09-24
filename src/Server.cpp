@@ -10,7 +10,13 @@
 int matchHere(char* regexp, char* text);
 
 int matchParentheses(char* regexp, char* text) {
-    std::cout << "Matched" << std::endl;
+    int in_paren = 0;
+
+    std::cout << std::endl;
+    std::cout << "[matchParentheses Text]: " << text << std::endl;
+    std::cout << "[matchParentheses RegExp]: " << regexp << std::endl;
+
+    if (regexp[0] == '(') return matchParentheses(regexp + 1, text);
 
     return 0;
 }
@@ -29,7 +35,7 @@ int matchHere(char* regexp, char* text) {
     if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
     if (regexp[1] == '*') return matchStar(regexp[0], regexp + 2, text);
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchHere(regexp + 1, text + 1);
-    if (regexp[0] == '(') return matchParentheses(regexp, text);
+    if (regexp[0] == '(') return matchParentheses(regexp + 1, text);
 
     return 0;
 }
