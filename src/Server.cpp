@@ -9,17 +9,19 @@
 
 int matchHere(char* regexp, char* text);
 
-int matchBackreference(char* regexp, char* text) {
+int matchBackreference(char reference, char* regexp, char* text) {
 
     std::cout << std::endl;
     std::cout << "[matchBackreference Text]: " << text << std::endl;
     std::cout << "[matchBackreference RegExp]: " << regexp << std::endl;
+    std::cout << "[matchBackreference Reference]: " << regexp << std::endl;
 
     return 0;
 }
 
 int matchParentheses(char* regexp, char* text) {
     int in_paren = 0;
+    char* orig_regexp = regexp;
 
     do {
         std::cout << std::endl;
@@ -28,7 +30,7 @@ int matchParentheses(char* regexp, char* text) {
 
         if (regexp[0] == '(') return matchParentheses(regexp + 1, text);
 
-        if (regexp[0] == '\\') return matchBackreference(regexp, text);
+        if (regexp[0] == '\\') return matchBackreference(regexp[1], orig_regexp, text);
 
     } while (*regexp != '\0' && (*regexp++ != '\\'));
 
