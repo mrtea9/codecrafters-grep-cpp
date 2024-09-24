@@ -30,7 +30,7 @@ int matchParentheses(char* regexp, char* text) {
 
         if (regexp[0] == '\\') return matchBackreference(regexp, text);
 
-    } while (*regexp != '\0' && (*regexp++ != ')'));
+    } while (*regexp != '\0' && (*regexp++ != '\\'));
 
     return 0;
 }
