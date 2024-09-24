@@ -368,21 +368,29 @@ int capturedGroup(char* regexp, char* text) {
                 size_t start_pos = 0;
                 size_t end_pos = 0;
                 pos_brace = string_regexp.find("(");
+                while (pos_brace != std::string::npos) {
+                    if (string_regexp[pos_brace] == ')') {
+                        closedBrace++;
+                    }
+                    pos_brace++;
+                    if (pos_brace == string_regexp.length()) break;
+                }
 
+                pos_brace = string_regexp.find("(");
                 while (pos_brace != std::string::npos) {
 
                     if (string_regexp[pos_brace] == '(') {
                         openBrace++;
-                        if (openBrace == closedBrace + reference_int) start_pos = pos_brace;
+                        if (openBrace == reference_int) start_pos = pos_brace;
                         std::cout << "[start_pos]: " << start_pos << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                     }
 
                     if (string_regexp[pos_brace] == ')') {
-                        closedBrace++;
-                        if (closedBrace == openBrace) end_pos = pos_brace;
+                        if (reference_int - closedBrace == 0) end_pos = pos_brace;
                         std::cout << "[end_pos]: " << end_pos << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
+                        closedBrace--;
                     }
 
                     //if (string_regexp[pos_brace] == ')') {
