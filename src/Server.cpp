@@ -33,7 +33,7 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp) {
         
     } while (*regexp != '\0' && (*regexp++ != ')'));
 
-    captured = std::string(regexp).substr(0, len - 1);
+    captured = string_regexp.substr(0, len - 1);
 
     std::cout << "[matchBackreference orig_regexp]: " << string_regexp << std::endl;
     std::cout << "[matchBackreference len]: " << len - 1 << std::endl;
