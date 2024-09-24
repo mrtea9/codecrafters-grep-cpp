@@ -19,7 +19,6 @@ int matchParentheses(char* regexp, char* text) {
 
         if (regexp[0] == '(') return matchParentheses(regexp + 1, text);
 
-        if (matchHere(regexp, text)) return 1;
     } while (*regexp != '\0' && (*regexp++ != ')'));
 
     return 0;
