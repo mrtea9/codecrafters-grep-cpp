@@ -30,6 +30,14 @@ int matchBackreference(char reference, char* regexp, char* text) {
     std::cout << "[matchBackreference len]: " << len - 1 << std::endl;
     std::cout << "[matchBackreference captured]: " << captured << std::endl;
 
+    do {
+        std::cout << std::endl;
+        std::cout << "[matchBackreference Text2]: " << text << std::endl;
+        std::cout << "[matchBackreference RegExp2]: " << regexp << std::endl;
+        std::cout << "[matchBackreference Reference2]: " << reference << std::endl;
+
+    } while (*regexp != '\0' && (*regexp++ != '\\' && regexp[1] == reference));
+
     return 0;
 }
 
