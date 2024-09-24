@@ -11,8 +11,8 @@ int matchHere(char* regexp, char* text);
 
 int matchBackreference(char reference, char* regexp, char* text) {
     int len = 0;
-    char* orig_regexp = regexp;
-    char* captured;
+    std::string orig_regexp = regexp;
+    std::string captured;
 
     do {
         std::cout << std::endl;
@@ -24,7 +24,7 @@ int matchBackreference(char reference, char* regexp, char* text) {
         
     } while (*regexp != '\0' && (*regexp++ != ')'));
 
-    std::memcpy(captured, &orig_regexp, len);
+    captured = orig_regexp.substr(0, len - 1);
 
     std::cout << "[matchBackreference orig_regexp]: " << orig_regexp << std::endl;
     std::cout << "[matchBackreference len]: " << len - 1 << std::endl;
