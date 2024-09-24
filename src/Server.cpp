@@ -14,7 +14,7 @@ int matchBackreference(char reference, char* regexp, char* text) {
     std::cout << std::endl;
     std::cout << "[matchBackreference Text]: " << text << std::endl;
     std::cout << "[matchBackreference RegExp]: " << regexp << std::endl;
-    std::cout << "[matchBackreference Reference]: " << regexp << std::endl;
+    std::cout << "[matchBackreference Reference]: " << reference << std::endl;
 
     return 0;
 }
