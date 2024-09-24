@@ -373,7 +373,7 @@ int capturedGroup(char* regexp, char* text) {
 
                     if (string_regexp[pos_brace] == '(') {
                         openBrace++;
-                        if (openBrace == closedBrace + 1) start_pos = pos_brace;
+                        if (openBrace == closedBrace + reference_int) start_pos = pos_brace;
                         std::cout << "[start_pos]: " << start_pos << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                     }
