@@ -40,15 +40,18 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp) {
 
     captured = string_regexp.substr(0, len - 1);
 
-    std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
+    std::cout << "[matchBackreference string_orig]: " << string_orig << std::endl;
     std::cout << "[matchBackreference string_regexp]: " << string_regexp << std::endl;
     std::cout << "[matchBackreference len]: " << len - 1 << std::endl;
     std::cout << "[matchBackreference captured]: " << captured << std::endl;
     std::cout << "[matchBackreference Reference_full]: " << reference_full << std::endl;
 
     string_orig = ReplaceAll(string_orig, reference_full, captured);
+    string_orig.replace(start_pos - 1, 1, "");
+    string_orig.replace(start_pos - 1 + len, 1, "");
 
     std::cout << "[matchBackreference start_pos]: " << start_pos << std::endl;
+    std::cout << "[matchBackreference string_orig]: " << string_orig << std::endl;
 
     return 0;
 }
