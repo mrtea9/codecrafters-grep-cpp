@@ -12,11 +12,15 @@ int matchHere(char* regexp, char* text);
 int matchParentheses(char* regexp, char* text) {
     int in_paren = 0;
 
-    std::cout << std::endl;
-    std::cout << "[matchParentheses Text]: " << text << std::endl;
-    std::cout << "[matchParentheses RegExp]: " << regexp << std::endl;
+    do {
+        std::cout << std::endl;
+        std::cout << "[matchParentheses Text]: " << text << std::endl;
+        std::cout << "[matchParentheses RegExp]: " << regexp << std::endl;
 
-    if (regexp[0] == '(') return matchParentheses(regexp + 1, text);
+        if (regexp[0] == '(') return matchParentheses(regexp + 1, text);
+
+        if (matchHere(regexp, text)) return 1;
+    } while (*text != '\0' && (*text++ != ')'));
 
     return 0;
 }
