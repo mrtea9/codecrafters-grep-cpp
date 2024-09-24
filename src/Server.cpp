@@ -373,8 +373,7 @@ int capturedGroup(char* regexp, char* text) {
 
                     if (string_regexp[pos_brace] == '(') {
                         openBrace++;
-                        if (openBrace != closedBrace) continue;
-                        start_pos = pos_brace;
+                        if (openBrace == closedBrace + 1) start_pos = pos_brace;
                         std::cout << "[start_pos]: " << start_pos << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                     }
@@ -386,17 +385,17 @@ int capturedGroup(char* regexp, char* text) {
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                     }
 
-                    if (string_regexp[pos_brace] == ')') {
-                        std::cout << "[string_regexp brace1]: " << string_regexp << std::endl;
-                        pos_brace = string_regexp.find("(");
-                        start_pos = pos_brace;
-                        end_pos = string_regexp.find_last_of(")");
-                        test = string_regexp.substr(start_pos + 1, end_pos - start_pos - 1);
-                        string_regexp.replace(start_pos, 1, "");
-                        string_regexp.replace(end_pos - 1, 1, "");
-                        std::cout << "[CAPTURED2]: " << test << std::endl;
-                        std::cout << "[string_regexp brace2]: " << string_regexp << std::endl;
-                    }
+                    //if (string_regexp[pos_brace] == ')') {
+                    //    std::cout << "[string_regexp brace1]: " << string_regexp << std::endl;
+                    //    pos_brace = string_regexp.find("(");
+                    //    start_pos = pos_brace;
+                    //    end_pos = string_regexp.find_last_of(")");
+                    //    test = string_regexp.substr(start_pos + 1, end_pos - start_pos - 1);
+                    //    string_regexp.replace(start_pos, 1, "");
+                    //    string_regexp.replace(end_pos - 1, 1, "");
+                    //    std::cout << "[CAPTURED2]: " << test << std::endl;
+                    //    std::cout << "[string_regexp brace2]: " << string_regexp << std::endl;
+                    //}
 
                     pos_brace++;
                     if (pos_brace == string_regexp.length()) break;
