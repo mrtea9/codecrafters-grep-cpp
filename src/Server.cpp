@@ -50,7 +50,6 @@ int matchBackreference(char reference, char* regexp, char* text) {
 
 int matchParentheses(char* regexp, char* orig_regexp) {
     int in_paren = 0;
-    char* orig_regexp = regexp;
 
     do {
         std::cout << std::endl;
