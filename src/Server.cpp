@@ -39,7 +39,7 @@ static bool match_pattern(const std::string& input_line, const std::string& patt
     }
    // else if (match(regexp, text) == 1) {
    //     return true;
-    }
+   // }
     else {
         throw std::runtime_error("Unhandled pattern " + pattern);
     }
