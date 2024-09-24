@@ -385,6 +385,7 @@ int capturedGroup(char* regexp, char* text) {
                         end_pos = pos_brace;
 
                         std::cout << std::endl;
+                        std::cout << "[closedBrace]: " << closedBrace << std::endl;
                         std::cout << "[start_pos]: " << start_pos << std::endl;
                         std::cout << "[end_pos]: " << end_pos << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
