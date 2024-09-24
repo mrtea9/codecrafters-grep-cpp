@@ -18,7 +18,7 @@ std::string ReplaceAll(std::string str, const std::string& from, const std::stri
     return str;
 }
 
-int matchBackreference(char reference, char* regexp, char* text) {
+int matchBackreference(char reference, char* regexp) {
     int len = 0;
     std::string orig_regexp = regexp;
     std::string captured;
@@ -26,7 +26,6 @@ int matchBackreference(char reference, char* regexp, char* text) {
 
     do {
         std::cout << std::endl;
-        std::cout << "[matchBackreference Text]: " << text << std::endl;
         std::cout << "[matchBackreference RegExp]: " << regexp << std::endl;
         std::cout << "[matchBackreference Reference]: " << reference << std::endl;
         
@@ -58,7 +57,7 @@ int matchParentheses(char* regexp, char* orig_regexp) {
 
         if (regexp[0] == '(') return matchParentheses(regexp + 1, orig_regexp);
 
-        if (regexp[0] == '\\') return matchBackreference(regexp[1], orig_regexp, text);
+        if (regexp[0] == '\\') return matchBackreference(regexp[1], orig_regexp);
 
     } while (*regexp != '\0' && (*regexp++ != '\\'));
 
