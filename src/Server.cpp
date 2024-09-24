@@ -24,11 +24,13 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp) {
     std::string string_orig = orig_regexp;
     std::string captured;
     std::string reference_full = "\\" + std::string() + reference;
+    std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
 
     do {
         std::cout << std::endl;
         std::cout << "[matchBackreference RegExp]: " << regexp << std::endl;
         std::cout << "[matchBackreference Reference]: " << reference << std::endl;
+        std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
         
         len++;
         
@@ -36,6 +38,7 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp) {
 
     captured = string_regexp.substr(0, len - 1);
 
+    std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
     std::cout << "[matchBackreference string_regexp]: " << string_regexp << std::endl;
     std::cout << "[matchBackreference len]: " << len - 1 << std::endl;
     std::cout << "[matchBackreference captured]: " << captured << std::endl;
