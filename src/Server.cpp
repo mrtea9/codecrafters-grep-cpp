@@ -22,7 +22,7 @@ int matchBackreference(char reference, char* regexp, char* text) {
     int len = 0;
     std::string orig_regexp = regexp;
     std::string captured;
-    std::string reference_full = "\\" + reference;
+    std::string reference_full = "\\" + std::to_string(reference);
 
     do {
         std::cout << std::endl;
