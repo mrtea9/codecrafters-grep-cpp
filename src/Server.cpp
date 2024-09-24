@@ -309,6 +309,7 @@ int capturedGroup(char* regexp, char* text) {
     std::string string_text = text;
     std::string reference;
     std::string reference_count;
+    std::vector<std::string> captured_groups;
     int reference_int;
     bool nested = false;
     char* result;
@@ -380,22 +381,6 @@ int capturedGroup(char* regexp, char* text) {
                 while (pos_brace != std::string::npos) {
 
                     if (string_regexp[pos_brace] == '(') {
-                        openBrace++;
-                        start_pos = pos_brace;
-                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
-                    }
-
-                    /*if (string_regexp[pos_brace] == ')') {
-                        closedBrace++;
-                        end_pos = pos_brace;
-                        std::cout << std::endl;
-                        std::cout << "[closedBrace]: " << closedBrace << std::endl;
-                        std::cout << "[start_pos]: " << start_pos << std::endl;
-                        std::cout << "[end_pos]: " << end_pos << std::endl;
-                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
-                    }*/
-
-                    if (string_regexp[pos_brace] == '(') {
                         start_pos = pos_brace;
 
                         std::cout << std::endl;
@@ -405,8 +390,6 @@ int capturedGroup(char* regexp, char* text) {
                     }
 
                     if (string_regexp[pos_brace] == ')') {
-                        closedBrace++;
-                        //start_pos = string_regexp.find_first_of('(');
                         end_pos = pos_brace;
 
                         std::cout << std::endl;
@@ -420,8 +403,8 @@ int capturedGroup(char* regexp, char* text) {
 
                         std::cout << "[CAPTURED1]: " << test << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
-                        closedBrace--;
-                        openBrace--;
+
+                        captured_groups.push_back(test);
                         break;
                     }
 
@@ -437,12 +420,15 @@ int capturedGroup(char* regexp, char* text) {
                         closedBrace--;
                         openBrace--;
 
+                        captured_groups.push_back(test);
                         break;
                     }
 
                     pos_brace++;
                     if (pos_brace == string_regexp.length()) break;
                 }
+
+                for (int i = 0; i < captured_groups.size(); i++) std::cout << captured_groups[i] << "\n";
 
                 begin_group = string_regexp.find_first_of('(');
                 end_group = string_regexp.find_first_of(')');
