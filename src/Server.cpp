@@ -381,26 +381,62 @@ int capturedGroup(char* regexp, char* text) {
 
                     if (string_regexp[pos_brace] == '(') {
                         openBrace++;
-                        if (openBrace == reference_int) start_pos = pos_brace;
-                        std::cout << "[start_pos]: " << start_pos << std::endl;
+                        start_pos = pos_brace;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                     }
 
-                    if (string_regexp[pos_brace] == ')') {
-                        if (reference_int - closedBrace == 0) end_pos = pos_brace;
+                    /*if (string_regexp[pos_brace] == ')') {
+                        closedBrace++;
+                        end_pos = pos_brace;
+                        std::cout << std::endl;
+                        std::cout << "[closedBrace]: " << closedBrace << std::endl;
+                        std::cout << "[start_pos]: " << start_pos << std::endl;
                         std::cout << "[end_pos]: " << end_pos << std::endl;
                         std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
-                        closedBrace--;
-                        openBrace--;
+                    }*/
+
+                    if (string_regexp[pos_brace] == '(') {
+                        start_pos = pos_brace;
+
+                        std::cout << std::endl;
+                        std::cout << "[start_pos]: " << start_pos << std::endl;
+                        std::cout << "[end_pos]: " << end_pos << std::endl;
+                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
                     }
 
                     if (string_regexp[pos_brace] == ')') {
-                        std::cout << "[string_regexp brace1]: " << string_regexp << std::endl;
+                        closedBrace++;
+                        //start_pos = string_regexp.find_first_of('(');
+                        end_pos = pos_brace;
+
+                        std::cout << std::endl;
+                        std::cout << "[start_pos]: " << start_pos << std::endl;
+                        std::cout << "[end_pos]: " << end_pos << std::endl;
+                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
+
                         test = string_regexp.substr(start_pos + 1, end_pos - start_pos - 1);
                         string_regexp.replace(start_pos, 1, "");
                         string_regexp.replace(end_pos - 1, 1, "");
+
+                        std::cout << "[CAPTURED1]: " << test << std::endl;
+                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
+                        closedBrace--;
+                        openBrace--;
+                        break;
+                    }
+
+                    if (string_regexp[pos_brace] == '\\' && string_regexp[pos_brace + 1] != 'w' && string_regexp[pos_brace + 1] != 'd') {
+                        test = string_regexp.substr(start_pos + 1, end_pos - start_pos - 1);
+                        string_regexp.replace(start_pos, 1, "");
+                        string_regexp.replace(end_pos - 1, 1, "");
+
+                        std::cout << "[start_pos]: " << start_pos << std::endl;
+                        std::cout << "[end_pos]: " << end_pos << std::endl;
                         std::cout << "[CAPTURED2]: " << test << std::endl;
-                        std::cout << "[string_regexp brace2]: " << string_regexp << std::endl;
+                        std::cout << "[string_regexp brace]: " << string_regexp << std::endl;
+                        closedBrace--;
+                        openBrace--;
+
                         break;
                     }
 
