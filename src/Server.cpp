@@ -10,11 +10,19 @@
 int matchHere(char* regexp, char* text);
 
 int matchBackreference(char reference, char* regexp, char* text) {
+    int len = 0;
 
-    std::cout << std::endl;
-    std::cout << "[matchBackreference Text]: " << text << std::endl;
-    std::cout << "[matchBackreference RegExp]: " << regexp << std::endl;
-    std::cout << "[matchBackreference Reference]: " << reference << std::endl;
+    do {
+        std::cout << std::endl;
+        std::cout << "[matchBackreference Text]: " << text << std::endl;
+        std::cout << "[matchBackreference RegExp]: " << regexp << std::endl;
+        std::cout << "[matchBackreference Reference]: " << reference << std::endl;
+        
+        len++;
+        
+    } while (*regexp != '\0' && (*regexp++ != ')'));
+
+    std::cout << "[matchBackreference len]: " << len << std::endl;
 
     return 0;
 }
