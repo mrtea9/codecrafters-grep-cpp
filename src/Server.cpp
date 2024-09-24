@@ -9,6 +9,15 @@
 
 int matchHere(char* regexp, char* text);
 
+std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
+    size_t start_pos = 0;
+    while ((start_pos = str.find(from, start_pos)) != std::string::npos) {
+        str.replace(start_pos, from.length(), to);
+        start_pos += to.length();
+    }
+    return str;
+}
+
 int matchBackreference(char reference, char* regexp, char* text) {
     int len = 0;
     std::string orig_regexp = regexp;
@@ -30,13 +39,9 @@ int matchBackreference(char reference, char* regexp, char* text) {
     std::cout << "[matchBackreference len]: " << len - 1 << std::endl;
     std::cout << "[matchBackreference captured]: " << captured << std::endl;
 
-    do {
-        std::cout << std::endl;
-        std::cout << "[matchBackreference Text2]: " << text << std::endl;
-        std::cout << "[matchBackreference RegExp2]: " << regexp << std::endl;
-        std::cout << "[matchBackreference Reference2]: " << reference << std::endl;
+    orig_regexp = ReplaceAll(orig_regexp, "\\" + reference, captured);
 
-    } while (*regexp != '\0' && (*regexp++ != '\\' && regexp[1] != reference));
+    std::cout << "[matchBackreference orig_regexp2]: " << orig_regexp << std::endl;
 
     return 0;
 }
