@@ -337,6 +337,7 @@ int capturedGroup(char* regexp, char* text) {
         finded = string_regexp.find(reference) != std::string::npos;
         reference_int = int(reference[1]);
         std::cout << "[captured Group reference_int]: " << reference_int << std::endl;
+        std::cout << "[captured Group reference[1]]: " << reference[1] << std::endl;
         std::cout << "[captured Group reference2]: " << reference << std::endl;
         std::cout << "[captured Group reference_count2]: " << reference_count << std::endl;
         std::cout << "[captured Group finded2]: " << finded << std::endl;
