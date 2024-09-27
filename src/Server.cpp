@@ -93,8 +93,9 @@ int matchOptional(char c, char* regexp, char* text) {
 
 int matchPlus(char c, char* regexp, char* text) {
     do {
-        std::cout << "[Plus] Text: " << text << std::endl;
-        std::cout << "[Plus] RegExp: " << regexp << std::endl;
+        std::cout << "[Plus Text]: " << text << std::endl;
+        std::cout << "[Plus RegExp]: " << regexp << std::endl;
+        std::cout << "[Plus C]: " << c << std::endl;
 
         if (c == *text) return matchHere(regexp, text + 1);
     } while (*text++ != '\0');
