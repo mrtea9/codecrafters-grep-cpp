@@ -132,7 +132,7 @@ char* captureDigitLetter(char* regexp, char* text) {
                 }
                 capturing += *text;
             }
-        } while (*text++ != '\0' && isdigit(*text));
+        } while (*text++ != '\0');
 
         std::cout << "[captureDigitLetter Digit+] Text: " << text << std::endl;
         std::cout << "[captureDigitLetter Digit+] RegExp: " << regexp << std::endl;
