@@ -38,6 +38,9 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp) {
 
         len++;
 
+        if (regexp[0] == '(') openBrackets++;
+        if (regexp[0] == ')') closedBrackets++;
+
         if (openBrackets == closedBrackets) break;
         
     } while (*regexp != '\0');
