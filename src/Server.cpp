@@ -180,7 +180,7 @@ char* captureDigitLetter(char* regexp, char* text) {
             }
         } while (*text++ != '\0');
 
-        capturing += *text;
+        //capturing += *text;
 
         std::cout << "[captureDigitLetter Digit+] Text: " << text << std::endl;
         std::cout << "[captureDigitLetter Digit+] RegExp: " << regexp << std::endl;
