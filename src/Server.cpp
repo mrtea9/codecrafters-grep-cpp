@@ -207,7 +207,7 @@ char* captureDigitLetter(char* regexp, char* text) {
             if (regexp[0] == '\0') break;
 
             if (regexp[2] == '+' && isalpha(*text)) {
-                *regexp += 3;
+                regexp += 3;
 
                 do {
                     std::cout << "[captureDigitLetter Letter +] Text: " << text << std::endl;
