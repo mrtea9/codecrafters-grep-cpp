@@ -203,23 +203,43 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
     std::string string_orig = orig_regexp;
     std::string captured;
     std::string reference_full = "\\" + std::string() + reference;
-    std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
     start_pos = string_orig.find(string_regexp);
-    
-    do {
-        std::cout << std::endl;
-        std::cout << "[matchBackreference RegExp]: " << regexp << std::endl;
-        std::cout << "[matchBackreference Reference]: " << reference_full << std::endl;
-        std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
 
-        len++;
+    if (reference == '1') {
+        start_pos = string_orig.find('(');
+        openBrackets = 0;
+        do {
+            std::cout << std::endl;
+            std::cout << "[matchBackreference RegExp]: " << orig_regexp << std::endl;
+            std::cout << "[matchBackreference Reference]: " << reference_full << std::endl;
+            std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
 
-        if (regexp[0] == '(') openBrackets++;
-        if (regexp[0] == ')') closedBrackets++;
+            len++;
 
-        if (openBrackets == closedBrackets) break;
-        
-    } while (*regexp++ != '\0');
+            if (orig_regexp[0] == '(') openBrackets++;
+            if (orig_regexp[0] == ')') closedBrackets++;
+
+            if (openBrackets == closedBrackets) break;
+
+        } while (*orig_regexp++ != '\0');
+    }
+    else 
+    {
+        do {
+            std::cout << std::endl;
+            std::cout << "[matchBackreference RegExp]: " << regexp << std::endl;
+            std::cout << "[matchBackreference Reference]: " << reference_full << std::endl;
+            std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
+
+            len++;
+
+            if (regexp[0] == '(') openBrackets++;
+            if (regexp[0] == ')') closedBrackets++;
+
+            if (openBrackets == closedBrackets) break;
+
+        } while (*regexp++ != '\0');
+    }
 
     captured = string_regexp.substr(0, len - 1);
 
