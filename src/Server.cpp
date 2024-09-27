@@ -28,6 +28,7 @@ std::string ReplaceAll(std::string str, const std::string& from, const std::stri
         start_pos += to.length();
     }
     return str;
+
 }
 
 int matchBackreference(char* regexp, char* orig_regexp, char* text) {
