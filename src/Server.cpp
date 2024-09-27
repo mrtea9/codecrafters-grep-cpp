@@ -42,7 +42,7 @@ int matchBackreference(char* regexp, char* orig_regexp, char* text) {
     do {
         std::cout << std::endl;
         std::cout << "[matchBackreference RegExp]: " << regexp << std::endl;
-        std::cout << "[matchBackreference Reference]: " << reference << std::endl;
+        std::cout << "[matchBackreference Reference]: " << reference_full << std::endl;
         std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
 
         len++;
