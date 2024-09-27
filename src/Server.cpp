@@ -190,12 +190,12 @@ char* captureDigitLetter(char* regexp, char* text) {
     }
 
     if (regexp[0] == '\\' && regexp[1] == 'd') {
-        if (regexp[0] == '\\' && regexp[1] == 'd') {
-            regexp += 2;
-        }
-        else {
-            *regexp++;
-        }
+        //if (regexp[0] == '\\' && regexp[1] == 'd') {
+        //    regexp += 2;
+        //}
+        //else {
+        //    *regexp++;
+        //}
 
         do {
             std::cout << "[captureDigitLetter Digit] Text: " << text << std::endl;
@@ -221,7 +221,7 @@ char* captureDigitLetter(char* regexp, char* text) {
 
             }
 
-            if (isdigit(*text)) {
+            if (isdigit(*text) && *regexp != '\0') {
                 if (regexp[0] == '\\' && regexp[1] == 'd') {
                     regexp += 2;
                 }
