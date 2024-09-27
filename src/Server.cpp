@@ -181,9 +181,9 @@ char* captureDigitLetter(char* regexp, char* text) {
 
             //capturing += *text;
 
-            std::cout << "[captureDigitLetter Digit+] Text: " << text << std::endl;
-            std::cout << "[captureDigitLetter Digit+] RegExp: " << regexp << std::endl;
-            std::cout << "[captureDigitLetter Digit+ capturing]: " << capturing << std::endl;
+            std::cout << "[captureDigitLetter Digit2] Text: " << text << std::endl;
+            std::cout << "[captureDigitLetter Digit2] RegExp: " << regexp << std::endl;
+            std::cout << "[captureDigitLetter Digit2 capturing]: " << capturing << std::endl;
             std::cout << std::endl;
         }
 
@@ -228,14 +228,15 @@ char* captureDigitLetter(char* regexp, char* text) {
                 }
                 capturing += *text;
             }
-        } 
-    } while (*text++ != '\0');
-        //capturing += *text;
 
-    std::cout << "[captureDigitLetter Letter2] Text: " << text << std::endl;
-    std::cout << "[captureDigitLetter Letter2] RegExp: " << regexp << std::endl;
-    std::cout << "[captureDigitLetter Letter2 capturing]: " << capturing << std::endl;
-    std::cout << std::endl;
+            std::cout << "[captureDigitLetter Letter2] Text: " << text << std::endl;
+            std::cout << "[captureDigitLetter Letter2] RegExp: " << regexp << std::endl;
+            std::cout << "[captureDigitLetter Letter2 capturing]: " << capturing << std::endl;
+            std::cout << std::endl;
+        } 
+
+    } while (*text++ != '\0' || *regexp != '\0');
+        //capturing += *text;
 
     return toChar(capturing);
 }
