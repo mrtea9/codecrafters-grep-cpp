@@ -79,6 +79,17 @@ int matchLetter(char* regexp, char* text) {
     return 0;
 }
 
+int matchPlus(char c, char* regexp, char* text) {
+    do {
+        std::cout << "[Plus] Text: " << text << std::endl;
+        std::cout << "[Plus] RegExp: " << regexp << std::endl;
+
+        if (c == *text) return matchHere(regexp, text + 1);
+    } while (*text++ != '\0');
+
+    return 0;
+}
+
 int matchPlus(char* chars, char* regexp, char* text) {
 
     do {
@@ -391,6 +402,7 @@ int matchHere(char* regexp, char* text) {
 
     if (regexp[0] == '\0') return 1;
     if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
+    if (regexp[0] == '+') return matchPlus(regexp[0], regexp + 2, text);
     if (regexp[1] == '*') return matchStar(regexp[0], regexp + 2, text);
     if (regexp[0] == '(') return matchParentheses(regexp + 1, regexp, text);
     if (regexp[0] == '[') return matchGroup(regexp, text);
