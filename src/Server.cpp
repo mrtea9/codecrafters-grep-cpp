@@ -82,7 +82,6 @@ int matchParentheses(char* regexp, char* orig_regexp, char* text, int count) {
 
        
         if (regexp[0] == '\\') {
-            count++;
             return matchBackreference(parentheses_regexp, orig_regexp, text, count);
         }
 
