@@ -29,6 +29,55 @@ std::string ReplaceAll(std::string str, const std::string& from, const std::stri
 
 }
 
+int matchDigit(char* regexp, char* text) {
+    do {
+        std::cout << "[Digit] Text: " << text << std::endl;
+        std::cout << "[Digit] RegExp: " << regexp << std::endl;
+
+        if (*regexp == '+' && isdigit(*text)) {
+            *regexp++;
+
+            do {
+                *text++;
+
+                std::cout << "[Digit +] Text: " << text << std::endl;
+                std::cout << "[Digit +] RegExp: " << regexp << std::endl;
+
+            } while (isdigit(*text));
+
+            return matchHere(regexp, text);
+        }
+
+        if (isdigit(*text)) return matchHere(regexp, text + 1);
+    } while (*text++ != '\0');
+
+    return 0;
+}
+
+int matchLetter(char* regexp, char* text) {
+    do {
+        std::cout << "[Letter] Text: " << text << std::endl;
+        std::cout << "[Letter] RegExp: " << regexp << std::endl;
+
+        if (*regexp == '+' && isalpha(*text)) {
+            *regexp++;
+
+            do {
+                *text++;
+
+                std::cout << "[Letter +] Text: " << text << std::endl;
+                std::cout << "[Letter +] RegExp: " << regexp << std::endl;
+
+            } while (isalpha(*text));
+
+            return matchHere(regexp, text);
+        }
+
+        if (isalpha(*text)) return matchHere(regexp, text + 1);
+    } while (*text++ != '\0');
+    return 0;
+}
+
 char* captureDigitLetter(char* regexp, char* text) {
     std::string capturing = "";
 
@@ -248,6 +297,8 @@ int matchHere(char* regexp, char* text) {
     if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
     if (regexp[1] == '*') return matchStar(regexp[0], regexp + 2, text);
     if (regexp[0] == '(') return matchParentheses(regexp + 1, regexp, text);
+    if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
+    if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
 
 
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchHere(regexp + 1, text + 1);
