@@ -181,7 +181,7 @@ char* captureDigitLetter(char* regexp, char* text) {
             }
         } while (*text++ != '\0' && isalpha(*text));
 
-        capturing += *text;
+        //capturing += *text;
 
         std::cout << "[captureDigitLetter Letter2] Text: " << text << std::endl;
         std::cout << "[captureDigitLetter Letter2] RegExp: " << regexp << std::endl;
