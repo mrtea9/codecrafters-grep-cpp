@@ -159,15 +159,14 @@ char* captureDigitLetter(char* regexp, char* text) {
                 *regexp++;
 
                 do {
-                    capturing += *text++;
-
                     std::cout << "[captureDigitLetter Letter +] Text: " << text << std::endl;
                     std::cout << "[captureDigitLetter Letter +] RegExp: " << regexp << std::endl;
                     std::cout << "[captureDigitLetter Letter + capturing]: " << capturing << std::endl;
                     std::cout << std::endl;
 
+                    capturing += *text++;
 
-                } while (isalpha(*text));
+                } while (isalpha(*text) && regexp != '\0');
 
             }
 
