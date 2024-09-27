@@ -88,7 +88,7 @@ int matchParentheses(char* regexp, char* orig_regexp, char* text) {
 
         if (regexp[0] == '\\' && isdigit(regexp[1])) return matchBackreference(regexp[1], parentheses_regexp, orig_regexp, text);
 
-    } while (*regexp != '\0' && (*regexp++ != '\\'));
+    } while (*regexp != '\0');
 
     return 0;
 }
