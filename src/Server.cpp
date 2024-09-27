@@ -88,7 +88,8 @@ int matchParentheses(char* regexp, char* orig_regexp, char* text) {
         std::cout << "[matchParentheses orig_regexp]: " << orig_regexp << std::endl;
         std::cout << "[matchParentheses RegExp]: " << regexp << std::endl;
 
-       
+        if (regexp[0] == '(') return matchParentheses(regexp + 1, orig_regexp, text);
+
         if (regexp[0] == '\\') {
             return matchBackreference(parentheses_regexp, orig_regexp, text);
         }
