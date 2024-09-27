@@ -154,7 +154,7 @@ char* captureDigitLetter(char* regexp, char* text) {
 
             if (regexp[0] == '\0') break;
 
-            if (*regexp == '+' && isdigit(*text)) {
+            if (regexp[2] == '+' && isdigit(*text)) {
                 *regexp++;
 
                 do {
@@ -205,7 +205,7 @@ char* captureDigitLetter(char* regexp, char* text) {
 
             if (regexp[0] == '\0') break;
 
-            if (*regexp == '+' && isalpha(*text)) {
+            if (regexp[2] == '+' && isalpha(*text)) {
                 *regexp++;
 
                 do {
@@ -236,8 +236,8 @@ char* captureDigitLetter(char* regexp, char* text) {
             std::cout << std::endl;
         } 
 
-        if (regexp[0] == *text) {
-            capturing += *text;
+        if (regexp[0] == ' ') {
+            capturing += ' ';
             *regexp++;
         }
 
