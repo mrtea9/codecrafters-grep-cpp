@@ -138,12 +138,12 @@ char* captureDigitLetter(char* regexp, char* text) {
     std::cout << std::endl;
 
     if (regexp[0] == '\\' && regexp[1] == 'w') {
-        if (regexp[0] == '\\' && regexp[1] == 'w') {
+        /*if (regexp[0] == '\\' && regexp[1] == 'w') {
             regexp += 2;
         }
         else {
             *regexp++;
-        }
+        }*/
 
         do {
             std::cout << "[captureDigitLetter Letter] Text: " << text << std::endl;
