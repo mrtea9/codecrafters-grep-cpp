@@ -217,6 +217,8 @@ char* captureDigitLetter(char* regexp, char* text) {
 
                     capturing += *text++;
 
+                    if (*text == ' ') break;
+
                 } while (isalpha(*text));
 
             }
