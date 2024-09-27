@@ -81,7 +81,7 @@ char* captureDigitLetter(char* regexp, char* text) {
                 }
                 capturing += *text;
             }
-        } while (*text++ != '\0');
+        } while (*text++ != '\0' && isalpha(*text));
 
         capturing += *text;
 
