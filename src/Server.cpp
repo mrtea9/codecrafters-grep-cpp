@@ -132,6 +132,8 @@ int matchGroup(char* regexp, char* text) {
 char* captureDigitLetter(char* regexp, char* text) {
     std::string capturing = "";
     std::string orig_regexp = regexp;
+    std::string orig_text = text;
+    int len;
 
     std::cout << "[captureDigitLetter Text]: " << text << std::endl;
     std::cout << "[captureDigitLetter RegExp]: " << regexp << std::endl;
@@ -247,7 +249,9 @@ char* captureDigitLetter(char* regexp, char* text) {
     } while (*text++ != '\0');
         //capturing += *text;
 
-    if (previous == capturing) return captureDigitLetter(toChar(orig_regexp), text + 1);
+    len = std::string(capturing).length();
+
+    if (previous == capturing) return captureDigitLetter(toChar(orig_regexp), toChar(orig_text) + len);
 
     previous = capturing;
 
