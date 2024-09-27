@@ -442,7 +442,6 @@ int matchParentheses(char* regexp, char* orig_regexp, char* text) {
         std::cout << "[matchParentheses RegExp - len]: " << regexp - len + 1 << std::endl;
         std::cout << "[matchParentheses len]: " << len << std::endl;
 
-        if (regexp[0] == '|') return matchOr(regexp + 1, text);
         if (regexp[0] == '(') return matchParentheses(regexp + 1, orig_regexp, text);
         if (regexp[0] == ')') return matchClosed(regexp - len + 1, orig_regexp, text);
         if (regexp[0] == '\\' && isdigit(regexp[1])) return matchBackreference(regexp[1], parentheses_regexp, orig_regexp, text);
@@ -471,6 +470,7 @@ int matchHere(char* regexp, char* text) {
     if (regexp[1] == '?') return matchOptional(regexp[0], regexp + 2, text);
     if (regexp[1] == '*') return matchStar(regexp[0], regexp + 2, text);
     if (regexp[0] == '(') return matchParentheses(regexp + 1, regexp, text);
+    if (regexp[0] == '|') return matchOr(regexp + 1, text);
     if (regexp[0] == '[') return matchGroup(regexp, text);
     if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
