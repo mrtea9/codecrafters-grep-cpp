@@ -293,6 +293,8 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
     }
 
     captured = string_regexp.substr(0, len - 1);
+    captured = ReplaceAll(captured, "(", "");
+    captured = ReplaceAll(captured, ")", "");
 
     if (captured.find("\\w") != std::string::npos || captured.find("\\d") != std::string::npos) captured = captureDigitLetter(toChar(captured), text);
 
