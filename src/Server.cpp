@@ -320,7 +320,7 @@ int matchClosed(char* regexp, char* orig_regexp, char* text) {
     std::string inter = parentheses_regexp;
 
     if (inter.find("\\") == std::string::npos) {
-        inter.replace(inter.find_first_of("("), 1, "");
+        inter.replace(inter.find_first_of(")"), 1, "");
         return matchHere(toChar(inter), text);
     }
 
