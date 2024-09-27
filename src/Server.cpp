@@ -99,7 +99,7 @@ int matchPlus(char c, char* regexp, char* text) {
 
         if (c == *text) {
             while (c == *text) *text++;
-            return matchHere(regexp, text + 1);
+            return matchHere(regexp, text);
         }
     } while (*text++ != '\0');
 
@@ -115,7 +115,7 @@ int matchPlus(char* chars, char* regexp, char* text) {
 
         if (*chars == *text) *chars++;
 
-        if (*chars == '\0') return matchHere(regexp + 1, text);
+        if (*chars == '\0') return matchHere(regexp + 1, text + 1);
 
     } while (*text++ != '\0');
 
