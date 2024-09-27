@@ -78,6 +78,56 @@ int matchLetter(char* regexp, char* text) {
     return 0;
 }
 
+int matchPlus(char* chars, char* regexp, char* text) {
+
+    do {
+        std::cout << "[Plus2 Text]: " << text << std::endl;
+        std::cout << "[Plus2 RegExp]: " << regexp << std::endl;
+        std::cout << "[Plus2 Chars]: " << chars << std::endl;
+
+        if (*chars == *text) *chars++;
+
+        if (*chars == '\0') return matchHere(regexp + 1, text + 1);
+
+    } while (*text++ != '\0');
+
+    return 0;
+}
+
+int matchGroup(char* regexp, char* text) {
+    std::string captured = regexp;
+    std::string string_regexp = regexp;
+    std::string text_string = text;
+    std::string chars_to_match;
+    bool negate;
+    bool isMatch;
+
+    std::cout << "[Group Text]: " << text << std::endl;
+    std::cout << "[Group RegExp]: " << regexp << std::endl;
+
+    size_t begin_group = captured.find_first_of('[');
+    size_t end_group = captured.find_first_of(']');
+    size_t plus_pos = string_regexp.find_first_of('+');
+
+    chars_to_match = captured.substr(begin_group + 1, end_group - 1);
+    int length = chars_to_match.length();
+
+    std::cout << "[Group Chars to Match]: " << chars_to_match << std::endl;
+    negate = chars_to_match[0] == '^';
+
+    if (end_group + 1 == plus_pos && !negate) return matchPlus(toChar(chars_to_match), regexp + length + 2, text);
+
+    isMatch = text_string.find_first_of(chars_to_match) != std::string::npos;
+    isMatch = negate ? !isMatch : isMatch;
+
+    std::cout << "[Group isMatch]: " << isMatch << std::endl;
+
+    if (isMatch && negate) return matchHere(regexp + length + 3, text + length);
+    if (isMatch) return matchHere(regexp + length + 2, text + length);
+
+    return 0;
+}
+
 char* captureDigitLetter(char* regexp, char* text) {
     std::string capturing = "";
 
@@ -318,6 +368,7 @@ int matchHere(char* regexp, char* text) {
     if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
     if (regexp[1] == '*') return matchStar(regexp[0], regexp + 2, text);
     if (regexp[0] == '(') return matchParentheses(regexp + 1, regexp, text);
+    if (regexp[0] == '[') return matchGroup(regexp, text);
     if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
 
