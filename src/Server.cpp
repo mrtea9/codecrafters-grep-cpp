@@ -169,7 +169,7 @@ char* captureDigitLetter(char* regexp, char* text) {
 
             }
 
-            if (isdigit(*text) && *regexp != '\0') {
+            if (isdigit(*text)) {
                 if (regexp[0] == '\\' && regexp[1] == 'd') {
                     regexp += 2;
                 }
