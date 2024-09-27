@@ -256,6 +256,7 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
     string_orig = ReplaceAll(string_orig, reference_full, captured);
     std::cout << "[matchBackreference string_orig]: " << string_orig << std::endl;
     string_orig.replace(start_pos - 1, 1, "");
+    std::cout << "[matchBackreference start_pos]: " << start_pos << std::endl;
     string_orig.replace(start_pos - 1 + len - 1, 1, "");
 
     std::cout << "[matchBackreference start_pos]: " << start_pos << std::endl;
