@@ -166,11 +166,11 @@ char* captureDigitLetter(char* regexp, char* text) {
 
                     capturing += *text++;
 
-                } while (isalpha(*text) && regexp != '\0');
+                } while (isalpha(*text));
 
             }
 
-            if (isalpha(*text)) {
+            if (isalpha(*text) && *regexp != '\0') {
                 if (regexp[0] == '\\' && regexp[1] == 'w') {
                     regexp += 2;
                 }
