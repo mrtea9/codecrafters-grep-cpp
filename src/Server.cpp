@@ -122,7 +122,7 @@ int matchGroup(char* regexp, char* text) {
 
     std::cout << "[Group isMatch]: " << isMatch << std::endl;
 
-    if (isMatch && negate) return matchHere(regexp + length + 3, text + length);
+    if (isMatch && negate) return matchHere(regexp + length + 3, text + length - 1);
     if (isMatch) return matchHere(regexp + length + 2, text + length);
 
     return 0;
