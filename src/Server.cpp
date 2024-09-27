@@ -91,6 +91,54 @@ int matchOptional(char c, char* regexp, char* text) {
     return matchHere(regexp, text);
 }
 
+int matchOr(char* regexp, char* text) {
+    std::size_t length = strlen(regexp);
+    if (length) {
+        regexp[length] = '\0';
+    }
+
+    std::cout << "[Or] Text: " << text << std::endl;
+    std::cout << "[Or] RegExp: " << regexp << std::endl;
+
+    std::string captured = regexp;
+    std::string rest_regexp;
+    size_t begin_group = captured.find(')');
+    size_t end_group = captured.length();
+
+    rest_regexp = captured.substr(begin_group + 1, end_group - 1);
+    std::cout << "[Or] Rest: " << rest_regexp << std::endl;
+
+    std::stringstream ss(regexp);
+    std::string token;
+    std::vector<std::string> tokens;
+    char delimeter = '|';
+
+    while (getline(ss, token, delimeter)) {
+        tokens.push_back(token);
+    }
+
+    for (std::string token : tokens) {
+        if (token.find(')') != std::string::npos) token.pop_back();
+
+        token = token + rest_regexp;
+
+        char* copy_text = text;
+        int length = token.length();
+        char* token_array = new char[length + 1];
+        strcpy(token_array, token.c_str());
+
+
+
+        std::cout << "[Or Variant] RegExp: " << token_array << std::endl;
+
+        if (matchHere(token_array, copy_text) == 1) {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
 int matchPlus(char c, char* regexp, char* text) {
     do {
         std::cout << "[Plus Text]: " << text << std::endl;
@@ -394,6 +442,7 @@ int matchParentheses(char* regexp, char* orig_regexp, char* text) {
         std::cout << "[matchParentheses RegExp - len]: " << regexp - len + 1 << std::endl;
         std::cout << "[matchParentheses len]: " << len << std::endl;
 
+        if (regexp[0] == '|') return matchOr(regexp + 1, text);
         if (regexp[0] == '(') return matchParentheses(regexp + 1, orig_regexp, text);
         if (regexp[0] == ')') return matchClosed(regexp - len + 1, orig_regexp, text);
         if (regexp[0] == '\\' && isdigit(regexp[1])) return matchBackreference(regexp[1], parentheses_regexp, orig_regexp, text);
