@@ -29,22 +29,6 @@ std::string ReplaceAll(std::string str, const std::string& from, const std::stri
 
 }
 
-int matchClosed(char* regexp, char* orig_regexp, char* text) {
-    char* parentheses_regexp = regexp;
-
-    do {
-        std::cout << std::endl;
-        std::cout << "[matchClosed orig_regexp]: " << orig_regexp << std::endl;
-        std::cout << "[matchClosed RegExp]: " << regexp << std::endl;
-        std::cout << "[matchClosed parentheses_regexp]: " << parentheses_regexp << std::endl;
-
-        if (regexp[0] == '\\' && isdigit(regexp[1])) return matchBackreference(regexp[1], parentheses_regexp, orig_regexp, text);
-
-    } while (*regexp++ != '\0');
-
-    return 0;
-}
-
 int matchBackreference(char reference, char* regexp, char* orig_regexp, char* text) {
     int len = 0;
     int openBrackets = 1;
@@ -89,6 +73,22 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
     std::cout << "[matchBackreference result]: " << toChar(string_orig) << std::endl;
 
     return match(toChar(string_orig), text);
+}
+
+int matchClosed(char* regexp, char* orig_regexp, char* text) {
+    char* parentheses_regexp = regexp;
+
+    do {
+        std::cout << std::endl;
+        std::cout << "[matchClosed orig_regexp]: " << orig_regexp << std::endl;
+        std::cout << "[matchClosed RegExp]: " << regexp << std::endl;
+        std::cout << "[matchClosed parentheses_regexp]: " << parentheses_regexp << std::endl;
+
+        if (regexp[0] == '\\' && isdigit(regexp[1])) return matchBackreference(regexp[1], parentheses_regexp, orig_regexp, text);
+
+    } while (*regexp++ != '\0');
+
+    return 0;
 }
 
 int matchParentheses(char* regexp, char* orig_regexp, char* text) {
