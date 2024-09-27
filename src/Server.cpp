@@ -77,7 +77,7 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
 }
 
 int matchParentheses(char* regexp, char* orig_regexp, char* text) {
-    char* parentheses_regexp = orig_regexp + 1;
+    char* parentheses_regexp = orig_regexp;
 
     do {
         std::cout << std::endl;
