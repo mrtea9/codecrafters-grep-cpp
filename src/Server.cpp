@@ -43,7 +43,7 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp) {
 
         if (openBrackets == closedBrackets) break;
         
-    } while (*regexp != '\0');
+    } while (*regexp++ != '\0');
 
     captured = string_regexp.substr(0, len - 1);
 
