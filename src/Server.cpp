@@ -228,8 +228,8 @@ char* captureDigitLetter(char* regexp, char* text) {
                 }
                 capturing += *text;
             }
-        } while (*text++ != '\0');
-    }
+        } 
+    } while (*text++ != '\0');
         //capturing += *text;
 
     std::cout << "[captureDigitLetter Letter2] Text: " << text << std::endl;
