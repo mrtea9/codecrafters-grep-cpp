@@ -37,7 +37,7 @@ int matchBackreference(char* regexp, char* orig_regexp, char* text) {
     std::string string_regexp = regexp;
     std::string string_orig = orig_regexp;
     std::string captured;
-    std::string reference_full = "\\" + std::to_string(count);
+    std::string reference_full = "\\";
     std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
     start_pos = string_orig.find(string_regexp);
     
@@ -87,7 +87,7 @@ int matchParentheses(char* regexp, char* orig_regexp, char* text) {
         if (regexp[0] == '(') return matchParentheses(regexp + 1, orig_regexp, text);
 
         if (regexp[0] == '\\') {
-            return matchBackreference(parentheses_regexp, orig_regexp, text);
+            return matchBackreference(regexp, orig_regexp, text);
         }
 
     } while (*regexp != '\0' && (*regexp++ != '\\'));
