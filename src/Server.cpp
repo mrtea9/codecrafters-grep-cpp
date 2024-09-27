@@ -10,6 +10,8 @@
 int count = 0;
 
 int matchHere(char* regexp, char* text);
+int match(char* regexp, char* text);
+
 
 char* toChar(std::string s) {
     int length = s.length();
