@@ -26,11 +26,10 @@ std::string ReplaceAll(std::string str, const std::string& from, const std::stri
     return str;
 }
 
-int matchBackreference(char* regexp, char* orig_regexp, char* text) {
+int matchBackreference(char* regexp, char* orig_regexp, char* text, int count) {
     int len = 0;
     int openBrackets = 1;
     int closedBrackets = 0;
-    int count = 1;
     size_t start_pos = 0;
     std::string string_regexp = regexp;
     std::string string_orig = orig_regexp;
@@ -74,7 +73,7 @@ int matchBackreference(char* regexp, char* orig_regexp, char* text) {
 }
 
 int matchParentheses(char* regexp, char* orig_regexp, char* text) {
-    int in_paren = 0;
+    int count = 0;
     char* parentheses_regexp = regexp;
 
     do {
@@ -83,7 +82,10 @@ int matchParentheses(char* regexp, char* orig_regexp, char* text) {
         std::cout << "[matchParentheses RegExp]: " << regexp << std::endl;
 
        
-        if (regexp[0] == '\\') return matchBackreference(parentheses_regexp, orig_regexp, text);
+        if (regexp[0] == '\\') {
+            count++;
+            return matchBackreference(parentheses_regexp, orig_regexp, text, count);
+        }
 
     } while (*regexp != '\0' && (*regexp++ != '\\'));
 
@@ -103,8 +105,9 @@ int matchHere(char* regexp, char* text) {
     if (regexp[0] == '\0') return 1;
     if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
     if (regexp[1] == '*') return matchStar(regexp[0], regexp + 2, text);
-    if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchHere(regexp + 1, text + 1);
     if (regexp[0] == '(') return matchParentheses(regexp + 1, regexp, text);
+
+    if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchHere(regexp + 1, text + 1);
 
     return 0;
 }
