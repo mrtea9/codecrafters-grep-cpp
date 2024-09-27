@@ -27,7 +27,7 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp) {
     std::string string_regexp = regexp;
     std::string string_orig = orig_regexp;
     std::string captured;
-    std::string reference_full = "\\" + std::string() + count;
+    std::string reference_full = "\\" + std::to_string(count);
     std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
     start_pos = string_orig.find(string_regexp);
     
