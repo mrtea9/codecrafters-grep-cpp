@@ -136,101 +136,99 @@ char* captureDigitLetter(char* regexp, char* text) {
     std::cout << "[captureDigitLetter capturing]: " << capturing << std::endl;
     std::cout << "[captureDigitLetter] *text: " << *text << std::endl;
     std::cout << std::endl;
+    do
+    {
+        if (regexp[0] == '\\' && regexp[1] == 'd') {
+            //if (regexp[0] == '\\' && regexp[1] == 'd') {
+            //    regexp += 2;
+            //}
+            //else {
+            //    *regexp++;
+            //}
 
-    if (regexp[0] == '\\' && regexp[1] == 'd') {
-        //if (regexp[0] == '\\' && regexp[1] == 'd') {
-        //    regexp += 2;
-        //}
-        //else {
-        //    *regexp++;
-        //}
+                std::cout << "[captureDigitLetter Digit] Text: " << text << std::endl;
+                std::cout << "[captureDigitLetter Digit] RegExp: " << regexp << std::endl;
+                std::cout << "[captureDigitLetter Digit capturing]: " << capturing << std::endl;
+                std::cout << std::endl;
 
-        do {
-            std::cout << "[captureDigitLetter Digit] Text: " << text << std::endl;
-            std::cout << "[captureDigitLetter Digit] RegExp: " << regexp << std::endl;
-            std::cout << "[captureDigitLetter Digit capturing]: " << capturing << std::endl;
-            std::cout << std::endl;
+                if (regexp[0] == '\0') break;
 
-            if (regexp[0] == '\0') break;
-
-            if (*regexp == '+' && isdigit(*text)) {
-                *regexp++;
-
-                do {
-                    capturing += *text++;
-
-                    std::cout << "[captureDigitLetter Digit +] Text: " << text << std::endl;
-                    std::cout << "[captureDigitLetter Digit +] RegExp: " << regexp << std::endl;
-                    std::cout << "[captureDigitLetter Digit + capturing]: " << capturing << std::endl;
-                    std::cout << std::endl;
-
-
-                } while (isdigit(*text));
-
-            }
-
-            if (isdigit(*text) && *regexp != '\0') {
-                if (regexp[0] == '\\' && regexp[1] == 'd') {
-                    regexp += 2;
-                }
-                else {
+                if (*regexp == '+' && isdigit(*text)) {
                     *regexp++;
+
+                    do {
+                        capturing += *text++;
+
+                        std::cout << "[captureDigitLetter Digit +] Text: " << text << std::endl;
+                        std::cout << "[captureDigitLetter Digit +] RegExp: " << regexp << std::endl;
+                        std::cout << "[captureDigitLetter Digit + capturing]: " << capturing << std::endl;
+                        std::cout << std::endl;
+
+
+                    } while (isdigit(*text));
+
                 }
-                capturing += *text;
-            }
-        } while (*text++ != '\0');
 
-        //capturing += *text;
+                if (isdigit(*text) && *regexp != '\0') {
+                    if (regexp[0] == '\\' && regexp[1] == 'd') {
+                        regexp += 2;
+                    }
+                    else {
+                        *regexp++;
+                    }
+                    capturing += *text;
+                }
 
-        std::cout << "[captureDigitLetter Digit+] Text: " << text << std::endl;
-        std::cout << "[captureDigitLetter Digit+] RegExp: " << regexp << std::endl;
-        std::cout << "[captureDigitLetter Digit+ capturing]: " << capturing << std::endl;
-        std::cout << std::endl;
-    }
+            //capturing += *text;
 
-    if (regexp[0] == '\\' && regexp[1] == 'w') {
-        /*if (regexp[0] == '\\' && regexp[1] == 'w') {
-            regexp += 2;
+            std::cout << "[captureDigitLetter Digit+] Text: " << text << std::endl;
+            std::cout << "[captureDigitLetter Digit+] RegExp: " << regexp << std::endl;
+            std::cout << "[captureDigitLetter Digit+ capturing]: " << capturing << std::endl;
+            std::cout << std::endl;
         }
-        else {
-            *regexp++;
-        }*/
 
-        do {
-            std::cout << "[captureDigitLetter Letter] Text: " << text << std::endl;
-            std::cout << "[captureDigitLetter Letter] RegExp: " << regexp << std::endl;
-            std::cout << "[captureDigitLetter Letter capturing]: " << capturing << std::endl;
-            std::cout << "[captureDigitLetter Letter] *text: " << *text << std::endl;
-            std::cout << std::endl;
-
-
-            if (regexp[0] == '\0') break;
-
-            if (*regexp == '+' && isalpha(*text)) {
+        if (regexp[0] == '\\' && regexp[1] == 'w') {
+            /*if (regexp[0] == '\\' && regexp[1] == 'w') {
+                regexp += 2;
+            }
+            else {
                 *regexp++;
+            }*/
 
-                do {
-                    std::cout << "[captureDigitLetter Letter +] Text: " << text << std::endl;
-                    std::cout << "[captureDigitLetter Letter +] RegExp: " << regexp << std::endl;
-                    std::cout << "[captureDigitLetter Letter + capturing]: " << capturing << std::endl;
-                    std::cout << std::endl;
+                std::cout << "[captureDigitLetter Letter] Text: " << text << std::endl;
+                std::cout << "[captureDigitLetter Letter] RegExp: " << regexp << std::endl;
+                std::cout << "[captureDigitLetter Letter capturing]: " << capturing << std::endl;
+                std::cout << "[captureDigitLetter Letter] *text: " << *text << std::endl;
+                std::cout << std::endl;
 
-                    capturing += *text++;
 
-                } while (isalpha(*text));
+                if (regexp[0] == '\0') break;
 
-            }
-
-            if (isalpha(*text) && *regexp != '\0') {
-                if (regexp[0] == '\\' && regexp[1] == 'w') {
-                    regexp += 2;
-                }
-                else {
+                if (*regexp == '+' && isalpha(*text)) {
                     *regexp++;
+
+                    do {
+                        std::cout << "[captureDigitLetter Letter +] Text: " << text << std::endl;
+                        std::cout << "[captureDigitLetter Letter +] RegExp: " << regexp << std::endl;
+                        std::cout << "[captureDigitLetter Letter + capturing]: " << capturing << std::endl;
+                        std::cout << std::endl;
+
+                        capturing += *text++;
+
+                    } while (isalpha(*text));
+
                 }
-                capturing += *text;
-            }
-        } while (*text++ != '\0' && isalpha(*text));
+
+                if (isalpha(*text) && *regexp != '\0') {
+                    if (regexp[0] == '\\' && regexp[1] == 'w') {
+                        regexp += 2;
+                    }
+                    else {
+                        *regexp++;
+                    }
+                    capturing += *text;
+                }
+        } while (*text++ != '\0');
 
         //capturing += *text;
 
