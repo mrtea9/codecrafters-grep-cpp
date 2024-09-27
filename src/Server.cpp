@@ -249,6 +249,9 @@ char* captureDigitLetter(char* regexp, char* text) {
 
     previous = capturing;
 
+    std::cout << "[captureDigitLetter previous]: " << previous << std::endl;
+    std::cout << "[captureDigitLetter capturing]: " << capturing << std::endl;
+
     return toChar(capturing);
 }
 
