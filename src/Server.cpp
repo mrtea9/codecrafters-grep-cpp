@@ -102,6 +102,9 @@ int matchStar(int c, char* regexp, char* text) {
 }
 
 int matchHere(char* regexp, char* text) {
+    std::cout << std::endl;
+    std::cout << "[Text]: " << text << std::endl;
+    std::cout << "[RegExp]: " << regexp << std::endl;
 
     if (regexp[0] == '\0') return 1;
     if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
@@ -115,14 +118,9 @@ int matchHere(char* regexp, char* text) {
 }
 
 static int match(char* regexp, char* text) {
-    if (regexp[0] == '^') return matchHere(regexp + 1, text);
-    do {
-        std::cout << std::endl;
-        std::cout << "[Text]: " << text << std::endl;
-        std::cout << "[RegExp]: " << regexp << std::endl;
+    if (regexp[0] == '^' && (regexp[1] == *text || regexp[1] == '(' || regexp[1] == '[')) return matchHere(regexp + 1, text);
+    if (matchHere(regexp, text)) return 1;
 
-        if (matchHere(regexp, text)) return 1;
-    } while (*text++ != '\0');
     return 0;
 }
 
