@@ -72,7 +72,7 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
     std::cout << "[matchBackreference string_orig]: " << string_orig << std::endl;
     std::cout << "[matchBackreference result]: " << toChar(string_orig) << std::endl;
 
-    return matchHere(toChar(string_orig), text);
+    return match(toChar(string_orig), text);
 }
 
 int matchParentheses(char* regexp, char* orig_regexp, char* text) {
