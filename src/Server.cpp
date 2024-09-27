@@ -235,7 +235,7 @@ char* captureDigitLetter(char* regexp, char* text) {
             std::cout << std::endl;
         } 
 
-    } while (*text++ != '\0' || *regexp != '\0');
+    } while (*text++ != '\0');
         //capturing += *text;
 
     return toChar(capturing);
