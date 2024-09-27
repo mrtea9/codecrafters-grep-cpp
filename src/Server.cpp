@@ -10,6 +10,7 @@
 int matchHere(char* regexp, char* text);
 static int match(char* regexp, char* text);
 
+std::string previous = "";
 
 char* toChar(std::string s) {
     int length = s.length();
@@ -130,6 +131,7 @@ int matchGroup(char* regexp, char* text) {
 
 char* captureDigitLetter(char* regexp, char* text) {
     std::string capturing = "";
+    std::string orig_regexp = regexp;
 
     std::cout << "[captureDigitLetter Text]: " << text << std::endl;
     std::cout << "[captureDigitLetter RegExp]: " << regexp << std::endl;
@@ -205,7 +207,7 @@ char* captureDigitLetter(char* regexp, char* text) {
             if (regexp[0] == '\0') break;
 
             if (regexp[2] == '+' && isalpha(*text)) {
-                *regexp++;
+                *regexp += 3;
 
                 do {
                     std::cout << "[captureDigitLetter Letter +] Text: " << text << std::endl;
@@ -242,6 +244,10 @@ char* captureDigitLetter(char* regexp, char* text) {
 
     } while (*text++ != '\0');
         //capturing += *text;
+
+    if (previous == capturing) return captureDigitLetter(toChar(orig_regexp), text + 1);
+
+    previous = capturing;
 
     return toChar(capturing);
 }
