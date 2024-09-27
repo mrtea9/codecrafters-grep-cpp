@@ -29,6 +29,18 @@ std::string ReplaceAll(std::string str, const std::string& from, const std::stri
 
 }
 
+char* captureDigitLetter(char* regexp, char* text) {
+    std::string capturing = "";
+
+    std::cout << "[captureDigitLetter Text]: " << text << std::endl;
+    std::cout << "[captureDigitLetter RegExp]: " << regexp << std::endl;
+    std::cout << "[captureDigitLetter capturing]: " << capturing << std::endl;
+    std::cout << "[captureDigitLetter] *text: " << *text << std::endl;
+    std::cout << std::endl;
+
+    return toChar(capturing);
+}
+
 int matchBackreference(char reference, char* regexp, char* orig_regexp, char* text) {
     int len = 0;
     int openBrackets = 1;
@@ -57,6 +69,8 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
     } while (*regexp++ != '\0');
 
     captured = string_regexp.substr(0, len - 1);
+
+    if (captured.find("\\w") != std::string::npos || captured.find("\\d") != std::string::npos) captured = captureDigitLetter(toChar(captured), text);
 
     std::cout << "[matchBackreference string_orig]: " << string_orig << std::endl;
     std::cout << "[matchBackreference string_regexp]: " << string_regexp << std::endl;
