@@ -83,6 +83,8 @@ char* captureDigitLetter(char* regexp, char* text) {
             }
         } while (*text++ != '\0' && isalpha(*text));
 
+        capturing += *text;
+
         std::cout << "[captureDigitLetter Letter2] Text: " << text << std::endl;
         std::cout << "[captureDigitLetter Letter2] RegExp: " << regexp << std::endl;
         std::cout << "[captureDigitLetter Letter2 capturing]: " << capturing << std::endl;
@@ -131,6 +133,8 @@ char* captureDigitLetter(char* regexp, char* text) {
                 capturing += *text;
             }
         } while (*text++ != '\0' && isdigit(*text));
+
+        capturing += *text;
 
         std::cout << "[captureDigitLetter Digit+] Text: " << text << std::endl;
         std::cout << "[captureDigitLetter Digit+] RegExp: " << regexp << std::endl;
