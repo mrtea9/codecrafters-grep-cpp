@@ -72,8 +72,7 @@ int matchBackreference(char* regexp, char* orig_regexp, char* text, int count) {
     return matchHere(toChar(string_orig), text);
 }
 
-int matchParentheses(char* regexp, char* orig_regexp, char* text) {
-    int count = 0;
+int matchParentheses(char* regexp, char* orig_regexp, char* text, int count) {
     char* parentheses_regexp = regexp;
 
     do {
@@ -101,11 +100,15 @@ int matchStar(int c, char* regexp, char* text) {
 }
 
 int matchHere(char* regexp, char* text) {
+    int count = 0;
 
     if (regexp[0] == '\0') return 1;
     if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
     if (regexp[1] == '*') return matchStar(regexp[0], regexp + 2, text);
-    if (regexp[0] == '(') return matchParentheses(regexp + 1, regexp, text);
+    if (regexp[0] == '(') {
+        count++;
+        return matchParentheses(regexp + 1, regexp, text, count);
+    }
 
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchHere(regexp + 1, text + 1);
 
