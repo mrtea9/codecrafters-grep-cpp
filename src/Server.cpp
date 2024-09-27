@@ -7,6 +7,8 @@
 #include <vector>
 #include <algorithm>
 
+int count = 0;
+
 int matchHere(char* regexp, char* text);
 
 char* toChar(std::string s) {
@@ -26,7 +28,7 @@ std::string ReplaceAll(std::string str, const std::string& from, const std::stri
     return str;
 }
 
-int matchBackreference(char* regexp, char* orig_regexp, char* text, int count) {
+int matchBackreference(char* regexp, char* orig_regexp, char* text) {
     int len = 0;
     int openBrackets = 1;
     int closedBrackets = 0;
@@ -34,6 +36,9 @@ int matchBackreference(char* regexp, char* orig_regexp, char* text, int count) {
     std::string string_regexp = regexp;
     std::string string_orig = orig_regexp;
     std::string captured;
+
+    count++;
+
     std::string reference_full = "\\" + std::to_string(count);
     std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
     start_pos = string_orig.find(string_regexp);
@@ -72,7 +77,7 @@ int matchBackreference(char* regexp, char* orig_regexp, char* text, int count) {
     return matchHere(toChar(string_orig), text);
 }
 
-int matchParentheses(char* regexp, char* orig_regexp, char* text, int count) {
+int matchParentheses(char* regexp, char* orig_regexp, char* text) {
     char* parentheses_regexp = regexp;
 
     do {
@@ -82,7 +87,7 @@ int matchParentheses(char* regexp, char* orig_regexp, char* text, int count) {
 
        
         if (regexp[0] == '\\') {
-            return matchBackreference(parentheses_regexp, orig_regexp, text, count);
+            return matchBackreference(parentheses_regexp, orig_regexp, text);
         }
 
     } while (*regexp != '\0' && (*regexp++ != '\\'));
@@ -99,15 +104,12 @@ int matchStar(int c, char* regexp, char* text) {
 }
 
 int matchHere(char* regexp, char* text) {
-    int count = 0;
 
     if (regexp[0] == '\0') return 1;
     if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
     if (regexp[1] == '*') return matchStar(regexp[0], regexp + 2, text);
-    if (regexp[0] == '(') {
-        count++;
-        return matchParentheses(regexp + 1, regexp, text, count);
-    }
+    if (regexp[0] == '(') return matchParentheses(regexp + 1, regexp, text);
+
 
     if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) return matchHere(regexp + 1, text + 1);
 
