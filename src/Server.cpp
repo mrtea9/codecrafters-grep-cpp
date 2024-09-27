@@ -222,7 +222,7 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
 
         } while (*orig_regexp++ != '\0');
         
-        len--;
+        len = len - openBrackets;
     }
     else 
     {
