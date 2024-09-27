@@ -77,15 +77,18 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
 
 int matchParentheses(char* regexp, char* orig_regexp, char* text) {
     char* parentheses_regexp = regexp;
+    int len = 0;
 
     do {
+        len++;
         std::cout << std::endl;
         std::cout << "[matchParentheses orig_regexp]: " << orig_regexp << std::endl;
         std::cout << "[matchParentheses RegExp]: " << regexp << std::endl;
         std::cout << "[matchParentheses parentheses_regexp]: " << parentheses_regexp << std::endl;
+        std::cout << "[matchParentheses RegExp - len]: " << regexp - len << std::endl;
 
         if (regexp[0] == '(') return matchParentheses(regexp + 1, orig_regexp, text);
-
+        //if (regexp[0] == ')') return closed()
         if (regexp[0] == '\\' && isdigit(regexp[1])) return matchBackreference(regexp[1], parentheses_regexp, orig_regexp, text);
 
     } while (*regexp++ != '\0');
