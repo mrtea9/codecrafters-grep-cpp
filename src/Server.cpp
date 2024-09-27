@@ -115,7 +115,7 @@ int matchPlus(char* chars, char* regexp, char* text) {
 
         if (*chars == *text) *chars++;
 
-        if (*chars == '\0') return matchHere(regexp + 1, text + 1);
+        if (*chars == '\0') return matchHere(regexp + 1, text);
 
     } while (*text++ != '\0');
 
