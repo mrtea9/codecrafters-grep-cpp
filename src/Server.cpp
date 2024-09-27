@@ -7,8 +7,6 @@
 #include <vector>
 #include <algorithm>
 
-int count = 0;
-
 int matchHere(char* regexp, char* text);
 static int match(char* regexp, char* text);
 
@@ -39,9 +37,6 @@ int matchBackreference(char* regexp, char* orig_regexp, char* text) {
     std::string string_regexp = regexp;
     std::string string_orig = orig_regexp;
     std::string captured;
-
-    count++;
-
     std::string reference_full = "\\" + std::to_string(count);
     std::cout << "[matchBackreference orig_regexp]: " << string_orig << std::endl;
     start_pos = string_orig.find(string_regexp);
@@ -77,7 +72,7 @@ int matchBackreference(char* regexp, char* orig_regexp, char* text) {
     std::cout << "[matchBackreference string_orig]: " << string_orig << std::endl;
     std::cout << "[matchBackreference result]: " << toChar(string_orig) << std::endl;
 
-    return match(toChar(string_orig), text);
+    return 0;
 }
 
 int matchParentheses(char* regexp, char* orig_regexp, char* text) {
@@ -87,6 +82,7 @@ int matchParentheses(char* regexp, char* orig_regexp, char* text) {
         std::cout << std::endl;
         std::cout << "[matchParentheses orig_regexp]: " << orig_regexp << std::endl;
         std::cout << "[matchParentheses RegExp]: " << regexp << std::endl;
+        std::cout << "[matchParentheses parentheses_regexp]: " << parentheses_regexp << std::endl;
 
         if (regexp[0] == '(') return matchParentheses(regexp + 1, orig_regexp, text);
 
