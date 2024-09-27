@@ -203,7 +203,7 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
     std::string string_orig = orig_regexp;
     std::string captured;
     std::string reference_full = "\\" + std::string() + reference;
-
+    start_pos = string_orig.find(string_regexp);
     if (reference == '1') {
         start_pos = string_orig.find('(');
         openBrackets = 0;
@@ -221,8 +221,6 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
             if (openBrackets == closedBrackets) break;
 
         } while (*orig_regexp++ != '\0');
-
-        len = len - 1;
     }
     else 
     {
@@ -254,9 +252,6 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
     std::cout << "[matchBackreference Reference_full]: " << reference_full << std::endl;
 
     string_orig = ReplaceAll(string_orig, reference_full, captured);
-    std::cout << "[matchBackreference string_orig]: " << string_orig << std::endl;
-    std::cout << "[matchBackreference start_pos]: " << start_pos << std::endl;
-    start_pos = start_pos == 0 ? 1 : start_pos;
     string_orig.replace(start_pos - 1, 1, "");
     string_orig.replace(start_pos - 1 + len - 1, 1, "");
 
