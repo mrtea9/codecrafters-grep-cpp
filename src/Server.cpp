@@ -219,7 +219,7 @@ char* captureDigitLetter(char* regexp, char* text) {
 
             }
 
-            if (isalpha(*text) && *regexp != '\0') {
+            if (isalpha(*text)) {
                 if (regexp[0] == '\\' && regexp[1] == 'w') {
                     regexp += 2;
                 }
