@@ -317,6 +317,12 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
 
 int matchClosed(char* regexp, char* orig_regexp, char* text) {
     char* parentheses_regexp = regexp;
+    std::string inter = parentheses_regexp;
+
+    if (inter.find("\\") == std::string::npos) {
+        inter.replace(inter.find_first_of("("), 1, "");
+        return matchHere(toChar(inter), text);
+    }
 
     do {
         std::cout << std::endl;
