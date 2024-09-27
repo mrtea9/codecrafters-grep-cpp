@@ -203,7 +203,6 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
     std::string string_orig = orig_regexp;
     std::string captured;
     std::string reference_full = "\\" + std::string() + reference;
-    start_pos = string_orig.find(string_regexp);
 
     if (reference == '1') {
         start_pos = string_orig.find('(');
@@ -227,6 +226,7 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
     }
     else 
     {
+        start_pos = string_orig.find(string_regexp);
         do {
             std::cout << std::endl;
             std::cout << "[matchBackreference RegExp]: " << regexp << std::endl;
