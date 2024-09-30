@@ -97,16 +97,16 @@ int matchOr(char* regexp, char* text) {
         regexp[length] = '\0';
     }
 
-    std::cout << "[Or] Text: " << text << std::endl;
-    std::cout << "[Or] RegExp: " << regexp << std::endl;
+    std::cout << "[Or Text]: " << text << std::endl;
+    std::cout << "[Or RegExp]: " << regexp << std::endl;
 
     std::string captured = regexp;
     std::string rest_regexp;
-    size_t begin_group = captured.find(')');
+    size_t begin_group = captured.find('}');
     size_t end_group = captured.length();
 
     rest_regexp = captured.substr(begin_group + 1, end_group - 1);
-    std::cout << "[Or] Rest: " << rest_regexp << std::endl;
+    std::cout << "[Or Rest]: " << rest_regexp << std::endl;
 
     std::stringstream ss(regexp);
     std::string token;
@@ -118,7 +118,7 @@ int matchOr(char* regexp, char* text) {
     }
 
     for (std::string token : tokens) {
-        if (token.find(')') != std::string::npos) token.pop_back();
+        if (token.find('}') != std::string::npos) token.pop_back();
 
         token = token + rest_regexp;
 
@@ -129,7 +129,7 @@ int matchOr(char* regexp, char* text) {
 
 
 
-        std::cout << "[Or Variant] RegExp: " << token_array << std::endl;
+        std::cout << "[Or Variant RegExp]: " << token_array << std::endl;
 
         if (matchHere(token_array, copy_text) == 1) {
             return 1;
@@ -385,10 +385,18 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
     }
 
     captured = string_regexp.substr(0, len - 1);
-    captured = ReplaceAll(captured, "(", "");
-    captured = ReplaceAll(captured, ")", "");
+
+    if (captured.find("|") != std::string::npos) {
+        captured = ReplaceAll(captured, "(", "{");
+        captured = ReplaceAll(captured, ")", "}");
+    }
+    else {
+        captured = ReplaceAll(captured, "(", "");
+        captured = ReplaceAll(captured, ")", "");
+    }
 
     if (captured.find("\\w") != std::string::npos || captured.find("\\d") != std::string::npos) captured = captureDigitLetter(toChar(captured), text);
+
 
     std::cout << "[matchBackreference string_orig]: " << string_orig << std::endl;
     std::cout << "[matchBackreference string_regexp]: " << string_regexp << std::endl;
@@ -470,7 +478,7 @@ int matchHere(char* regexp, char* text) {
     if (regexp[1] == '?') return matchOptional(regexp[0], regexp + 2, text);
     if (regexp[1] == '*') return matchStar(regexp[0], regexp + 2, text);
     if (regexp[0] == '(') return matchParentheses(regexp + 1, regexp, text);
-    if (regexp[0] == '|') return matchOr(regexp + 1, text);
+    if (regexp[0] == '{') return matchOr(regexp + 1, text);
     if (regexp[0] == '[') return matchGroup(regexp, text);
     if (regexp[0] == '\\' && regexp[1] == 'd') return matchDigit(regexp + 2, text);
     if (regexp[0] == '\\' && regexp[1] == 'w') return matchLetter(regexp + 2, text);
