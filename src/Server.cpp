@@ -389,8 +389,7 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
     std::cout << "[matchBackreference captured1]: " << captured << std::endl;
 
     if (captured.find("|") != std::string::npos) {
-        captured = ReplaceAll(captured, "(", "{");
-        captured = ReplaceAll(captured, ")", "}");
+        captured = "{" + captured + "}";
         std::cout << "[matchBackreference captured2]: " << captured << std::endl;
     }
     else {
