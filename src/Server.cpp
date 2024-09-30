@@ -386,13 +386,17 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
 
     captured = string_regexp.substr(0, len - 1);
 
+    std::cout << "[matchBackreference captured1]: " << captured << std::endl;
+
     if (captured.find("|") != std::string::npos) {
         captured = ReplaceAll(captured, "(", "{");
         captured = ReplaceAll(captured, ")", "}");
+        std::cout << "[matchBackreference captured2]: " << captured << std::endl;
     }
     else {
         captured = ReplaceAll(captured, "(", "");
         captured = ReplaceAll(captured, ")", "");
+        std::cout << "[matchBackreference captured3]: " << captured << std::endl;
     }
 
     if (captured.find("\\w") != std::string::npos || captured.find("\\d") != std::string::npos) captured = captureDigitLetter(toChar(captured), text);
@@ -401,7 +405,7 @@ int matchBackreference(char reference, char* regexp, char* orig_regexp, char* te
     std::cout << "[matchBackreference string_orig]: " << string_orig << std::endl;
     std::cout << "[matchBackreference string_regexp]: " << string_regexp << std::endl;
     std::cout << "[matchBackreference len]: " << len - 1 << std::endl;
-    std::cout << "[matchBackreference captured]: " << captured << std::endl;
+    std::cout << "[matchBackreference captured4]: " << captured << std::endl;
     std::cout << "[matchBackreference Reference_full]: " << reference_full << std::endl;
 
     string_orig = ReplaceAll(string_orig, reference_full, captured);
